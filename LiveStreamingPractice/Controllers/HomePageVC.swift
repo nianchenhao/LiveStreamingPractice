@@ -59,7 +59,24 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         cell.nickNameLabel.text = streamers[indexPath.row].nickname
         cell.streamTitleLabel.text = streamers[indexPath.row].stream_title
         cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
-        cell.onlineNumLabel.text = "👩‍🦲" + String(streamers[indexPath.row].online_num)
+        cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
+        
+        // Create Attachment
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(named:"iconPersonal")
+        imageAttachment.bounds = CGRect(x: 0, y: -5, width: 13, height: 13)
+        // Create string with attachment
+        let attachmentString = NSAttributedString(attachment: imageAttachment)
+        // Initialize mutable string
+        let completeText = NSMutableAttributedString(string: "")
+        // Add image to mutable string
+        completeText.append(attachmentString)
+        // Add your text to mutable string
+        let textAfterIcon = NSAttributedString(string: cell.onlineNumLabel.text ?? "0")
+        completeText.append(textAfterIcon)
+        cell.onlineNumLabel.textAlignment = .center
+        cell.onlineNumLabel.attributedText = completeText
+        
         cell.contentView.layer.cornerRadius = 10
         return cell
     }
@@ -130,6 +147,9 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
                             }
                         }
                     }
+                } else {
+                    headerView.userImage.image = UIImage(named: "topPic")
+                    headerView.nickNameLabel.text = "訪客"
                 }
                 //                let userDefaults = UserDefaults.standard
                 //                if let image = userDefaults.data(forKey: "image") {

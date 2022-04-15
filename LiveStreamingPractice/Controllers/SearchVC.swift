@@ -14,6 +14,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     var streamers = [Streamer]()
     var streamersResult = [Streamer]()
     var searchbar = UISearchBar()
+    var myBool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             guard let data = data, error == nil else { return }
             do {
                 let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [self] in
                     print(searchResponse.result.lightyear_list)
                     let nameArray = searchResponse.result.lightyear_list
                     let tmp = nameArray.filter { streamNickname in
@@ -67,8 +68,10 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                     
                     if name == "" {
                         self.streamersResult = searchResponse.result.lightyear_list
+                        self.myBool = false
                     } else {
                         self.streamersResult = tmp
+                        self.myBool = true
                     }
                     
                     self.streamers = searchResponse.result.lightyear_list
@@ -90,10 +93,10 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     // MARK: - 設定CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if streamersResult.count == 0 {
-            return 1
-        } else {
+        if myBool {
             return 2
+        } else {
+            return 1
         }
     }
     
@@ -123,7 +126,22 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             cell.nickNameLabel.text = streamers[indexPath.row].nickname
             cell.streamTitleLabel.text = streamers[indexPath.row].stream_title
             cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
-            cell.onlineNumLabel.text = "👩‍🦲" + String(streamers[indexPath.row].online_num)
+            cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
+            // Create Attachment
+            let imageAttachment = NSTextAttachment()
+            imageAttachment.image = UIImage(named:"iconPersonal")
+            imageAttachment.bounds = CGRect(x: 0, y: -5, width: 13, height: 13)
+            // Create string with attachment
+            let attachmentString = NSAttributedString(attachment: imageAttachment)
+            // Initialize mutable string
+            let completeText = NSMutableAttributedString(string: "")
+            // Add image to mutable string
+            completeText.append(attachmentString)
+            // Add your text to mutable string
+            let textAfterIcon = NSAttributedString(string: cell.onlineNumLabel.text ?? "0")
+            completeText.append(textAfterIcon)
+            cell.onlineNumLabel.textAlignment = .center
+            cell.onlineNumLabel.attributedText = completeText
         } else {
             if indexPath.section == 0 {
                 let completeLinkResult = streamersResult[indexPath.row].head_photo
@@ -131,14 +149,44 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 cell.nickNameLabel.text = streamersResult[indexPath.row].nickname
                 cell.streamTitleLabel.text = streamersResult[indexPath.row].stream_title
                 cell.tagsLabel.text = "#" + streamersResult[indexPath.row].tags
-                cell.onlineNumLabel.text = "👩‍🦲" + String(streamersResult[indexPath.row].online_num)
+                cell.onlineNumLabel.text = String(streamersResult[indexPath.row].online_num)
+                // Create Attachment
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = UIImage(named:"iconPersonal")
+                imageAttachment.bounds = CGRect(x: 0, y: -5, width: 13, height: 13)
+                // Create string with attachment
+                let attachmentString = NSAttributedString(attachment: imageAttachment)
+                // Initialize mutable string
+                let completeText = NSMutableAttributedString(string: "")
+                // Add image to mutable string
+                completeText.append(attachmentString)
+                // Add your text to mutable string
+                let textAfterIcon = NSAttributedString(string: cell.onlineNumLabel.text ?? "0")
+                completeText.append(textAfterIcon)
+                cell.onlineNumLabel.textAlignment = .center
+                cell.onlineNumLabel.attributedText = completeText
             } else {
                 let completeLink = streamers[indexPath.row].head_photo
                 cell.imageView.downloaded(from: completeLink)
                 cell.nickNameLabel.text = streamers[indexPath.row].nickname
                 cell.streamTitleLabel.text = streamers[indexPath.row].stream_title
                 cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
-                cell.onlineNumLabel.text = "👩‍🦲" + String(streamers[indexPath.row].online_num)
+                cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
+                // Create Attachment
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = UIImage(named:"iconPersonal")
+                imageAttachment.bounds = CGRect(x: 0, y: -5, width: 13, height: 13)
+                // Create string with attachment
+                let attachmentString = NSAttributedString(attachment: imageAttachment)
+                // Initialize mutable string
+                let completeText = NSMutableAttributedString(string: "")
+                // Add image to mutable string
+                completeText.append(attachmentString)
+                // Add your text to mutable string
+                let textAfterIcon = NSAttributedString(string: cell.onlineNumLabel.text ?? "0")
+                completeText.append(textAfterIcon)
+                cell.onlineNumLabel.textAlignment = .center
+                cell.onlineNumLabel.attributedText = completeText
             }
         }
         return cell
@@ -179,10 +227,10 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeaderView", for: indexPath) as? SearchHeaderCollectionReusableView {
                 
                 if indexPath.section == 0 {
-                    if streamersResult.count == 0 {
-                        headerView.popularLabel.text = "熱門推薦"
-                    } else {
+                    if myBool {
                         headerView.popularLabel.text = "搜尋結果"
+                    } else {
+                        headerView.popularLabel.text = "熱門推薦"
                     }
                 } else {
                     headerView.popularLabel.text = "熱門推薦"
