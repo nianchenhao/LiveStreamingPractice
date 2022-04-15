@@ -19,7 +19,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     
-    var player: AVPlayer?
+    var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
     var webSocket: URLSessionWebSocketTask?
     var chatArray = [String]()
@@ -137,7 +137,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         let quitAction = UIAlertAction(title: "立馬走", style: .default, handler: { _ in
             //            self.close()
             self.dismiss(animated: true)
-            self.player?.pause()
+            self.videoPlayer?.pause()
         })
         controller.addAction(cancelAction)
         controller.addAction(quitAction)
@@ -147,13 +147,16 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     func repeatVideo() {
         let videoURL = Bundle.main.url(forResource: "hime3", withExtension: ".mp4")
         let player = AVQueuePlayer()
+        videoPlayer = player
         let item = AVPlayerItem(url: videoURL!)
+        
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = view.bounds
         playerLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(playerLayer)
+        
         looper = AVPlayerLooper(player: player, templateItem: item)
-        player.play()
+        self.videoPlayer?.play()
     }
     
     // MARK: - 設定WebSocket
