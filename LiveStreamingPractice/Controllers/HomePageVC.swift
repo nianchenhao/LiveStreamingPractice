@@ -17,7 +17,6 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
     
     var streamers = [Streamer]()
     var fullScreenSize: CGSize!
-    private var webSocket: URLSessionWebSocketTask?
     private let storage = Storage.storage().reference()
     
     override func viewDidLoad() {

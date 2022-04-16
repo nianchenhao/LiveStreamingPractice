@@ -14,7 +14,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     var streamers = [Streamer]()
     var streamersResult = [Streamer]()
     var searchbar = UISearchBar()
-    var myBool = false
+    var searchResult = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,19 +59,18 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 DispatchQueue.main.async { [self] in
                     print(searchResponse.result.lightyear_list)
                     let nameArray = searchResponse.result.lightyear_list
-                    let tmp = nameArray.filter { streamNickname in
-                        //                        streamNickname.nickname.contains(nickName)
-                        streamNickname.nickname.localizedCaseInsensitiveContains(name) || streamNickname.stream_title.localizedCaseInsensitiveContains(name) ||
-                        streamNickname.tags.localizedCaseInsensitiveContains(name)
+                    let tmp = nameArray.filter { streamResult in
+                        streamResult.nickname.localizedCaseInsensitiveContains(name) || streamResult.stream_title.localizedCaseInsensitiveContains(name) ||
+                        streamResult.tags.localizedCaseInsensitiveContains(name)
                         // 不區分英文大小寫
                     }
                     
                     if name == "" {
                         self.streamersResult = searchResponse.result.lightyear_list
-                        self.myBool = false
+                        self.searchResult = false
                     } else {
                         self.streamersResult = tmp
-                        self.myBool = true
+                        self.searchResult = true
                     }
                     
                     self.streamers = searchResponse.result.lightyear_list
@@ -93,7 +92,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     // MARK: - 設定CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if myBool {
+        if searchResult {
             return 2
         } else {
             return 1
@@ -227,7 +226,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             if let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchHeaderView", for: indexPath) as? SearchHeaderCollectionReusableView {
                 
                 if indexPath.section == 0 {
-                    if myBool {
+                    if searchResult {
                         headerView.popularLabel.text = "搜尋結果"
                     } else {
                         headerView.popularLabel.text = "熱門推薦"
