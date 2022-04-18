@@ -26,6 +26,10 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         fetchPhotos()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionView.reloadData()
+    }
+    
     func fetchPhotos() {
         guard let url = Bundle.main.url(forResource: "Streamers", withExtension: "json") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in

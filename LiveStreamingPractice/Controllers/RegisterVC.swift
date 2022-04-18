@@ -63,9 +63,9 @@ class RegisterVC: UIViewController {
         } else if let account = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: account, password: password) { user, error in
                 
-                if let changRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
-                    changRequest.displayName = self.nickNameTextField.text
-                }
+//                if let changRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+//                    changRequest.displayName = self.nickNameTextField.text
+//                }
                 
                 if error != nil {
                     print(error!)
@@ -86,6 +86,11 @@ class RegisterVC: UIViewController {
                     self.saveData()
                     let alertController = UIAlertController(title: "註冊成功", message: "請再次登入", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: { _ in
+                        do {
+                            try Auth.auth().signOut()
+                        } catch {
+                            print("error, there was a problem logging out")
+                        }
                         self.navigationController?.popViewController(animated: true)
                     }))
                     self.present(alertController, animated: true, completion: nil)

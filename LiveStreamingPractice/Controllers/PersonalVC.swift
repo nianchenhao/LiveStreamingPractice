@@ -29,7 +29,14 @@ class PersonalVC: UIViewController {
         handle = Auth.auth().addStateDidChangeListener({ auth, user in
             guard user != nil, Auth.auth().currentUser != nil
             else { return }
+            let myStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = myStoryboard.instantiateViewController(withIdentifier: "MemberInfoVC")
+            self.navigationController?.pushViewController(vc, animated: false)
         })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

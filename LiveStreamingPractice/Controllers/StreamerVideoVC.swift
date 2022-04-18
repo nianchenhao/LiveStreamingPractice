@@ -220,7 +220,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         webSocket?.receive { result in
             switch result {
             case .failure(let error):
-                print("Error in receiving message: \(error)")
+                print("websocket收到錯誤訊息: \(error.localizedDescription)")
             case .success(let message):
                 switch message {
                 case .string(let text):
