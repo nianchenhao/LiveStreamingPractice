@@ -120,12 +120,14 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         guard newChat.count != 0 else {
             print("請輸入文字")
+            showAlert(title: "系統訊息", message: "請輸入文字")
             chatTextField.text = nil
             return
         }
         
         if chat.isEmpty {
             print("請輸入文字")
+            showAlert(title: "系統訊息", message: "請輸入文字")
         } else {
             send()
         }
@@ -176,6 +178,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         gradientLayer.rasterizationScale = UIScreen.main.scale
         gradientLayer.frame = chatView.bounds
         chatView.layer.mask = gradientLayer
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - 設定WebSocket
