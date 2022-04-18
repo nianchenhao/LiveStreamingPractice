@@ -18,6 +18,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var chatTextField: UITextField!
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var chatView: UIView!
+    @IBOutlet weak var chatViewLayoutConstraint: NSLayoutConstraint!
     
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
@@ -50,6 +52,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(chatTextField)
         view.bringSubviewToFront(quitButton)
         view.bringSubviewToFront(sendButton)
+        view.bringSubviewToFront(chatView)
         
         
         //        let session = URLSession(configuration: .default,
@@ -108,10 +111,6 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                 }
             }
         })
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
     }
     
     @IBAction func sendChat(_ sender: UIButton) {
@@ -283,6 +282,15 @@ extension StreamerVideoVC: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.view.endEditing(true)
+    }
+    
 }
 
 // MARK: - 虛擬鍵盤事件處理
@@ -298,15 +306,16 @@ extension StreamerVideoVC {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            view.frame.origin.y = -keyboardHeight
-        } else {
-            view.frame.origin.y = -view.frame.height / 3
+            chatViewLayoutConstraint.constant = 300
         }
+//        else {
+//            view.frame.origin.y = -view.frame.height / 5
+//        }
     }
     
     @objc func keyboardWillHide(notification: Notification) {
         // 讓view回復原位
-        view.frame.origin.y = 0
+        chatViewLayoutConstraint.constant = 15
     }
     
     // 當畫面消失時取消監控鍵盤開闔狀態
