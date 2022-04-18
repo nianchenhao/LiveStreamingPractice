@@ -53,6 +53,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(quitButton)
         view.bringSubviewToFront(sendButton)
         view.bringSubviewToFront(chatView)
+        generateTextMaskForChat()
         
         
         //        let session = URLSession(configuration: .default,
@@ -164,6 +165,17 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         looper = AVPlayerLooper(player: player, templateItem: item)
         self.videoPlayer?.play()
+    }
+    
+    func generateTextMaskForChat() {
+        let gradientLayer = CAGradientLayer.init()
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 0.1)
+        gradientLayer.colors = [UIColor.clear.withAlphaComponent(0).cgColor, UIColor.clear.withAlphaComponent(1.0).cgColor]
+        gradientLayer.locations = [0,1.0]
+        gradientLayer.rasterizationScale = UIScreen.main.scale
+        gradientLayer.frame = chatView.bounds
+        chatView.layer.mask = gradientLayer
     }
     
     // MARK: - 設定WebSocket
