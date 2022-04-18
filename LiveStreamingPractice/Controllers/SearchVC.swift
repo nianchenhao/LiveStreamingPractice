@@ -58,14 +58,15 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                 DispatchQueue.main.async { [self] in
                     print(searchResponse.result.lightyear_list)
-                    let nameArray = searchResponse.result.lightyear_list
+                    let nameArray = searchResponse.result.stream_list
                     let tmp = nameArray.filter { streamResult in
                         streamResult.nickname.localizedCaseInsensitiveContains(name) || streamResult.stream_title.localizedCaseInsensitiveContains(name) ||
                         streamResult.tags.localizedCaseInsensitiveContains(name)
                         // 不區分英文大小寫
                     }
+                    print("有\(tmp.count)個值")
                     
-                    if name == "" {
+                    if tmp.count == 0 {
                         self.streamersResult = searchResponse.result.lightyear_list
                         self.searchResult = false
                     } else {
@@ -84,10 +85,6 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchPhoto(name: searchBar.text ?? "")
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        searchbar.resignFirstResponder() //取消第一響應：如果點了别的地方，收鍵盤
     }
     
     // MARK: - 設定CollectionView
@@ -241,6 +238,10 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             return UICollectionReusableView()
         }
         return UICollectionReusableView()
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+            self.view.endEditing(true)
     }
     
 }

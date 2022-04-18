@@ -116,6 +116,14 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     @IBAction func sendChat(_ sender: UIButton) {
         let chat = chatTextField.text ?? ""
+        let newChat = chat.trimmingCharacters(in: CharacterSet.whitespaces) // 去除空白字元
+        
+        guard newChat.count != 0 else {
+            print("請輸入文字")
+            chatTextField.text = nil
+            return
+        }
+        
         if chat.isEmpty {
             print("請輸入文字")
         } else {
