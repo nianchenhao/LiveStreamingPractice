@@ -306,7 +306,8 @@ extension StreamerVideoVC {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            chatViewLayoutConstraint.constant = 300
+            chatViewLayoutConstraint.constant = keyboardHeight - 30
+            
         }
 //        else {
 //            view.frame.origin.y = -view.frame.height / 5
