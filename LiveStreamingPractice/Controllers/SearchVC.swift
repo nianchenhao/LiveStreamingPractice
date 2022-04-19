@@ -57,7 +57,6 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             do {
                 let searchResponse = try JSONDecoder().decode(SearchResponse.self, from: data)
                 DispatchQueue.main.async { [self] in
-                    print(searchResponse.result.lightyear_list)
                     let nameArray = searchResponse.result.stream_list
                     let tmp = nameArray.filter { streamResult in
                         streamResult.nickname.localizedCaseInsensitiveContains(name) || streamResult.stream_title.localizedCaseInsensitiveContains(name) ||
@@ -241,7 +240,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-            self.view.endEditing(true)
+        self.view.endEditing(true)
     }
     
 }

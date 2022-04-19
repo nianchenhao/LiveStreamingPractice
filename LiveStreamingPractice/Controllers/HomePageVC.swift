@@ -93,6 +93,7 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         print("Selected section \(indexPath.section) and row \(indexPath.row)")
     }
     
+    // MARK: - 設定Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds
         let heightVal = self.view.frame.height
@@ -113,6 +114,7 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
     
+    // MARK: - 設定Collection View Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
@@ -154,15 +156,6 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
                     headerView.userImage.image = UIImage(named: "topPic")
                     headerView.nickNameLabel.text = "訪客"
                 }
-                //                let userDefaults = UserDefaults.standard
-                //                if let image = userDefaults.data(forKey: "image") {
-                //                    headerView.userImage.image =  UIImage(data: image)
-                //                    headerView.userImage.layer.borderWidth = 1
-                //                    headerView.userImage.layer.masksToBounds = false
-                //                    headerView.userImage.layer.borderColor = UIColor.black.cgColor
-                //                    headerView.userImage.layer.cornerRadius = headerView.userImage.frame.height/2
-                //                    headerView.userImage.clipsToBounds = true
-                //                }
                 return headerView
             }
         default:
@@ -189,6 +182,7 @@ extension UIImageView {
             }
         }.resume()
     }
+    
     func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode)

@@ -8,9 +8,9 @@
 import UIKit
 import AVFoundation
 import Firebase
+import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
-import FirebaseAuth
 
 class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
@@ -53,21 +53,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(quitButton)
         view.bringSubviewToFront(sendButton)
         view.bringSubviewToFront(chatView)
+        
         generateTextMaskForChat()
-        
-        
-        //        let session = URLSession(configuration: .default,
-        //                                 delegate: self,
-        //                                 delegateQueue: OperationQueue()
-        //        )
-        //        guard let url = URL(string: "wss://lott-dev.lottcube.asia/ws/chat/chat:app_test?nickname=\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) else {
-        //            print("錯誤：無法創建URL")
-        //            return
-        //        }
-        //        webSocket = session.webSocketTask(with: url)
-        //        webSocket?.resume()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -189,7 +176,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     // MARK: - 設定WebSocket
     func webSocketConnect() {
         guard
-            let urlString = "wss://lott-dev.lottcube.asia/ws/chat/chat:app_test?nickname=\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let urlString = "wss://client-dev.lottcube.asia/ws/chat/chat:app_test?nickname=\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
             let url = URL(string: urlString)
         else {
             return
@@ -282,11 +269,6 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
 
 // MARK: - 設定TableView
 extension StreamerVideoVC: UITableViewDelegate, UITableViewDataSource {
-    
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 40
-    //    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatArray.count
     }
@@ -299,7 +281,6 @@ extension StreamerVideoVC: UITableViewDelegate, UITableViewDataSource {
         let index = chatArray.count - 1 - indexPath.row // 對調index上下順序由下至上
         cell.chatTextView.text = "\(userNameToChat[index]) : \(chatArray[index])"
         cell.chatTextView.layer.cornerRadius = 15
-        
         return cell
     }
     
@@ -329,9 +310,9 @@ extension StreamerVideoVC {
             chatViewLayoutConstraint.constant = keyboardHeight - 30
             
         }
-//        else {
-//            view.frame.origin.y = -view.frame.height / 5
-//        }
+        //        else {
+        //            view.frame.origin.y = -view.frame.height / 3
+        //        }
     }
     
     @objc func keyboardWillHide(notification: Notification) {
