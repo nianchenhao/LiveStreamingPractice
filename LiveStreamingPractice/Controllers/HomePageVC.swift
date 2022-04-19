@@ -64,21 +64,13 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
         cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
         
-        // Create Attachment
+        let content = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named:"iconPersonal")
         imageAttachment.bounds = CGRect(x: 0, y: -5, width: 13, height: 13)
-        // Create string with attachment
-        let attachmentString = NSAttributedString(attachment: imageAttachment)
-        // Initialize mutable string
-        let completeText = NSMutableAttributedString(string: "")
-        // Add image to mutable string
-        completeText.append(attachmentString)
-        // Add your text to mutable string
-        let textAfterIcon = NSAttributedString(string: cell.onlineNumLabel.text ?? "0")
-        completeText.append(textAfterIcon)
-        cell.onlineNumLabel.textAlignment = .center
-        cell.onlineNumLabel.attributedText = completeText
+        content.append(NSAttributedString(attachment: imageAttachment))
+        content.append(NSAttributedString(string: cell.onlineNumLabel.text ?? "0"))
+        cell.onlineNumLabel.attributedText = content
         
         cell.contentView.layer.cornerRadius = 10
         return cell
