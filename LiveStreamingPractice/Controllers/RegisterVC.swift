@@ -18,6 +18,8 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var nickNameTextField: UITextField!
     @IBOutlet weak var checkLabel: UILabel!
     
+    private let storage = Storage.storage().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.layer.cornerRadius = 20
@@ -86,6 +88,8 @@ class RegisterVC: UIViewController {
                     self.saveData()
                     let alertController = UIAlertController(title: "註冊成功", message: "請再次登入", preferredStyle: .alert)
                     alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: { _ in
+                        guard let avatorImage = self.avatorImage.image else { return }
+                        self.uploadToCloud(img: avatorImage)
                         do {
                             try Auth.auth().signOut()
                         } catch {
@@ -125,6 +129,20 @@ class RegisterVC: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func uploadToCloud(img: UIImage) {
+        let userImageRef = storage.child("userImage").child("\(emailTextField.text!).jpg")
+        if let jpgData = img.jpegData(compressionQuality: 1.0){
+            //執行上傳圖片
+            userImageRef.putData(jpgData, metadata: nil) { metadata, error in
+                guard error == nil else {
+                    print("Failed to upload")
+                    return
+                }
+                print("上傳成功")
+            }
+        }
     }
     
 }

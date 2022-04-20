@@ -38,7 +38,7 @@ class MemberInfoVC: UIViewController {
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             if let user = user {
-                let fileReference = self.storage.child("userImage/avatorImage.jpg")
+                let fileReference = self.storage.child("userImage/\(user.email!).jpg")
                 fileReference.getData(maxSize: .max) { data, error in
                     if let error = error {
                         print(error)
