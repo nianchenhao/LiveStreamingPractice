@@ -64,10 +64,9 @@ class SetAvatorVC: UIViewController, UIImagePickerControllerDelegate & UINavigat
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
-        if let url = info[UIImagePickerController.InfoKey.imageURL] as? URL {
-            print(url)
-            uploadToCloud(fileURL: url, img: image)
-        }
+        
+        uploadToCloud(img: image)
+        
         delegate?.selectPhoto(photo: image)
         picker.dismiss(animated: true, completion: nil)
     }
@@ -76,7 +75,7 @@ class SetAvatorVC: UIViewController, UIImagePickerControllerDelegate & UINavigat
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func uploadToCloud(fileURL: URL, img: UIImage) {
+    func uploadToCloud(img: UIImage) {
         let userImageRef = storage.child("userImage").child("avatorImage.jpg")
         if let jpgData = img.jpegData(compressionQuality: 1.0){
             //執行上傳圖片
