@@ -30,11 +30,11 @@ class MemberInfoVC: UIViewController {
         avatorImage.layer.borderColor = UIColor.black.cgColor
         avatorImage.layer.cornerRadius = avatorImage.frame.height/2
         avatorImage.clipsToBounds = true
-        
-        print("我進來viewDidLoad")
         //        loadData()
         //        downloadImage()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
             if let user = user {
@@ -65,6 +65,33 @@ class MemberInfoVC: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func editNickname(_ sender: UIButton) {
+        let editAlert = UIAlertController(title: "修改暱稱", message: "請輸入您的新暱稱", preferredStyle: .alert)
+        editAlert.addTextField { textField in
+            textField.placeholder = "新的暱稱"
+        }
+        guard let newNickname = editAlert.textFields?.first else { return }
+        let newName = newNickname as UITextField
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: "確定", style: .default) { alertAction in
+            guard let newName = newName.text else { return }
+            let reference = Firestore.firestore()
+            guard let user = Auth.auth().currentUser else { return }
+            let userData = ["nickName": newName] as [String: Any]
+            reference.collection("Users").document(user.email ?? "").setData(userData) { error in
+                if error != nil {
+                    print("error")
+                } else {
+                    self.nickNameLabel.text = "暱稱：\(newName)"
+                    print("successfully write in!")
+                }
+            }
+        }
+        editAlert.addAction(cancel)
+        editAlert.addAction(ok)
+        present(editAlert, animated: true, completion: nil)
     }
     
     @IBAction func signOut(_ sender: UIButton) {

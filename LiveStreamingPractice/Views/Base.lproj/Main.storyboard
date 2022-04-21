@@ -729,11 +729,24 @@
                                     <constraint firstAttribute="width" secondItem="MjW-tZ-Im6" secondAttribute="height" multiplier="1:1" id="yiF-ed-AV4"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bKw-Ik-4ox">
+                                <rect key="frame" x="318.66666666666669" y="94" width="65" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bKw-Ik-4ox" secondAttribute="height" multiplier="1:1" id="Me0-Fv-ApR"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="btnBEdit"/>
+                                <connections>
+                                    <action selector="editNickname:" destination="32k-P6-pze" eventType="touchUpInside" id="PXs-94-7RY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oEh-bQ-UfE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="MjW-tZ-Im6" firstAttribute="centerX" secondItem="KKa-l6-fNm" secondAttribute="centerX" id="F5h-pM-tTi"/>
+                            <constraint firstItem="bKw-Ik-4ox" firstAttribute="centerX" secondItem="KKa-l6-fNm" secondAttribute="centerX" multiplier="1.8" id="IId-Xp-bdN"/>
+                            <constraint firstItem="bKw-Ik-4ox" firstAttribute="centerY" secondItem="KKa-l6-fNm" secondAttribute="centerY" multiplier="0.3" id="Qws-0c-u8Z"/>
                             <constraint firstItem="VGf-xU-jjM" firstAttribute="centerY" secondItem="KKa-l6-fNm" secondAttribute="centerY" multiplier="1.4" id="T4I-sr-jVg"/>
                             <constraint firstItem="MjW-tZ-Im6" firstAttribute="centerY" secondItem="KKa-l6-fNm" secondAttribute="centerY" multiplier="0.6" constant="27.300000000000011" id="inB-nS-ouh"/>
                             <constraint firstItem="VGf-xU-jjM" firstAttribute="centerX" secondItem="KKa-l6-fNm" secondAttribute="centerX" id="jLI-kW-K57"/>
