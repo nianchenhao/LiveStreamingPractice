@@ -132,7 +132,8 @@ class RegisterVC: UIViewController {
     }
     
     func uploadToCloud(img: UIImage) {
-        let userImageRef = storage.child("userImage").child("\(emailTextField.text!).jpg")
+        guard let emailTextField = emailTextField.text else { return }
+        let userImageRef = storage.child("userImage").child("\(emailTextField).jpg")
         if let jpgData = img.jpegData(compressionQuality: 1.0){
             //執行上傳圖片
             userImageRef.putData(jpgData, metadata: nil) { metadata, error in

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B0EE766281102ED00D34A42 /* AnimationTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */; };
 		4B2831382807EE9B00BEFA76 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2831372807EE9B00BEFA76 /* Chatroom.swift */; };
 		4B4B3DEB27F1B59D008B1652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEA27F1B59D008B1652 /* AppDelegate.swift */; };
 		4B4B3DED27F1B59D008B1652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEC27F1B59D008B1652 /* SceneDelegate.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTabBar.swift; sourceTree = "<group>"; };
 		4B2831372807EE9B00BEFA76 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		4B4B3DE727F1B59D008B1652 /* LiveStreamingPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStreamingPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4B3DEA27F1B59D008B1652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				4B4B3DF027F1B59D008B1652 /* Main.storyboard */,
+				4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */,
 				4B4B3DF527F1B5A1008B1652 /* LaunchScreen.storyboard */,
 				4B7B5C672803D3D9002CFC89 /* PasswordTextField.swift */,
 			);
@@ -461,6 +464,7 @@
 				4BFBEEAA28065BBE006E27FC /* HomeHeaderCollectionReusableView.swift in Sources */,
 				4BC2CE3128066C6D00AAF8D8 /* SearchHeaderCollectionReusableView.swift in Sources */,
 				4BC6CEAA27F3093400964EA2 /* SetAvatorVC.swift in Sources */,
+				4B0EE766281102ED00D34A42 /* AnimationTabBar.swift in Sources */,
 				4B4B3DED27F1B59D008B1652 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

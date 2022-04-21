@@ -119,7 +119,10 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
                             if let error = error {
                                 print(error)
                             } else {
-                                let image = UIImage(data: data!)
+                                guard let data = data else {
+                                    return
+                                }
+                                let image = UIImage(data: data)
                                 headerView.userImage.image = image
                                 headerView.userImage.layer.borderWidth = 1
                                 headerView.userImage.layer.masksToBounds = false
