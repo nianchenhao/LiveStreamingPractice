@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import Lottie
 
 class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -18,12 +19,26 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
     var streamers = [Streamer]()
     var fullScreenSize: CGSize!
     private let storage = Storage.storage().reference()
+    let animationView = AnimationView(name: "welcome")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
         fetchPhotos()
+        
+        animationView.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
+        animationView.center = self.view.center
+        animationView.contentMode = .scaleAspectFill
+        animationView.loopMode = .loop
+        
+        view.addSubview(animationView)
+        animationView.play()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.animationView.stop()
+            self.animationView.isHidden = true
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

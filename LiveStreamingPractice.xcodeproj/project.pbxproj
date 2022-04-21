@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15E053AA35DD29733DCCC385 /* Pods_LiveStreamingPracticeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2159C5167A9965B631368A01 /* Pods_LiveStreamingPracticeTests.framework */; };
+		45D2E4A3F7E48FF2072F5E53 /* Pods_LiveStreamingPractice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97BD363E8A1F5C2B7411FEBF /* Pods_LiveStreamingPractice.framework */; };
 		4B0EE766281102ED00D34A42 /* AnimationTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */; };
+		4B0EE76B28115FE500D34A42 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B0EE76A28115FE500D34A42 /* welcome.json */; };
 		4B2831382807EE9B00BEFA76 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2831372807EE9B00BEFA76 /* Chatroom.swift */; };
 		4B4B3DEB27F1B59D008B1652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEA27F1B59D008B1652 /* AppDelegate.swift */; };
 		4B4B3DED27F1B59D008B1652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEC27F1B59D008B1652 /* SceneDelegate.swift */; };
@@ -41,6 +44,7 @@
 		4BC6CEFF27F5893500964EA2 /* Streamers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6CEFE27F5893500964EA2 /* Streamers.json */; };
 		4BC6CF0127F68BB400964EA2 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6CF0027F68BB400964EA2 /* SearchCollectionViewCell.swift */; };
 		4BFBEEAA28065BBE006E27FC /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBEEA928065BBE006E27FC /* HomeHeaderCollectionReusableView.swift */; };
+		8CA6DF2B351CCABA87D7DFD5 /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1E889AC152B6DA6930872A /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +65,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A1E889AC152B6DA6930872A /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2159C5167A9965B631368A01 /* Pods_LiveStreamingPracticeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStreamingPracticeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTabBar.swift; sourceTree = "<group>"; };
+		4B0EE76A28115FE500D34A42 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		4B2831372807EE9B00BEFA76 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 		4B4B3DE727F1B59D008B1652 /* LiveStreamingPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStreamingPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4B3DEA27F1B59D008B1652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +99,13 @@
 		4BC6CEFE27F5893500964EA2 /* Streamers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Streamers.json; sourceTree = "<group>"; };
 		4BC6CF0027F68BB400964EA2 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		4BFBEEA928065BBE006E27FC /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		507C99EBDF512CA17DD1A044 /* Pods-LiveStreamingPracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPracticeTests.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPracticeTests/Pods-LiveStreamingPracticeTests.release.xcconfig"; sourceTree = "<group>"; };
+		61592322411290DA47DF147E /* Pods-LiveStreamingPracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPracticeTests/Pods-LiveStreamingPracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7A742008DC5B4AC47BA7C75C /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		89C007EA241449C7B9CF46E3 /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; sourceTree = "<group>"; };
+		97BD363E8A1F5C2B7411FEBF /* Pods_LiveStreamingPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStreamingPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A92A654F8D68834501EC6B48 /* Pods-LiveStreamingPractice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice/Pods-LiveStreamingPractice.release.xcconfig"; sourceTree = "<group>"; };
+		FB0A571AD6FC352798904E41 /* Pods-LiveStreamingPractice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice/Pods-LiveStreamingPractice.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +120,7 @@
 				4BC6CE6427F2B2DE00964EA2 /* FirebaseDynamicLinks in Frameworks */,
 				4BC6CE6627F2B2DE00964EA2 /* FirebaseStorage in Frameworks */,
 				4BB02A8A280141C100261287 /* FirebaseFirestore in Frameworks */,
+				45D2E4A3F7E48FF2072F5E53 /* Pods_LiveStreamingPractice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E053AA35DD29733DCCC385 /* Pods_LiveStreamingPracticeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,12 +136,44 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CA6DF2B351CCABA87D7DFD5 /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15B7076D29D094880C95A911 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97BD363E8A1F5C2B7411FEBF /* Pods_LiveStreamingPractice.framework */,
+				0A1E889AC152B6DA6930872A /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework */,
+				2159C5167A9965B631368A01 /* Pods_LiveStreamingPracticeTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		17CB10D42E9D6CE3AF4C7B29 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB0A571AD6FC352798904E41 /* Pods-LiveStreamingPractice.debug.xcconfig */,
+				A92A654F8D68834501EC6B48 /* Pods-LiveStreamingPractice.release.xcconfig */,
+				7A742008DC5B4AC47BA7C75C /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig */,
+				89C007EA241449C7B9CF46E3 /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig */,
+				61592322411290DA47DF147E /* Pods-LiveStreamingPracticeTests.debug.xcconfig */,
+				507C99EBDF512CA17DD1A044 /* Pods-LiveStreamingPracticeTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4B0EE76928115FC300D34A42 /* LottieImage */ = {
+			isa = PBXGroup;
+			children = (
+				4B0EE76A28115FE500D34A42 /* welcome.json */,
+			);
+			path = LottieImage;
+			sourceTree = "<group>";
+		};
 		4B4B3DDE27F1B59D008B1652 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +181,8 @@
 				4B4B3E0027F1B5A2008B1652 /* LiveStreamingPracticeTests */,
 				4B4B3E0A27F1B5A2008B1652 /* LiveStreamingPracticeUITests */,
 				4B4B3DE827F1B59D008B1652 /* Products */,
+				17CB10D42E9D6CE3AF4C7B29 /* Pods */,
+				15B7076D29D094880C95A911 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,6 +199,7 @@
 		4B4B3DE927F1B59D008B1652 /* LiveStreamingPractice */ = {
 			isa = PBXGroup;
 			children = (
+				4B0EE76928115FC300D34A42 /* LottieImage */,
 				4BC6CED627F572B600964EA2 /* Models */,
 				4BC6CF0227F6981B00964EA2 /* Views */,
 				4BC6CEAD27F42C1E00964EA2 /* Controllers */,
@@ -242,9 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B4B3E1127F1B5A2008B1652 /* Build configuration list for PBXNativeTarget "LiveStreamingPractice" */;
 			buildPhases = (
+				55FAF16D324EB55D7711E489 /* [CP] Check Pods Manifest.lock */,
 				4B4B3DE327F1B59D008B1652 /* Sources */,
 				4B4B3DE427F1B59D008B1652 /* Frameworks */,
 				4B4B3DE527F1B59D008B1652 /* Resources */,
+				1B4113B468B2C3B723240879 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -356,6 +409,7 @@
 			files = (
 				4BC6CEFF27F5893500964EA2 /* Streamers.json in Resources */,
 				4BC6CED127F43A0D00964EA2 /* hime3.mp4 in Resources */,
+				4B0EE76B28115FE500D34A42 /* welcome.json in Resources */,
 				4B4B3DF727F1B5A1008B1652 /* LaunchScreen.storyboard in Resources */,
 				4BC6CE5927F2B0C000964EA2 /* GoogleService-Info.plist in Resources */,
 				4B4B3DF427F1B5A1008B1652 /* Assets.xcassets in Resources */,
@@ -380,6 +434,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B4113B468B2C3B723240879 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveStreamingPractice/Pods-LiveStreamingPractice-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LiveStreamingPractice/Pods-LiveStreamingPractice-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveStreamingPractice/Pods-LiveStreamingPractice-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3E90B8C5F5AD96BAF0780180 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,6 +488,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55FAF16D324EB55D7711E489 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LiveStreamingPractice-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C35FFAFF44C5953C1A7E394C /* [CP] Check Pods Manifest.lock */ = {
@@ -637,6 +730,7 @@
 		};
 		4B4B3E1227F1B5A2008B1652 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB0A571AD6FC352798904E41 /* Pods-LiveStreamingPractice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -671,6 +765,7 @@
 		};
 		4B4B3E1327F1B5A2008B1652 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A92A654F8D68834501EC6B48 /* Pods-LiveStreamingPractice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -705,6 +800,7 @@
 		};
 		4B4B3E1527F1B5A2008B1652 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61592322411290DA47DF147E /* Pods-LiveStreamingPracticeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -725,6 +821,7 @@
 		};
 		4B4B3E1627F1B5A2008B1652 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 507C99EBDF512CA17DD1A044 /* Pods-LiveStreamingPracticeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -745,6 +842,7 @@
 		};
 		4B4B3E1827F1B5A2008B1652 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A742008DC5B4AC47BA7C75C /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -763,6 +861,7 @@
 		};
 		4B4B3E1927F1B5A2008B1652 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89C007EA241449C7B9CF46E3 /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

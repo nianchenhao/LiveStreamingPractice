@@ -1,0 +1,6 @@
+framework module Pods_LiveStreamingPracticeTests {
+  umbrella header "Pods-LiveStreamingPracticeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
