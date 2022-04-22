@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
+import Lottie
 
 class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
@@ -28,6 +29,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var userNameToChat = [String]()
     var key = "訪客"
     var handle: AuthStateDidChangeListenerHandle?
+    var animationView: AnimationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,19 +50,36 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         repeatVideo()
         
+        animationView = .init(name: "loveStreamer")
+        animationView?.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
+        animationView?.center = self.view.center
+        animationView?.contentMode = .scaleAspectFill
+        animationView?.loopMode = .loop
+        guard let animationView = animationView else {
+            return
+        }
+        view.addSubview(animationView)
+        view.bringSubviewToFront(animationView)
+        animationView.play()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.animationView?.stop()
+            self.animationView?.isHidden = true
+        }
+        
         view.bringSubviewToFront(tableView)
         view.bringSubviewToFront(chatTextField)
         view.bringSubviewToFront(quitButton)
         view.bringSubviewToFront(sendButton)
         view.bringSubviewToFront(chatView)
         
+        
         generateTextMaskForChat()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         addKeyboardObserver()
-        print("有進來嗎")
-        
+
         handle = Auth.auth().addStateDidChangeListener({ auth, user in
             
             //檢查是否登入狀態

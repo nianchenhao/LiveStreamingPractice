@@ -12,6 +12,7 @@
 		4B0EE766281102ED00D34A42 /* AnimationTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */; };
 		4B0EE76B28115FE500D34A42 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B0EE76A28115FE500D34A42 /* welcome.json */; };
 		4B2831382807EE9B00BEFA76 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2831372807EE9B00BEFA76 /* Chatroom.swift */; };
+		4B385B2B2812437E00D6C942 /* loveStreamer.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B385B2A2812437E00D6C942 /* loveStreamer.json */; };
 		4B4B3DEB27F1B59D008B1652 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEA27F1B59D008B1652 /* AppDelegate.swift */; };
 		4B4B3DED27F1B59D008B1652 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEC27F1B59D008B1652 /* SceneDelegate.swift */; };
 		4B4B3DEF27F1B59D008B1652 /* StreamerVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4B3DEE27F1B59D008B1652 /* StreamerVideoVC.swift */; };
@@ -70,6 +71,7 @@
 		4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTabBar.swift; sourceTree = "<group>"; };
 		4B0EE76A28115FE500D34A42 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		4B2831372807EE9B00BEFA76 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
+		4B385B2A2812437E00D6C942 /* loveStreamer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loveStreamer.json; sourceTree = "<group>"; };
 		4B4B3DE727F1B59D008B1652 /* LiveStreamingPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveStreamingPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B4B3DEA27F1B59D008B1652 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B4B3DEC27F1B59D008B1652 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		4B0EE76928115FC300D34A42 /* LottieImage */ = {
 			isa = PBXGroup;
 			children = (
+				4B385B2A2812437E00D6C942 /* loveStreamer.json */,
 				4B0EE76A28115FE500D34A42 /* welcome.json */,
 			);
 			path = LottieImage;
@@ -409,6 +412,7 @@
 			files = (
 				4BC6CEFF27F5893500964EA2 /* Streamers.json in Resources */,
 				4BC6CED127F43A0D00964EA2 /* hime3.mp4 in Resources */,
+				4B385B2B2812437E00D6C942 /* loveStreamer.json in Resources */,
 				4B0EE76B28115FE500D34A42 /* welcome.json in Resources */,
 				4B4B3DF727F1B5A1008B1652 /* LaunchScreen.storyboard in Resources */,
 				4BC6CE5927F2B0C000964EA2 /* GoogleService-Info.plist in Resources */,

@@ -19,7 +19,8 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
     var streamers = [Streamer]()
     var fullScreenSize: CGSize!
     private let storage = Storage.storage().reference()
-    let animationView = AnimationView(name: "welcome")
+//    let animationView = AnimationView(name: "welcome")
+    var animationView: AnimationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +28,22 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         collectionView.delegate = self
         fetchPhotos()
         
-        animationView.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
-        animationView.center = self.view.center
-        animationView.contentMode = .scaleAspectFill
-        animationView.loopMode = .loop
+        animationView = .init(name: "welcome")
+        animationView?.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
+        animationView?.center = self.view.center
+        animationView?.contentMode = .scaleAspectFill
+        animationView?.loopMode = .loop
+        
+        guard let animationView = animationView else {
+            return
+        }
         
         view.addSubview(animationView)
         animationView.play()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.animationView.stop()
-            self.animationView.isHidden = true
+            self.animationView?.stop()
+            self.animationView?.isHidden = true
         }
     }
     
