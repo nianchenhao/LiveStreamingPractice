@@ -26,6 +26,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         
         view.addSubview(searchbar)
         fetchPhotos()
+        print("我在viewdidload")
     }
     
     override func viewDidLayoutSubviews() {
