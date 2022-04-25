@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -296,28 +297,32 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhL-pf-dYc">
                                         <rect key="frame" x="0.0" y="0.0" width="242" height="34"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="TOP-2r-Ifc"/>
                                             <constraint firstAttribute="width" constant="242" id="hyL-8m-8Ha"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="從相簿選取"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="從相簿選取">
+                                            <color key="baseForegroundColor" name="color2"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="showAlbumPress:" destination="0Iz-Dp-nK9" eventType="touchUpInside" id="omI-z9-jv8"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GKX-38-Edi">
                                         <rect key="frame" x="0.0" y="54" width="242" height="34"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color1"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="242" id="Ev6-f6-p9f"/>
                                             <constraint firstAttribute="height" constant="34" id="UEd-Pm-qRH"/>
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="拍照"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="拍照">
+                                            <color key="baseForegroundColor" name="color2"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="cameraButtonPress:" destination="0Iz-Dp-nK9" eventType="touchUpInside" id="wzm-Gl-sfK"/>
                                         </connections>
@@ -474,14 +479,15 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KH0-LB-Gvg">
                                         <rect key="frame" x="0.0" y="0.0" width="242" height="34"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="color1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="2FH-SF-pgK"/>
                                             <constraint firstAttribute="width" constant="242" id="35B-Qn-5r0"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="登入"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="登入">
+                                            <color key="baseForegroundColor" name="color2"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="signIn:" destination="6wh-pA-OUh" eventType="touchUpInside" id="Agr-Tw-92D"/>
                                         </connections>
@@ -503,6 +509,7 @@
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
+                                            <color key="baseForegroundColor" systemColor="labelColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="A2j-pU-EXU" kind="show" id="4Zy-WU-Ng1"/>
@@ -515,6 +522,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="電子郵件" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kdk-wc-5vm">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="M0f-fd-act"/>
                                         </constraints>
@@ -523,6 +531,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼(請輸入6位以上字母或數字)" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xHT-jb-pBU" customClass="PasswordTextField" customModule="LiveStreamingPractice" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="53.999999999999972" width="300" height="34"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="AdU-Dy-eKJ"/>
                                         </constraints>
@@ -546,7 +555,7 @@
                                 <rect key="frame" x="35.333333333333336" y="347.66666666666669" width="124.66666666666666" height="64"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="un_check" title="  記住我">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="rememberTapped:" destination="6wh-pA-OUh" eventType="touchUpInside" id="OFx-K1-b1j"/>
@@ -592,6 +601,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="暱稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YFB-wr-3Db">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="34"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="NZ7-kd-Hy7"/>
                                         </constraints>
@@ -600,11 +610,13 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="電子郵件" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTH-Wi-6s5">
                                         <rect key="frame" x="0.0" y="54" width="300" height="34"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼(請輸入6位以上字母或數字)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d09-95-MOx" customClass="PasswordTextField" customModule="LiveStreamingPractice" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="108.00000000000006" width="300" height="34"/>
+                                        <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -612,14 +624,16 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rej-f4-qqA">
                                 <rect key="frame" x="74" y="658.33333333333337" width="242" height="34"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="242" id="akW-gU-15I"/>
                                     <constraint firstAttribute="height" constant="34" id="s3x-hn-kIa"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="送出"/>
+                                <buttonConfiguration key="configuration" style="plain" title="送出">
+                                    <color key="baseForegroundColor" name="color2"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="signUp:" destination="A2j-pU-EXU" eventType="touchUpInside" id="Kca-YH-32t"/>
                                 </connections>
@@ -691,14 +705,16 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGf-xU-jjM">
                                 <rect key="frame" x="74" y="573.66666666666663" width="242" height="34"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="color1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="2hL-zz-06n"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="242" id="ScT-Mu-JdW"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="登出"/>
+                                <buttonConfiguration key="configuration" style="plain" title="登出">
+                                    <color key="baseForegroundColor" name="color2"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="signOut:" destination="32k-P6-pze" eventType="touchUpInside" id="QTZ-WF-Wyg"/>
                                 </connections>
@@ -752,12 +768,20 @@
                                     <action selector="editNickname:" destination="32k-P6-pze" eventType="touchUpInside" id="UEU-TW-0OP"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Xm-y0-LWc">
+                                <rect key="frame" x="14.666666666666664" y="111" width="51" height="31"/>
+                                <connections>
+                                    <action selector="onClickSwitch:" destination="32k-P6-pze" eventType="valueChanged" id="FV0-YJ-Gyn"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oEh-bQ-UfE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="3Xm-y0-LWc" firstAttribute="centerX" secondItem="KKa-l6-fNm" secondAttribute="centerX" multiplier="0.2" id="BDP-7d-5iB"/>
                             <constraint firstItem="MjW-tZ-Im6" firstAttribute="centerX" secondItem="KKa-l6-fNm" secondAttribute="centerX" id="F5h-pM-tTi"/>
                             <constraint firstItem="1dX-1L-tOA" firstAttribute="trailing" secondItem="MjW-tZ-Im6" secondAttribute="trailing" id="FJA-XZ-95u"/>
+                            <constraint firstItem="3Xm-y0-LWc" firstAttribute="centerY" secondItem="KKa-l6-fNm" secondAttribute="centerY" multiplier="0.3" id="Goh-HB-Xzr"/>
                             <constraint firstItem="bKw-Ik-4ox" firstAttribute="centerX" secondItem="KKa-l6-fNm" secondAttribute="centerX" multiplier="1.8" id="IId-Xp-bdN"/>
                             <constraint firstItem="bKw-Ik-4ox" firstAttribute="centerY" secondItem="KKa-l6-fNm" secondAttribute="centerY" multiplier="0.3" id="Qws-0c-u8Z"/>
                             <constraint firstItem="VGf-xU-jjM" firstAttribute="centerY" secondItem="KKa-l6-fNm" secondAttribute="centerY" multiplier="1.4" id="T4I-sr-jVg"/>
@@ -775,6 +799,7 @@
                         <outlet property="accountLabel" destination="Hrx-uW-zlR" id="ga9-Jd-ecy"/>
                         <outlet property="avatorImage" destination="MjW-tZ-Im6" id="YWB-cD-Rxn"/>
                         <outlet property="nickNameLabel" destination="7QG-46-cYx" id="ucB-zN-Q4b"/>
+                        <outlet property="signOutButton" destination="VGf-xU-jjM" id="FuK-PT-kuG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcG-Vu-57A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -832,6 +857,15 @@
         <image name="tabSearch" width="27" height="27"/>
         <image name="topPic" width="30" height="30"/>
         <image name="un_check" width="50" height="50"/>
+        <namedColor name="color1">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="color2">
+            <color red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -840,6 +874,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

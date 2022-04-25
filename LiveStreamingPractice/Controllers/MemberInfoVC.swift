@@ -16,6 +16,7 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
     @IBOutlet weak var avatorImage: UIImageView!
     @IBOutlet weak var nickNameLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
+    @IBOutlet weak var signOutButton: UIButton!
     
     private let storage = Storage.storage().reference()
     var handle: AuthStateDidChangeListenerHandle?
@@ -30,6 +31,8 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         avatorImage.layer.borderColor = UIColor.black.cgColor
         avatorImage.layer.cornerRadius = avatorImage.frame.height/2
         avatorImage.clipsToBounds = true
+        
+        signOutButton.layer.cornerRadius = 20
         //        loadData()
         //        downloadImage()
     }
@@ -68,6 +71,23 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                     }
                 }
             }
+        }
+    }
+    
+    
+    @IBAction func onClickSwitch(_ sender: UISwitch) {
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            
+            if sender.isOn {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            }
+            
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        } else {
+            
         }
     }
     
