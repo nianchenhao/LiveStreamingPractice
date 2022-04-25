@@ -109,6 +109,9 @@
 		72FC07442816594100A2013B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		72FC074828166ABD00A2013B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		72FC074A28166ABF00A2013B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		72FC07922816A4B000A2013B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		72FC07932816A4B000A2013B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		72FC07942816A4B100A2013B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7A742008DC5B4AC47BA7C75C /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		89C007EA241449C7B9CF46E3 /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		97BD363E8A1F5C2B7411FEBF /* Pods_LiveStreamingPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStreamingPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -397,6 +400,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 4B4B3DDE27F1B59D008B1652;
 			packageReferences = (
@@ -614,6 +618,7 @@
 				4B4B3DF127F1B59D008B1652 /* Base */,
 				72FC0741281658DC00A2013B /* zh-Hans */,
 				72FC07442816594100A2013B /* en */,
+				72FC07922816A4B000A2013B /* zh-Hant */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -623,6 +628,7 @@
 			children = (
 				4B4B3DF627F1B5A1008B1652 /* Base */,
 				72FC0742281658DD00A2013B /* zh-Hans */,
+				72FC07932816A4B000A2013B /* zh-Hant */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -632,6 +638,7 @@
 			children = (
 				72FC074828166ABD00A2013B /* en */,
 				72FC074A28166ABF00A2013B /* zh-Hans */,
+				72FC07942816A4B100A2013B /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
