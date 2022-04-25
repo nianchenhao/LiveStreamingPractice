@@ -11,7 +11,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseAuth
 
-class MemberInfoVC: UIViewController {
+class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     @IBOutlet weak var avatorImage: UIImageView!
     @IBOutlet weak var nickNameLabel: UILabel!
@@ -71,6 +71,34 @@ class MemberInfoVC: UIViewController {
         }
     }
     
+    @IBAction func editAvatarImage(_ sender: UIButton) {
+        let controller = UIAlertController(title: "", message: "編輯頭像", preferredStyle: .actionSheet)
+        
+        let action = UIAlertAction(title: "從相簿選取", style: .default) { action in
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.delegate = self
+            picker.allowsEditing = true
+            self.present(picker, animated: true, completion: nil)
+        }
+        
+        controller.addAction(action)
+        
+        let photoAction = UIAlertAction(title: "拍照", style: .default) { action in
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.delegate = self
+            picker.allowsEditing = true
+            self.present(picker, animated: true, completion: nil)
+        }
+        
+        controller.addAction(photoAction)
+        
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        controller.addAction(cancelAction)
+        present(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func editNickname(_ sender: UIButton) {
         let editAlert = UIAlertController(title: "修改暱稱", message: "請輸入您的新暱稱", preferredStyle: .alert)
         editAlert.addTextField { textField in
@@ -107,6 +135,39 @@ class MemberInfoVC: UIViewController {
             }
         } catch {
             print("error, there was a problem logging out")
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        avatorImage.image = image
+        uploadToCloud(img: image)
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func uploadToCloud(img: UIImage) {
+        if Auth.auth().currentUser != nil {
+            let user = Auth.auth().currentUser
+            if let user = user {
+                guard let userEmail = user.email else { return }
+                let userImageRef = storage.child("userImage").child("\(userEmail).jpg")
+                if let jpgData = img.jpegData(compressionQuality: 1.0){
+                    //執行上傳圖片
+                    userImageRef.putData(jpgData, metadata: nil) { metadata, error in
+                        guard error == nil else {
+                            print("Failed to upload")
+                            return
+                        }
+                        print("上傳成功")
+                    }
+                }
+            }
         }
     }
     
