@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  LiveStreamingPractice
+
+  Created by Robert_Nian on 2022/4/25.
+  
+*/
+"HomePageVC.nickNameLabel" = "访客";
+"SearchVC.searchPlaceholder" = "搜寻";
+"SearchVC.searchResult" = "搜寻结果";
+"SearchVC.popularStreamer" = "热门推荐";
+"RegisterVC.checkEmail" = "请输入电子邮件";
+"RegisterVC.checkPassword" = "请输入密码";
+"RegisterVC.checkNickName" = "请输入昵称";
+"RegisterVC.accountLabelStr" = "帐号：";
+"RegisterVC.nickNameLabelStr" = "昵称：";

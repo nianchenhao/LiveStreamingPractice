@@ -171,6 +171,9 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
                 } else {
                     headerView.userImage.image = UIImage(named: "topPic")
                     headerView.nickNameLabel.text = "訪客"
+                    
+                    let nickNameLabel = NSLocalizedString("HomePageVC.nickNameLabel", comment: "")
+                    headerView.nickNameLabel.text = nickNameLabel
                 }
                 return headerView
             }

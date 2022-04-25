@@ -21,6 +21,9 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         searchbar.delegate = self
         searchbar.placeholder = "搜尋"
         
+        let searchPlaceholder = NSLocalizedString("SearchVC.searchPlaceholder", comment: "")
+        searchbar.placeholder = searchPlaceholder
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -225,11 +228,17 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 if indexPath.section == 0 {
                     if searchResult {
                         headerView.popularLabel.text = "搜尋結果"
+                        let searchResult = NSLocalizedString("SearchVC.searchResult", comment: "")
+                        headerView.popularLabel.text = searchResult
                     } else {
                         headerView.popularLabel.text = "熱門推薦"
+                        let popularStreamer = NSLocalizedString("SearchVC.popularStreamer", comment: "")
+                        headerView.popularLabel.text = popularStreamer
                     }
                 } else {
                     headerView.popularLabel.text = "熱門推薦"
+                    let popularStreamer = NSLocalizedString("SearchVC.popularStreamer", comment: "")
+                    headerView.popularLabel.text = popularStreamer
                 }
                 
                 return headerView

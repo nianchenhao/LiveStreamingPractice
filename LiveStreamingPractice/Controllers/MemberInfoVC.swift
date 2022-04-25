@@ -57,6 +57,9 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                 let email = user.email
                 let emailStr = String(email!)
                 accountLabel.text = "帳號：\(emailStr)"
+                let accountLabelStr = NSLocalizedString("RegisterVC.accountLabelStr", comment: "")
+                let userEmailStr = emailStr
+                accountLabel.text = accountLabelStr + userEmailStr
                 let reference = Firestore.firestore().collection("Users")
                 reference.document(emailStr).getDocument{ snapshot, error in
                     if let error = error {
@@ -66,6 +69,9 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                             let snapshotData = snapshot.data()?["nickName"]
                             if let nameStr = snapshotData as? String {
                                 self.nickNameLabel.text = "暱稱：\(nameStr)"
+                                let nickNameLabelStr = NSLocalizedString("RegisterVC.nickNameLabelStr", comment: "")
+                                let userNameStr = nameStr
+                                self.nickNameLabel.text = nickNameLabelStr + userNameStr
                             }
                         }
                     }

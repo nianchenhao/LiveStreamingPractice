@@ -106,7 +106,8 @@ class PersonalVC: UIViewController {
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: nil))
+        let action = UIAlertAction(title: "確定", style: .default, handler: nil)
+        alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }
     

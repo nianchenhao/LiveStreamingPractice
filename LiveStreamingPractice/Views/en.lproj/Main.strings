@@ -1,0 +1,138 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "1dX-1L-tOA"; */
+"1dX-1L-tOA.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "21K-FQ-R16"; */
+"21K-FQ-R16.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "一起聊個天吧..."; ObjectID = "2qP-9K-vDQ"; */
+"2qP-9K-vDQ.placeholder" = "一起聊個天吧...";
+
+/* Class = "UILabel"; text = "暱稱："; ObjectID = "7QG-46-cYx"; */
+"7QG-46-cYx.text" = "暱稱：";
+
+/* Class = "UINavigationItem"; title = "會員資訊"; ObjectID = "93A-eF-g3v"; */
+"93A-eF-g3v.title" = "會員資訊";
+
+/* Class = "UILabel"; text = "帳號或密碼輸入錯誤"; ObjectID = "AXZ-Ow-zPo"; */
+"AXZ-Ow-zPo.text" = "帳號或密碼輸入錯誤";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DCH-UF-Lm5"; */
+"DCH-UF-Lm5.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "EH5-vd-0JC"; */
+"EH5-vd-0JC.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "＃美聲女神"; ObjectID = "FDh-eU-rHf"; */
+"FDh-eU-rHf.text" = "＃美聲女神";
+
+/* Class = "UIButton"; configuration.title = "  記住我"; ObjectID = "G24-MK-Ekp"; */
+"G24-MK-Ekp.configuration.title" = "  記住我";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "G24-MK-Ekp"; */
+"G24-MK-Ekp.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "拍照"; ObjectID = "GKX-38-Edi"; */
+"GKX-38-Edi.configuration.title" = "拍照";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GKX-38-Edi"; */
+"GKX-38-Edi.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "搜尋"; ObjectID = "GcU-go-VXX"; */
+"GcU-go-VXX.title" = "搜尋";
+
+/* Class = "UILabel"; text = "帳號："; ObjectID = "Hrx-uW-zlR"; */
+"Hrx-uW-zlR.text" = "帳號：";
+
+/* Class = "UIButton"; configuration.title = "從相簿選取"; ObjectID = "IhL-pf-dYc"; */
+"IhL-pf-dYc.configuration.title" = "從相簿選取";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "IhL-pf-dYc"; */
+"IhL-pf-dYc.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "登入"; ObjectID = "KH0-LB-Gvg"; */
+"KH0-LB-Gvg.configuration.title" = "登入";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "KH0-LB-Gvg"; */
+"KH0-LB-Gvg.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "註冊會員"; ObjectID = "KZP-CO-sku"; */
+"KZP-CO-sku.title" = "註冊會員";
+
+/* Class = "UITextField"; placeholder = "電子郵件"; ObjectID = "Kdk-wc-5vm"; */
+"Kdk-wc-5vm.placeholder" = "電子郵件";
+
+/* Class = "UITabBarItem"; title = "個人"; ObjectID = "Kop-3x-s7w"; */
+"Kop-3x-s7w.title" = "個人";
+
+/* Class = "UILabel"; text = "熱門推薦"; ObjectID = "Krv-La-0NR"; */
+"Krv-La-0NR.text" = "熱門推薦";
+
+/* Class = "UITextView"; text = "fgcmfgchmgcvjh"; ObjectID = "L0F-Q6-O1J"; */
+"L0F-Q6-O1J.text" = "fgcmfgchmgcvjh";
+
+/* Class = "UIButton"; configuration.title = "註冊"; ObjectID = "OhL-sd-hDz"; */
+"OhL-sd-hDz.configuration.title" = "註冊";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "OhL-sd-hDz"; */
+"OhL-sd-hDz.normalTitle" = "Button";
+
+/* Class = "UINavigationItem"; title = "會員登入"; ObjectID = "R8S-wf-65Y"; */
+"R8S-wf-65Y.title" = "會員登入";
+
+/* Class = "UITextField"; placeholder = "電子郵件"; ObjectID = "UTH-Wi-6s5"; */
+"UTH-Wi-6s5.placeholder" = "電子郵件";
+
+/* Class = "UIButton"; configuration.title = "登出"; ObjectID = "VGf-xU-jjM"; */
+"VGf-xU-jjM.configuration.title" = "登出";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "VGf-xU-jjM"; */
+"VGf-xU-jjM.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "直播標題"; ObjectID = "XsB-2k-dgy"; */
+"XsB-2k-dgy.text" = "直播標題";
+
+/* Class = "UITextField"; placeholder = "暱稱"; ObjectID = "YFB-wr-3Db"; */
+"YFB-wr-3Db.placeholder" = "暱稱";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bKw-Ik-4ox"; */
+"bKw-Ik-4ox.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "323545"; ObjectID = "c5w-Bn-Lw3"; */
+"c5w-Bn-Lw3.text" = "323545";
+
+/* Class = "UITextField"; placeholder = "密碼(請輸入6位以上字母或數字)"; ObjectID = "d09-95-MOx"; */
+"d09-95-MOx.placeholder" = "密碼(請輸入6位以上字母或數字)";
+
+/* Class = "UITabBarItem"; title = "首頁"; ObjectID = "eYA-Ou-C2C"; */
+"eYA-Ou-C2C.title" = "首頁";
+
+/* Class = "UILabel"; text = "直播標題"; ObjectID = "edE-Cy-wF6"; */
+"edE-Cy-wF6.text" = "直播標題";
+
+/* Class = "UILabel"; text = "323545"; ObjectID = "gzY-Wb-7qf"; */
+"gzY-Wb-7qf.text" = "323545";
+
+/* Class = "UILabel"; text = "＃美聲女神"; ObjectID = "qhc-hZ-bLF"; */
+"qhc-hZ-bLF.text" = "＃美聲女神";
+
+/* Class = "UILabel"; text = "小仙女"; ObjectID = "qiI-uG-zIn"; */
+"qiI-uG-zIn.text" = "小仙女";
+
+/* Class = "UIButton"; configuration.title = "送出"; ObjectID = "rej-f4-qqA"; */
+"rej-f4-qqA.configuration.title" = "送出";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "rej-f4-qqA"; */
+"rej-f4-qqA.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "小仙女"; ObjectID = "sBf-Co-7lI"; */
+"sBf-Co-7lI.text" = "小仙女";
+
+/* Class = "UILabel"; text = "訪客"; ObjectID = "vSM-kr-6D7"; */
+"vSM-kr-6D7.text" = "訪客";
+
+/* Class = "UITextField"; placeholder = "密碼(請輸入6位以上字母或數字)"; ObjectID = "xHT-jb-pBU"; */
+"xHT-jb-pBU.placeholder" = "密碼(請輸入6位以上字母或數字)";
+
+/* Class = "UINavigationItem"; title = "設置頭像"; ObjectID = "ydk-Pv-c5S"; */
+"ydk-Pv-c5S.title" = "設置頭像";

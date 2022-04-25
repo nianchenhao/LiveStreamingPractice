@@ -45,6 +45,7 @@
 		4BC6CEFF27F5893500964EA2 /* Streamers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6CEFE27F5893500964EA2 /* Streamers.json */; };
 		4BC6CF0127F68BB400964EA2 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6CF0027F68BB400964EA2 /* SearchCollectionViewCell.swift */; };
 		4BFBEEAA28065BBE006E27FC /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBEEA928065BBE006E27FC /* HomeHeaderCollectionReusableView.swift */; };
+		72FC074728166ABD00A2013B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72FC074928166ABD00A2013B /* Localizable.strings */; };
 		8CA6DF2B351CCABA87D7DFD5 /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1E889AC152B6DA6930872A /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,11 @@
 		4BFBEEA928065BBE006E27FC /* HomeHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		507C99EBDF512CA17DD1A044 /* Pods-LiveStreamingPracticeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPracticeTests.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPracticeTests/Pods-LiveStreamingPracticeTests.release.xcconfig"; sourceTree = "<group>"; };
 		61592322411290DA47DF147E /* Pods-LiveStreamingPracticeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPracticeTests.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPracticeTests/Pods-LiveStreamingPracticeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		72FC0741281658DC00A2013B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		72FC0742281658DD00A2013B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		72FC07442816594100A2013B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		72FC074828166ABD00A2013B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		72FC074A28166ABF00A2013B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7A742008DC5B4AC47BA7C75C /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		89C007EA241449C7B9CF46E3 /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		97BD363E8A1F5C2B7411FEBF /* Pods_LiveStreamingPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStreamingPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +219,7 @@
 				4B4B3DF827F1B5A1008B1652 /* Info.plist */,
 				4BC6CE5827F2B0C000964EA2 /* GoogleService-Info.plist */,
 				4BC6CEFE27F5893500964EA2 /* Streamers.json */,
+				72FC074928166ABD00A2013B /* Localizable.strings */,
 			);
 			path = LiveStreamingPractice;
 			sourceTree = "<group>";
@@ -389,6 +396,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 4B4B3DDE27F1B59D008B1652;
 			packageReferences = (
@@ -414,6 +422,7 @@
 				4BC6CED127F43A0D00964EA2 /* hime3.mp4 in Resources */,
 				4B385B2B2812437E00D6C942 /* loveStreamer.json in Resources */,
 				4B0EE76B28115FE500D34A42 /* welcome.json in Resources */,
+				72FC074728166ABD00A2013B /* Localizable.strings in Resources */,
 				4B4B3DF727F1B5A1008B1652 /* LaunchScreen.storyboard in Resources */,
 				4BC6CE5927F2B0C000964EA2 /* GoogleService-Info.plist in Resources */,
 				4B4B3DF427F1B5A1008B1652 /* Assets.xcassets in Resources */,
@@ -603,6 +612,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B4B3DF127F1B59D008B1652 /* Base */,
+				72FC0741281658DC00A2013B /* zh-Hans */,
+				72FC07442816594100A2013B /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -611,8 +622,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				4B4B3DF627F1B5A1008B1652 /* Base */,
+				72FC0742281658DD00A2013B /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		72FC074928166ABD00A2013B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				72FC074828166ABD00A2013B /* en */,
+				72FC074A28166ABF00A2013B /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -622,6 +643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -682,6 +704,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";

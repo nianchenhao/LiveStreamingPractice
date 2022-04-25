@@ -54,14 +54,20 @@ class RegisterVC: UIViewController {
         let email = emailTextField.text ?? ""
         if email.isEmpty {
             checkLabel.text = "請輸入電子郵件"
+            let checkEmail = NSLocalizedString("RegisterVC.checkEmail", comment: "")
+            checkLabel.text = checkEmail
         }
         let password = passwordTextField.text ?? ""
         if password.isEmpty {
             checkLabel.text = "請輸入密碼"
+            let checkPassword = NSLocalizedString("RegisterVC.checkPassword", comment: "")
+            checkLabel.text = checkPassword
         }
         let nickName = nickNameTextField.text ?? ""
         if nickName.isEmpty {
             checkLabel.text = "請輸入暱稱"
+            let checkNickName = NSLocalizedString("RegisterVC.checkNickName", comment: "")
+            checkLabel.text = checkNickName
         } else if let account = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: account, password: password) { user, error in
                 
