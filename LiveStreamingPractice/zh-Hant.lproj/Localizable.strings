@@ -41,6 +41,9 @@
 "LeaveStudio" = "離開直播間";
 "NotQuit" = "先不要";
 "Quit" = "立馬走";
+"System" = "『系統』";
+"Enter" = "進入直播間";
+"Leave" = "離開直播間";
 
 // Alert
 "OkButton" = "確定";

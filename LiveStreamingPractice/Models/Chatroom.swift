@@ -37,8 +37,8 @@ struct Obj: Codable {
 }
 
 struct Country: Codable {
-    //    let cn: String?
-    //    let en: String?
+    let cn: String?
+    let en: String?
     let tw: String?
 }
 

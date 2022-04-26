@@ -217,12 +217,12 @@
 				4BC6CEAD27F42C1E00964EA2 /* Controllers */,
 				4BC6CF0427F6989B00964EA2 /* Cell */,
 				4BC6CF0327F6986200964EA2 /* Delegate */,
+				72FC074928166ABD00A2013B /* Localizable.strings */,
 				4BC6CED027F43A0D00964EA2 /* hime3.mp4 */,
 				4B4B3DF327F1B5A1008B1652 /* Assets.xcassets */,
 				4B4B3DF827F1B5A1008B1652 /* Info.plist */,
 				4BC6CE5827F2B0C000964EA2 /* GoogleService-Info.plist */,
 				4BC6CEFE27F5893500964EA2 /* Streamers.json */,
-				72FC074928166ABD00A2013B /* Localizable.strings */,
 			);
 			path = LiveStreamingPractice;
 			sourceTree = "<group>";
@@ -271,8 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				4B4B3DF027F1B59D008B1652 /* Main.storyboard */,
-				4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */,
 				4B4B3DF527F1B5A1008B1652 /* LaunchScreen.storyboard */,
+				4B0EE765281102ED00D34A42 /* AnimationTabBar.swift */,
 				4B7B5C672803D3D9002CFC89 /* PasswordTextField.swift */,
 			);
 			path = Views;

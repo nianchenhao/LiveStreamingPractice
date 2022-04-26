@@ -152,7 +152,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         controller.view.addSubview(imgViewTitle)
         
         let quitAction = UIAlertAction(title: NSLocalizedString("Quit", comment: "立馬走"), style: .default, handler: { _ in
-            //            self.close()
+            self.disconnection()
             self.dismiss(animated: true)
             self.videoPlayer?.pause()
         })
@@ -209,6 +209,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         receive()
     }
     
+    func disconnection() {
+        webSocket?.cancel(with: .goingAway, reason: nil)
+        chatArray.removeAll()
+        userNameToChat.removeAll()
+    }
+    
     func ping() {
         webSocket?.sendPing(pongReceiveHandler: { error in
             if let error = error {
@@ -248,15 +254,25 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                             self.chatArray.append(test.body!.text!)
                             self.userNameToChat.append(test.body!.nickname ?? "")
                         case 5:
-                            self.chatArray.append(test.body!.content!.tw!)
-                            self.userNameToChat.append("系統")
+                            let preferredLang = Bundle.main.preferredLocalizations.first! as NSString
+                            print("當前系統語言：\(preferredLang)")
+                            
+                            switch String(describing: preferredLang) {
+                            case "zh-Hant", "zh-TW", "zh-HK":
+                                self.chatArray.append(test.body!.content!.tw!)
+                            case "zh-Hans":
+                                self.chatArray.append(test.body!.content!.cn!)
+                            default:
+                                self.chatArray.append(test.body!.content!.en!)
+                            }
+                            self.userNameToChat.append(NSLocalizedString("System", comment: "『系統』"))
                         case 0:
                             self.userNameToChat.append(test.body!.entry_notice!.username!)
                             switch test.body!.entry_notice!.action {
                             case "enter":
-                                self.chatArray.append("進入")
+                                self.chatArray.append(NSLocalizedString("Enter", comment: "進入直播間"))
                             case "leave":
-                                self.chatArray.append("離開")
+                                self.chatArray.append(NSLocalizedString("Leave", comment: "離開直播間"))
                             default:
                                 print("錯誤")
                             }
