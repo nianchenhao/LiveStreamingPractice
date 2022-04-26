@@ -45,6 +45,7 @@
 		4BC6CEFF27F5893500964EA2 /* Streamers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BC6CEFE27F5893500964EA2 /* Streamers.json */; };
 		4BC6CF0127F68BB400964EA2 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BC6CF0027F68BB400964EA2 /* SearchCollectionViewCell.swift */; };
 		4BFBEEAA28065BBE006E27FC /* HomeHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFBEEA928065BBE006E27FC /* HomeHeaderCollectionReusableView.swift */; };
+		721C53182817E55000AA5930 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 721C53172817E55000AA5930 /* Toast */; };
 		72FC074728166ABD00A2013B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72FC074928166ABD00A2013B /* Localizable.strings */; };
 		8CA6DF2B351CCABA87D7DFD5 /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1E889AC152B6DA6930872A /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework */; };
 /* End PBXBuildFile section */
@@ -127,6 +128,7 @@
 				4BC6CE5C27F2B2DE00964EA2 /* FirebaseAnalytics in Frameworks */,
 				4BC6CE6027F2B2DE00964EA2 /* FirebaseAuthCombine-Community in Frameworks */,
 				4BC6CE6227F2B2DE00964EA2 /* FirebaseDatabase in Frameworks */,
+				721C53182817E55000AA5930 /* Toast in Frameworks */,
 				4BC6CE5E27F2B2DE00964EA2 /* FirebaseAuth in Frameworks */,
 				4BC6CE6427F2B2DE00964EA2 /* FirebaseDynamicLinks in Frameworks */,
 				4BC6CE6627F2B2DE00964EA2 /* FirebaseStorage in Frameworks */,
@@ -325,6 +327,7 @@
 				4BC6CE6327F2B2DE00964EA2 /* FirebaseDynamicLinks */,
 				4BC6CE6527F2B2DE00964EA2 /* FirebaseStorage */,
 				4BB02A89280141C100261287 /* FirebaseFirestore */,
+				721C53172817E55000AA5930 /* Toast */,
 			);
 			productName = LiveStreamingPractice;
 			productReference = 4B4B3DE727F1B59D008B1652 /* LiveStreamingPractice.app */;
@@ -405,6 +408,7 @@
 			mainGroup = 4B4B3DDE27F1B59D008B1652;
 			packageReferences = (
 				4BC6CE5A27F2B2DE00964EA2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				721C53162817E55000AA5930 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 4B4B3DE827F1B59D008B1652 /* Products */;
 			projectDirPath = "";
@@ -962,6 +966,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		721C53162817E55000AA5930 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -999,6 +1011,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4BC6CE5A27F2B2DE00964EA2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		721C53172817E55000AA5930 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 721C53162817E55000AA5930 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

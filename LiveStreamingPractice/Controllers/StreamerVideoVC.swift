@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
 import Lottie
+import Toast
 
 class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
@@ -21,6 +22,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var chatView: UIView!
     @IBOutlet weak var chatViewLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var streamerView: UIView!
+    @IBOutlet weak var followButton: UIButton!
     
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
@@ -30,6 +34,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var key = NSLocalizedString("VisitorNickname", comment: "訪客")
     var handle: AuthStateDidChangeListenerHandle?
     var animationView: AnimationView?
+    var follow = false
+    let userDefaults = UserDefaults()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +51,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         sendButton.layer.masksToBounds = true
         chatTextField.layer.cornerRadius = 15
         chatTextField.layer.masksToBounds = true
+        shareButton.layer.cornerRadius = shareButton.frame.width / 2
+        streamerView.layer.cornerRadius = 20
+        followButton.layer.cornerRadius = followButton.frame.width / 2
         
         let placeholder = chatTextField.placeholder ?? ""
         chatTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
@@ -72,9 +82,11 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(quitButton)
         view.bringSubviewToFront(sendButton)
         view.bringSubviewToFront(chatView)
-        
+        view.bringSubviewToFront(shareButton)
+        view.bringSubviewToFront(streamerView)
         
         generateTextMaskForChat()
+        checkFollow()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -140,6 +152,27 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         chatTextField.text = nil
     }
     
+    @IBAction func followButtonPress(_ sender: UIButton) {
+        if follow == false {
+            follow = true
+            userDefaults.setValue(follow, forKey: "streamerFollow")
+            followButton.setTitle("關注中", for: .normal)
+            self.view.makeToast("關注成功", position: .center)
+            follow = true
+        } else {
+            follow = false
+            userDefaults.setValue(follow, forKey: "streamerFollow")
+            followButton.setTitle("關注", for: .normal)
+            self.view.makeToast("取消關注", position: .center)
+        }
+    }
+    
+    @IBAction func shareButtonPress(_ sender: UIButton) {
+        guard let image = UIImage(named: "paopao.png"), let url = URL(string: "https://github.com/nianchenhao/LiveStreamingPractice") else { return }
+        let shareSheetVC = UIActivityViewController(activityItems: [image, url], applicationActivities: nil)
+        present(shareSheetVC, animated: true)
+    }
+    
     @IBAction func quitChatPress(_ sender: UIButton) {
         let controller = UIAlertController(title: "", message: NSLocalizedString("LeaveStudio", comment: "確定離開此直播間"), preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: NSLocalizedString("NotQuit", comment: "先不要"), style: .cancel)
@@ -159,6 +192,25 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         controller.addAction(cancelAction)
         controller.addAction(quitAction)
         present(controller, animated: true, completion: nil)
+    }
+    
+    func checkFollow() {
+        //拿看看值，沒拿到的話直接return出去
+        guard
+            let defaultFollow = userDefaults.value(forKey: "streamerFollow") as? Bool
+        else {
+            print("沒存過值")
+            return
+        }
+        print("已存過值 為\(defaultFollow)")
+        //修改follow
+        follow = defaultFollow
+        
+        //如果為true 修改按鈕的title
+        guard follow == true else{
+            return
+        }
+        followButton.setTitle("關注中", for: .normal)
     }
     
     func repeatVideo() {
