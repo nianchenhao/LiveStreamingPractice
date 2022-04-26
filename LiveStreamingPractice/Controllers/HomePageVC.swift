@@ -19,7 +19,7 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
     var streamers = [Streamer]()
     var fullScreenSize: CGSize!
     private let storage = Storage.storage().reference()
-//    let animationView = AnimationView(name: "welcome")
+    //    let animationView = AnimationView(name: "welcome")
     var animationView: AnimationView?
     
     override func viewDidLoad() {
@@ -170,10 +170,7 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
                     }
                 } else {
                     headerView.userImage.image = UIImage(named: "topPic")
-                    headerView.nickNameLabel.text = "訪客"
-                    
-                    let nickNameLabel = NSLocalizedString("HomePageVC.nickNameLabel", comment: "")
-                    headerView.nickNameLabel.text = nickNameLabel
+                    headerView.nickNameLabel.text = NSLocalizedString("VisitorNickname", comment: "訪客")
                 }
                 return headerView
             }

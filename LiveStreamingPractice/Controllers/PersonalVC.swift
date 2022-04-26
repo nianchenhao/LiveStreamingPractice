@@ -62,7 +62,7 @@ class PersonalVC: UIViewController {
             Auth.auth().signIn(withEmail: account, password: password) { user, error in
                 if error != nil {
                     print(error!)
-                    self.showAlert(title: "登入失敗", message: error?.localizedDescription ?? "")
+                    self.showAlert(title: NSLocalizedString("LoginFailed", comment: "登入失敗"), message: error?.localizedDescription ?? "")
                     self.checkLabel.isHidden = false
                 } else {
                     print("Log in Succesful")
@@ -106,7 +106,7 @@ class PersonalVC: UIViewController {
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "確定", style: .default, handler: nil)
+        let action = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default, handler: nil)
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }

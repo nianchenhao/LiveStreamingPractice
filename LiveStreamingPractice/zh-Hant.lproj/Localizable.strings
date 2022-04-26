@@ -1,17 +1,47 @@
 /* 
-  Localizable.strings
-  LiveStreamingPractice
+ Localizable.strings
+ LiveStreamingPractice
+ 
+ Created by Robert_Nian on 2022/4/25.
+ 
+ */
 
-  Created by Robert_Nian on 2022/4/25.
-  
-*/
-"HomePageVC.nickNameLabel" = "訪客";
-"SearchVC.searchPlaceholder" = "搜尋";
-"SearchVC.searchResult" = "搜尋結果";
-"SearchVC.popularStreamer" = "熱門推薦";
-"RegisterVC.checkEmail" = "請輸入電子郵件";
-"RegisterVC.checkPassword" = "請輸入密碼";
-"RegisterVC.checkNickName" = "請輸入暱稱";
-"RegisterVC.accountLabelStr" = "帳號：";
-"RegisterVC.nickNameLabelStr" = "暱稱：";
+// HomePageVC, StreamerVideoVC
+"VisitorNickname" = "訪客";
 
+// SearchVC
+"SearchPlaceholder" = "搜尋";
+"SearchResult" = "搜尋结果";
+"PopularStreamer" = "熱門推薦";
+
+// PersonalVC
+"LoginFailed" = "登入失敗";
+
+// RegisterVC
+"CheckEmail" = "請輸入電子郵件";
+"CheckPassword" = "請輸入密碼";
+"CheckNickName" = "請輸入暱稱";
+"RegistrationFailed" = "註冊失敗";
+"RegistrationSuccess" = "註冊成功";
+"LoginAgain" = "請再次登入";
+
+// MemberInfoVC
+"AccountEmail" = "帳號：";
+"AccountNickname" = "暱稱：";
+"EditAvatar" = "編輯頭像";
+"AlbumSelection" = "從相簿選取";
+"Photograph" = "拍照";
+"EditNickname" = "修改暱稱";
+"EnterNewNickname" = "請輸入新暱稱";
+"NewNicknamePlaceholder" = "新暱稱";
+
+// StreamerVideoVC
+"SystemMessage" = "系統訊息";
+"PleaseEnterText" = "請輸入文字";
+"LeaveStudio" = "離開直播間";
+"NotQuit" = "先不要";
+"Quit" = "立馬走";
+
+// Alert
+"OkButton" = "確定";
+"Cancel" = "取消";

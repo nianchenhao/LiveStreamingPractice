@@ -65,7 +65,7 @@ class SetAvatorVC: UIViewController, UIImagePickerControllerDelegate & UINavigat
             return
         }
         
-//        uploadToCloud(img: image)
+        //        uploadToCloud(img: image)
         
         delegate?.selectPhoto(photo: image)
         picker.dismiss(animated: true, completion: nil)
@@ -75,19 +75,19 @@ class SetAvatorVC: UIViewController, UIImagePickerControllerDelegate & UINavigat
         picker.dismiss(animated: true, completion: nil)
     }
     
-//    func uploadToCloud(img: UIImage) {
-//        let userImageRef = storage.child("userImage").child("avatorImage.jpg")
-//        if let jpgData = img.jpegData(compressionQuality: 1.0){
-//            //執行上傳圖片
-//            userImageRef.putData(jpgData, metadata: nil) { metadata, error in
-//                guard error == nil else {
-//                    print("Failed to upload")
-//                    return
-//                }
-//                print("上傳成功")
-//            }
-//        }
-//    }
+    //    func uploadToCloud(img: UIImage) {
+    //        let userImageRef = storage.child("userImage").child("avatorImage.jpg")
+    //        if let jpgData = img.jpegData(compressionQuality: 1.0){
+    //            //執行上傳圖片
+    //            userImageRef.putData(jpgData, metadata: nil) { metadata, error in
+    //                guard error == nil else {
+    //                    print("Failed to upload")
+    //                    return
+    //                }
+    //                print("上傳成功")
+    //            }
+    //        }
+    //    }
     
 }
 

@@ -53,31 +53,25 @@ class RegisterVC: UIViewController {
         
         let email = emailTextField.text ?? ""
         if email.isEmpty {
-            checkLabel.text = "請輸入電子郵件"
-            let checkEmail = NSLocalizedString("RegisterVC.checkEmail", comment: "")
-            checkLabel.text = checkEmail
+            checkLabel.text = NSLocalizedString("CheckEmail", comment: "請輸入電子郵件")
         }
         let password = passwordTextField.text ?? ""
         if password.isEmpty {
-            checkLabel.text = "請輸入密碼"
-            let checkPassword = NSLocalizedString("RegisterVC.checkPassword", comment: "")
-            checkLabel.text = checkPassword
+            checkLabel.text = NSLocalizedString("CheckPassword", comment: "請輸入密碼")
         }
         let nickName = nickNameTextField.text ?? ""
         if nickName.isEmpty {
-            checkLabel.text = "請輸入暱稱"
-            let checkNickName = NSLocalizedString("RegisterVC.checkNickName", comment: "")
-            checkLabel.text = checkNickName
+            checkLabel.text = NSLocalizedString("CheckNickName", comment: "請輸入暱稱")
         } else if let account = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: account, password: password) { user, error in
                 
-//                if let changRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
-//                    changRequest.displayName = self.nickNameTextField.text
-//                }
+                //                if let changRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+                //                    changRequest.displayName = self.nickNameTextField.text
+                //                }
                 
                 if error != nil {
                     print(error!)
-                    self.showAlert(title: "註冊失敗", message: error?.localizedDescription ?? "")
+                    self.showAlert(title: NSLocalizedString("RegistrationFailed", comment: "註冊失敗"), message: error?.localizedDescription ?? "")
                 } else {
                     let reference = Firestore.firestore()
                     if let nickName = self.nickNameTextField.text, let account = self.emailTextField.text {
@@ -92,8 +86,8 @@ class RegisterVC: UIViewController {
                     }
                     print("註冊成功！")
                     self.saveData()
-                    let alertController = UIAlertController(title: "註冊成功", message: "請再次登入", preferredStyle: .alert)
-                    alertController.addAction(UIAlertAction(title: "確定", style: .default, handler: { _ in
+                    let alertController = UIAlertController(title: NSLocalizedString("RegistrationSuccess", comment: "註冊成功"), message: NSLocalizedString("LoginAgain", comment: "請再次登入"), preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default, handler: { _ in
                         guard let avatorImage = self.avatorImage.image else { return }
                         self.uploadToCloud(img: avatorImage)
                         do {
@@ -133,7 +127,7 @@ class RegisterVC: UIViewController {
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "確定", style: .default, handler: nil)
+        let action = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default, handler: nil)
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }

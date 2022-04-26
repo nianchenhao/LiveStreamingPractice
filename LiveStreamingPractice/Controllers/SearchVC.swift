@@ -19,17 +19,13 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         searchbar.delegate = self
-        searchbar.placeholder = "搜尋"
-        
-        let searchPlaceholder = NSLocalizedString("SearchVC.searchPlaceholder", comment: "")
-        searchbar.placeholder = searchPlaceholder
+        searchbar.placeholder = NSLocalizedString("SearchPlaceholder", comment: "")
         
         collectionView.dataSource = self
         collectionView.delegate = self
         
         view.addSubview(searchbar)
         fetchPhotos()
-        print("我在viewdidload")
     }
     
     override func viewDidLayoutSubviews() {
@@ -227,20 +223,13 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 
                 if indexPath.section == 0 {
                     if searchResult {
-                        headerView.popularLabel.text = "搜尋結果"
-                        let searchResult = NSLocalizedString("SearchVC.searchResult", comment: "")
-                        headerView.popularLabel.text = searchResult
+                        headerView.popularLabel.text = NSLocalizedString("SearchResult", comment: "搜尋結果")
                     } else {
-                        headerView.popularLabel.text = "熱門推薦"
-                        let popularStreamer = NSLocalizedString("SearchVC.popularStreamer", comment: "")
-                        headerView.popularLabel.text = popularStreamer
+                        headerView.popularLabel.text = NSLocalizedString("PopularStreamer", comment: "熱門推薦")
                     }
                 } else {
-                    headerView.popularLabel.text = "熱門推薦"
-                    let popularStreamer = NSLocalizedString("SearchVC.popularStreamer", comment: "")
-                    headerView.popularLabel.text = popularStreamer
+                    headerView.popularLabel.text = NSLocalizedString("PopularStreamer", comment: "熱門推薦")
                 }
-                
                 return headerView
             }
         default:

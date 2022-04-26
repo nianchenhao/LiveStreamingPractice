@@ -27,7 +27,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var webSocket: URLSessionWebSocketTask?
     var chatArray = [String]()
     var userNameToChat = [String]()
-    var key = "訪客"
+    var key = NSLocalizedString("VisitorNickname", comment: "訪客")
     var handle: AuthStateDidChangeListenerHandle?
     var animationView: AnimationView?
     
@@ -79,7 +79,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         addKeyboardObserver()
-
+        
         handle = Auth.auth().addStateDidChangeListener({ auth, user in
             
             //檢查是否登入狀態
@@ -126,14 +126,14 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         guard newChat.count != 0 else {
             print("請輸入文字")
-            showAlert(title: "系統訊息", message: "請輸入文字")
+            showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("PleaseEnterText", comment: "請輸入文字"))
             chatTextField.text = nil
             return
         }
         
         if chat.isEmpty {
             print("請輸入文字")
-            showAlert(title: "系統訊息", message: "請輸入文字")
+            showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("PleaseEnterText", comment: "請輸入文字"))
         } else {
             send()
         }
@@ -141,8 +141,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     @IBAction func quitChatPress(_ sender: UIButton) {
-        let controller = UIAlertController(title: "", message: "確定離開此聊天室？", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "先不要", style: .cancel)
+        let controller = UIAlertController(title: "", message: NSLocalizedString("LeaveStudio", comment: "確定離開此直播間"), preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("NotQuit", comment: "先不要"), style: .cancel)
+        
         
         let imgTitle = UIImage(named: "brokenHeart.png")
         let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
@@ -150,7 +151,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         controller.view.addSubview(imgViewTitle)
         
-        let quitAction = UIAlertAction(title: "立馬走", style: .default, handler: { _ in
+        let quitAction = UIAlertAction(title: NSLocalizedString("Quit", comment: "立馬走"), style: .default, handler: { _ in
             //            self.close()
             self.dismiss(animated: true)
             self.videoPlayer?.pause()
@@ -188,7 +189,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "確定", style: .default, handler: nil)
+        let action = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default, handler: nil)
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
     }

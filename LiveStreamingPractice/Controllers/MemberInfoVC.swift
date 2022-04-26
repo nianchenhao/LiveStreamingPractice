@@ -56,10 +56,8 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                 }
                 let email = user.email
                 let emailStr = String(email!)
-                accountLabel.text = "帳號：\(emailStr)"
-                let accountLabelStr = NSLocalizedString("RegisterVC.accountLabelStr", comment: "")
                 let userEmailStr = emailStr
-                accountLabel.text = accountLabelStr + userEmailStr
+                accountLabel.text = NSLocalizedString("AccountEmail", comment: "帳號：") + userEmailStr
                 let reference = Firestore.firestore().collection("Users")
                 reference.document(emailStr).getDocument{ snapshot, error in
                     if let error = error {
@@ -68,10 +66,8 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                         if let snapshot = snapshot {
                             let snapshotData = snapshot.data()?["nickName"]
                             if let nameStr = snapshotData as? String {
-                                self.nickNameLabel.text = "暱稱：\(nameStr)"
-                                let nickNameLabelStr = NSLocalizedString("RegisterVC.nickNameLabelStr", comment: "")
                                 let userNameStr = nameStr
-                                self.nickNameLabel.text = nickNameLabelStr + userNameStr
+                                self.nickNameLabel.text = NSLocalizedString("AccountNickname", comment: "暱稱：") + userNameStr
                             }
                         }
                     }
@@ -98,9 +94,9 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
     }
     
     @IBAction func editAvatarImage(_ sender: UIButton) {
-        let controller = UIAlertController(title: "", message: "編輯頭像", preferredStyle: .actionSheet)
+        let controller = UIAlertController(title: "", message: NSLocalizedString("EditAvatar", comment: "編輯頭像"), preferredStyle: .actionSheet)
         
-        let action = UIAlertAction(title: "從相簿選取", style: .default) { action in
+        let action = UIAlertAction(title: NSLocalizedString("AlbumSelection", comment: "從相簿選取"), style: .default) { action in
             let picker = UIImagePickerController()
             picker.sourceType = .photoLibrary
             picker.delegate = self
@@ -110,7 +106,7 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         
         controller.addAction(action)
         
-        let photoAction = UIAlertAction(title: "拍照", style: .default) { action in
+        let photoAction = UIAlertAction(title: NSLocalizedString("Photograph", comment: "拍照"), style: .default) { action in
             let picker = UIImagePickerController()
             picker.sourceType = .camera
             picker.delegate = self
@@ -120,20 +116,20 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         
         controller.addAction(photoAction)
         
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "取消"), style: .cancel, handler: nil)
         controller.addAction(cancelAction)
         present(controller, animated: true, completion: nil)
     }
     
     @IBAction func editNickname(_ sender: UIButton) {
-        let editAlert = UIAlertController(title: "修改暱稱", message: "請輸入您的新暱稱", preferredStyle: .alert)
+        let editAlert = UIAlertController(title: NSLocalizedString("EditNickname", comment: "修改暱稱"), message: NSLocalizedString("EnterNewNickname", comment: "請輸入新暱稱"), preferredStyle: .alert)
         editAlert.addTextField { textField in
-            textField.placeholder = "新的暱稱"
+            textField.placeholder = NSLocalizedString("NewNicknamePlaceholder", comment: "新暱稱")
         }
         guard let newNickname = editAlert.textFields?.first else { return }
         let newName = newNickname as UITextField
-        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let ok = UIAlertAction(title: "確定", style: .default) { alertAction in
+        let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "取消"), style: .cancel, handler: nil)
+        let ok = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default) { alertAction in
             guard let newName = newName.text else { return }
             let reference = Firestore.firestore()
             guard let user = Auth.auth().currentUser else { return }
@@ -142,7 +138,7 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                 if error != nil {
                     print("error")
                 } else {
-                    self.nickNameLabel.text = "暱稱：\(newName)"
+                    self.nickNameLabel.text = NSLocalizedString("AccountNickname", comment: "暱稱：") + newName
                     print("successfully write in!")
                 }
             }

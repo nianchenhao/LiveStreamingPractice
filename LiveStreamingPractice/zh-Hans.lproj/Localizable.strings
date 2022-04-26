@@ -1,16 +1,47 @@
 /* 
-  Localizable.strings
-  LiveStreamingPractice
+ Localizable.strings
+ LiveStreamingPractice
+ 
+ Created by Robert_Nian on 2022/4/25.
+ 
+ */
 
-  Created by Robert_Nian on 2022/4/25.
-  
-*/
-"HomePageVC.nickNameLabel" = "访客";
-"SearchVC.searchPlaceholder" = "搜寻";
-"SearchVC.searchResult" = "搜寻结果";
-"SearchVC.popularStreamer" = "热门推荐";
-"RegisterVC.checkEmail" = "请输入电子邮件";
-"RegisterVC.checkPassword" = "请输入密码";
-"RegisterVC.checkNickName" = "请输入昵称";
-"RegisterVC.accountLabelStr" = "帐号：";
-"RegisterVC.nickNameLabelStr" = "昵称：";
+// HomePageVC, StreamerVideoVC
+"VisitorNickname" = "访客";
+
+// SearchVC
+"SearchPlaceholder" = "搜寻";
+"SearchResult" = "搜寻结果";
+"PopularStreamer" = "热门推荐";
+
+// PersonalVC
+"LoginFailed" = "登入失败";
+
+// RegisterVC
+"CheckEmail" = "请输入电子邮件";
+"CheckPassword" = "请输入密码";
+"CheckNickName" = "请输入昵称";
+"RegistrationFailed" = "注册失败";
+"RegistrationSuccess" = "注册成功";
+"LoginAgain" = "请再次登入";
+
+// MemberInfoVC
+"AccountEmail" = "帐号：";
+"AccountNickname" = "昵称：";
+"EditAvatar" = "编辑头像";
+"AlbumSelection" = "从相簿选取";
+"Photograph" = "拍照";
+"EditNickname" = "修改昵称";
+"EnterNewNickname" = "请输入新昵称";
+"NewNicknamePlaceholder" = "新昵称";
+
+// StreamerVideoVC
+"SystemMessage" = "系统讯息";
+"PleaseEnterText" = "请输入文字";
+"LeaveStudio" = "离开直播间";
+"NotQuit" = "先不要";
+"Quit" = "立马走";
+
+// Alert
+"OkButton" = "确定";
+"Cancel" = "取消";
