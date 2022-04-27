@@ -45,6 +45,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         
+        chatTextField.delegate = self
+        
         quitButton.layer.cornerRadius = quitButton.frame.width / 2
         quitButton.layer.masksToBounds = true
         sendButton.layer.cornerRadius = quitButton.frame.width / 2
@@ -150,6 +152,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
             send()
         }
         chatTextField.text = nil
+        chatTextField.resignFirstResponder()
     }
     
     @IBAction func followButtonPress(_ sender: UIButton) {
@@ -418,6 +421,16 @@ extension StreamerVideoVC {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         
+    }
+}
+
+extension StreamerVideoVC: UITextFieldDelegate {		
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if textField.returnKeyType == UIReturnKeyType.send {
+            sendChat(sendButton)
+        }
+        return true
     }
 }
 

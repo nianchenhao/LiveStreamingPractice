@@ -22,6 +22,8 @@ class PersonalVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton.layer.cornerRadius = 20
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         self.checkAndAdd()
     }
     
@@ -112,3 +114,18 @@ class PersonalVC: UIViewController {
     }
     
 }
+
+extension PersonalVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            passwordTextField.resignFirstResponder()
+        default:
+            break
+        }
+        return true
+    }
+}
+

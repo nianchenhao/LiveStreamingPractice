@@ -32,6 +32,10 @@ class RegisterVC: UIViewController {
         avatorImage.layer.cornerRadius = avatorImage.frame.height/2
         avatorImage.clipsToBounds = true
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        nickNameTextField.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -184,5 +188,21 @@ extension RegisterVC {
         super.viewDidDisappear(true)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
+extension RegisterVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case nickNameTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            passwordTextField.resignFirstResponder()
+        default:
+            break
+        }
+        return true
     }
 }
