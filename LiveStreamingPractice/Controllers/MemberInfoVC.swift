@@ -76,23 +76,6 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         }
     }
     
-    
-    @IBAction func onClickSwitch(_ sender: UISwitch) {
-        if #available(iOS 13.0, *) {
-            let appDelegate = UIApplication.shared.windows.first
-            
-            if sender.isOn {
-                appDelegate?.overrideUserInterfaceStyle = .dark
-                return
-            }
-            
-            appDelegate?.overrideUserInterfaceStyle = .light
-            return
-        } else {
-            
-        }
-    }
-    
     @IBAction func editAvatarImage(_ sender: UIButton) {
         let controller = UIAlertController(title: "", message: NSLocalizedString("EditAvatar", comment: "編輯頭像"), preferredStyle: .actionSheet)
         

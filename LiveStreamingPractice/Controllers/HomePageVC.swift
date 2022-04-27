@@ -51,6 +51,22 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         collectionView.reloadData()
     }
     
+    @IBAction func toggleDarkMode(_ sender: UISwitch) {
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            
+            if sender.isOn {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            }
+            
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        } else {
+            
+        }
+    }
+    
     func fetchPhotos() {
         guard let url = Bundle.main.url(forResource: "Streamers", withExtension: "json") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
