@@ -134,6 +134,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         })
     }
     
+    @IBAction func streamerInfoPress(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerInfoVC")
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
+    
     @IBAction func sendChat(_ sender: UIButton) {
         let chat = chatTextField.text ?? ""
         let newChat = chat.trimmingCharacters(in: CharacterSet.whitespaces) // 去除空白字元
