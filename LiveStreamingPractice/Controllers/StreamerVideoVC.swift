@@ -25,6 +25,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var streamerView: UIView!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var sendGiftButton: UIButton!
     
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
@@ -86,6 +87,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(chatView)
         view.bringSubviewToFront(shareButton)
         view.bringSubviewToFront(streamerView)
+        view.bringSubviewToFront(sendGiftButton)
         
         generateTextMaskForChat()
         checkFollow()
@@ -134,6 +136,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         })
     }
     
+    @IBAction func sendGiftPress(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC")
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
+    
     @IBAction func streamerInfoPress(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerInfoVC")
         vc.modalPresentationStyle = .overFullScreen
@@ -167,6 +175,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
             userDefaults.setValue(follow, forKey: "streamerFollow")
             followButton.setTitle("關注中", for: .normal)
             self.view.makeToast("關注成功", position: .center)
+            
+            sendFollow()
+            
             follow = true
         } else {
             follow = false
@@ -292,6 +303,15 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         //        let sendText = chatTextField.text!
         guard let sendText = chatTextField.text else { return }
         let message = URLSessionWebSocketTask.Message.string("{\"action\": \"N\",\"content\":\"\(sendText)\"}")
+        webSocket?.send(message) { error in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
+    
+    func sendFollow() {
+        let message = URLSessionWebSocketTask.Message.string("{\"action\": \"N\",\"content\":\"關注中\"}")
         webSocket?.send(message) { error in
             if let error = error {
                 print(error)

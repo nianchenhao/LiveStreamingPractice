@@ -519,11 +519,23 @@
                                     <constraint firstItem="N3o-9i-mnA" firstAttribute="centerY" secondItem="3On-OW-3tl" secondAttribute="centerY" id="u52-n3-dAm"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="534-ZH-XRw">
+                                <rect key="frame" x="306" y="131" width="64" height="54"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="sendGift">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="sendGiftPress:" destination="Und-ND-dul" eventType="touchUpInside" id="lDa-Nh-7D2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cXL-w4-JeY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="cXL-w4-JeY" firstAttribute="trailing" secondItem="534-ZH-XRw" secondAttribute="trailing" constant="20" id="5Y6-9w-KJG"/>
                             <constraint firstItem="XAb-ti-S3l" firstAttribute="leading" secondItem="cXL-w4-JeY" secondAttribute="leading" constant="20" id="DMw-YJ-uZj"/>
+                            <constraint firstItem="534-ZH-XRw" firstAttribute="trailing" secondItem="21K-FQ-R16" secondAttribute="trailing" id="Hzm-1h-HTg"/>
                             <constraint firstItem="cXL-w4-JeY" firstAttribute="bottom" secondItem="Zhf-OR-EiK" secondAttribute="bottom" constant="15" id="Vod-C7-K6x"/>
                             <constraint firstItem="XAb-ti-S3l" firstAttribute="top" secondItem="cXL-w4-JeY" secondAttribute="top" constant="20" id="Wsy-4p-TC8"/>
                             <constraint firstItem="21K-FQ-R16" firstAttribute="top" secondItem="cXL-w4-JeY" secondAttribute="top" constant="20" id="X9d-cQ-c8b"/>
@@ -534,6 +546,7 @@
                             <constraint firstItem="cXL-w4-JeY" firstAttribute="trailing" secondItem="Zhf-OR-EiK" secondAttribute="trailing" constant="10" id="lYI-AC-SA0"/>
                             <constraint firstItem="3On-OW-3tl" firstAttribute="centerX" secondItem="ntb-bV-FCP" secondAttribute="centerX" id="qJs-IF-I0L"/>
                             <constraint firstItem="DCH-UF-Lm5" firstAttribute="trailing" secondItem="21K-FQ-R16" secondAttribute="trailing" id="x6a-of-XDf"/>
+                            <constraint firstItem="534-ZH-XRw" firstAttribute="top" secondItem="21K-FQ-R16" secondAttribute="bottom" constant="20" id="xsS-3X-DKj"/>
                         </constraints>
                     </view>
                     <connections>
@@ -543,6 +556,7 @@
                         <outlet property="followButton" destination="N3o-9i-mnA" id="yYG-jD-U8S"/>
                         <outlet property="quitButton" destination="21K-FQ-R16" id="ODa-Tc-hfU"/>
                         <outlet property="sendButton" destination="DCH-UF-Lm5" id="wl4-bU-Kkw"/>
+                        <outlet property="sendGiftButton" destination="534-ZH-XRw" id="goX-e0-BbB"/>
                         <outlet property="shareButton" destination="XAb-ti-S3l" id="Lx9-8p-OSO"/>
                         <outlet property="streamerView" destination="3On-OW-3tl" id="FAG-ck-EFD"/>
                         <outlet property="tableView" destination="0lj-G9-tPE" id="4LN-tv-xaz"/>
@@ -550,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SiN-1o-A38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="681.53846153846155" y="1960.6635071090047"/>
+            <point key="canvasLocation" x="-635" y="1961"/>
         </scene>
         <!--Streamer InfoVC-->
         <scene sceneID="xd3-6S-lEf">
@@ -573,7 +587,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="佳佳" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7k-IZ-nbq">
                                         <rect key="frame" x="132.66666666666666" y="70.666666666666686" width="34.666666666666657" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JQX-S6-WzE">
@@ -591,13 +605,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="關注：124" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKW-6I-PQU">
                                                 <rect key="frame" x="0.0" y="0.0" width="79.666666666666671" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉絲：2564" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zor-G2-njF">
                                                 <rect key="frame" x="129.66666666666669" y="0.0" width="93" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -608,13 +622,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快來關注可愛的主播" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tyd-Jg-BxT">
                                                 <rect key="frame" x="0.0" y="0.0" width="156" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#女神  #高顏值" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3S-4p-DAn">
                                                 <rect key="frame" x="20" y="28.333333333333314" width="116" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -635,7 +649,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="eY8-bP-4sF" firstAttribute="centerX" secondItem="va3-6j-0Hi" secondAttribute="centerX" id="32s-Mi-bBJ"/>
                                     <constraint firstItem="v7k-IZ-nbq" firstAttribute="centerX" secondItem="va3-6j-0Hi" secondAttribute="centerX" id="7G1-GF-7FA"/>
@@ -668,7 +682,146 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLi-JV-6N8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450.7692307692307" y="1960.6635071090047"/>
+            <point key="canvasLocation" x="143" y="1961"/>
+        </scene>
+        <!--Streamer GiftVC-->
+        <scene sceneID="qo5-Ia-21q">
+            <objects>
+                <viewController storyboardIdentifier="StreamerGiftVC" id="Vgo-Dy-M5y" customClass="StreamerGiftVC" customModule="LiveStreamingPractice" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P38-UW-ADo">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ht-Wz-5fg">
+                                <rect key="frame" x="0.0" y="454" width="390" height="390"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDj-kE-oMx">
+                                        <rect key="frame" x="62.666666666666657" y="218.66666666666663" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="2nh-6J-spF"/>
+                                            <constraint firstAttribute="width" constant="70" id="O4y-ri-EGn"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="yacht"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="yachtGiftPress:" destination="Vgo-Dy-M5y" eventType="touchUpInside" id="kDN-y4-Rn5"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fCw-j8-cYR">
+                                        <rect key="frame" x="257.66666666666669" y="62.666666666666629" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="ZhP-xs-R4z"/>
+                                            <constraint firstAttribute="height" constant="70" id="du7-xe-31X"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="rocket"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="rocketGiftPress:" destination="Vgo-Dy-M5y" eventType="touchUpInside" id="W1V-E8-yyY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTq-qU-AY4">
+                                        <rect key="frame" x="257.66666666666669" y="218.66666666666663" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="nwZ-Ms-hI2"/>
+                                            <constraint firstAttribute="height" constant="70" id="pQQ-rv-Teg"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="helicopter"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="helicopterGiftPress:" destination="Vgo-Dy-M5y" eventType="touchUpInside" id="okh-xR-bIO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRr-Zz-lz0">
+                                        <rect key="frame" x="337" y="8.0000000000000018" width="45" height="30.666666666666671"/>
+                                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="clear" catalog="system"/>
+                                        <connections>
+                                            <action selector="quitButtonPress:" destination="uCf-Fw-bvu" eventType="touchUpInside" id="sTc-ok-rPn"/>
+                                            <action selector="quitSendGiftView:" destination="Vgo-Dy-M5y" eventType="touchUpInside" id="mmj-Fr-VBr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6i-Ck-sV7">
+                                        <rect key="frame" x="62.666666666666657" y="62.666666666666629" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Rkz-FQ-FQi"/>
+                                            <constraint firstAttribute="width" constant="70" id="t1V-cF-Xcu"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <backgroundConfiguration key="background" image="car"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="carGiftPress:" destination="Vgo-Dy-M5y" eventType="touchUpInside" id="eC4-bH-X7f"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100鑽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4qQ-6K-pI2">
+                                        <rect key="frame" x="74.666666666666671" y="142.66666666666663" width="46" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500鑽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwx-wV-Obe">
+                                        <rect key="frame" x="268.66666666666669" y="142.66666666666663" width="48" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000鑽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="djo-KB-14D">
+                                        <rect key="frame" x="263" y="298.66666666666663" width="59" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000鑽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBt-D2-R2d">
+                                        <rect key="frame" x="69.666666666666671" y="298.66666666666663" width="56" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="djo-KB-14D" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="1.5" id="2Ol-Gz-sUx"/>
+                                    <constraint firstItem="fRr-Zz-lz0" firstAttribute="top" secondItem="0Ht-Wz-5fg" secondAttribute="top" constant="8" id="5Mg-s8-BtL"/>
+                                    <constraint firstItem="Mwx-wV-Obe" firstAttribute="top" secondItem="fCw-j8-cYR" secondAttribute="bottom" constant="10" id="B5V-Aq-LoJ"/>
+                                    <constraint firstItem="aDj-kE-oMx" firstAttribute="centerY" secondItem="0Ht-Wz-5fg" secondAttribute="centerY" multiplier="1.3" id="Fjn-w8-o3P"/>
+                                    <constraint firstItem="HBt-D2-R2d" firstAttribute="top" secondItem="aDj-kE-oMx" secondAttribute="bottom" constant="10" id="Kny-hk-LNK"/>
+                                    <constraint firstItem="Mwx-wV-Obe" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="1.5" id="LFs-xl-dZQ"/>
+                                    <constraint firstItem="aTq-qU-AY4" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="1.5" id="RoP-BV-F9x"/>
+                                    <constraint firstAttribute="width" secondItem="0Ht-Wz-5fg" secondAttribute="height" multiplier="1:1" id="WdV-5U-Tny"/>
+                                    <constraint firstItem="Q6i-Ck-sV7" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="0.5" id="XWp-vc-IVR"/>
+                                    <constraint firstItem="aTq-qU-AY4" firstAttribute="centerY" secondItem="0Ht-Wz-5fg" secondAttribute="centerY" multiplier="1.3" id="ZLk-DU-Kgo"/>
+                                    <constraint firstItem="4qQ-6K-pI2" firstAttribute="top" secondItem="Q6i-Ck-sV7" secondAttribute="bottom" constant="10" id="gNf-n0-w2v"/>
+                                    <constraint firstItem="aDj-kE-oMx" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="0.5" id="jeN-lK-stS"/>
+                                    <constraint firstItem="fCw-j8-cYR" firstAttribute="centerY" secondItem="0Ht-Wz-5fg" secondAttribute="centerY" multiplier="0.5" id="mZj-td-9RV"/>
+                                    <constraint firstAttribute="trailing" secondItem="fRr-Zz-lz0" secondAttribute="trailing" constant="8" id="mz2-gB-aJ4"/>
+                                    <constraint firstItem="fCw-j8-cYR" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="1.5" id="oSR-FW-fXg"/>
+                                    <constraint firstItem="4qQ-6K-pI2" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="0.5" id="sxt-z2-Z4T"/>
+                                    <constraint firstItem="Q6i-Ck-sV7" firstAttribute="centerY" secondItem="0Ht-Wz-5fg" secondAttribute="centerY" multiplier="0.5" id="tlG-Pu-58M"/>
+                                    <constraint firstItem="djo-KB-14D" firstAttribute="top" secondItem="aTq-qU-AY4" secondAttribute="bottom" constant="10" id="v7D-nP-c5O"/>
+                                    <constraint firstItem="HBt-D2-R2d" firstAttribute="centerX" secondItem="0Ht-Wz-5fg" secondAttribute="centerX" multiplier="0.5" id="xOz-5q-cuh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8ki-dg-FEF"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Ht-Wz-5fg" firstAttribute="trailing" secondItem="8ki-dg-FEF" secondAttribute="trailing" id="UaA-4X-DNd"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ht-Wz-5fg" secondAttribute="bottom" id="oA7-bX-NUE"/>
+                            <constraint firstItem="0Ht-Wz-5fg" firstAttribute="leading" secondItem="8ki-dg-FEF" secondAttribute="leading" id="roQ-Ar-WNj"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBo-KU-twV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916.92307692307691" y="1960.6635071090047"/>
         </scene>
         <!--會員登入-->
         <scene sceneID="6Fc-Mn-jb0">
@@ -1038,16 +1191,21 @@
     </scenes>
     <resources>
         <image name="btnBEdit" width="41" height="41"/>
+        <image name="car" width="1024" height="683"/>
         <image name="clear" catalog="system" width="128" height="114"/>
+        <image name="helicopter" width="800" height="600"/>
         <image name="logout" width="23" height="19"/>
         <image name="picPersonal" width="112" height="112"/>
+        <image name="rocket" width="656" height="985"/>
         <image name="send" width="22" height="22"/>
+        <image name="sendGift" width="40" height="40"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <image name="tabHome" width="27" height="27"/>
         <image name="tabPersonal" width="27" height="27"/>
         <image name="tabSearch" width="27" height="27"/>
         <image name="topPic" width="30" height="30"/>
         <image name="un_check" width="50" height="50"/>
+        <image name="yacht" width="656" height="342"/>
         <namedColor name="color1">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
