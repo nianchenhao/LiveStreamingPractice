@@ -76,6 +76,7 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         }
     }
     
+    // MARK: - @IBAction
     @IBAction func editAvatarImage(_ sender: UIButton) {
         let controller = UIAlertController(title: "", message: NSLocalizedString("EditAvatar", comment: "編輯頭像"), preferredStyle: .actionSheet)
         
@@ -143,19 +144,7 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         }
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
-            return
-        }
-        avatorImage.image = image
-        uploadToCloud(img: image)
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
+    // MARK: - Function
     func uploadToCloud(img: UIImage) {
         if Auth.auth().currentUser != nil {
             let user = Auth.auth().currentUser
@@ -175,6 +164,22 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
             }
         }
     }
+    
+    // MARK: - 設定ImagePickerController
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        avatorImage.image = image
+        uploadToCloud(img: image)
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     //    func downloadImage() {
     //        let fileReference = storage.child("userImage/avatorImage.jpg")

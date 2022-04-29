@@ -121,8 +121,10 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
             let streamerAvatar = streamers[indexPath.row].head_photo
             let streamerNickname = streamers[indexPath.row].nickname
             let streamerOnlineViewers = streamers[indexPath.row].online_num
-            
-            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers)
+            let streamerTitle = streamers[indexPath.row].stream_title
+            let tags = streamers[indexPath.row].tags
+
+            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
             
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true, completion: nil)

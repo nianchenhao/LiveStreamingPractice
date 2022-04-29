@@ -29,6 +29,7 @@ class SetAvatorVC: UIViewController, UIImagePickerControllerDelegate & UINavigat
         resetUIElement()
     }
     
+    // MARK: - @IBAction
     @IBAction func cameraButtonPress(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.sourceType = .camera

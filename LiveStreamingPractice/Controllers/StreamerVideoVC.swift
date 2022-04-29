@@ -16,6 +16,8 @@ import Toast
 
 class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
+//    static let shared = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerVideoVC") as! StreamerVideoVC
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatTextField: UITextField!
     @IBOutlet weak var quitButton: UIButton!
@@ -30,8 +32,6 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var streamerNicknameLabel: UILabel!
     @IBOutlet weak var streamerOnlineViewersLabel: UILabel!
     
-    
-    
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
     var webSocket: URLSessionWebSocketTask?
@@ -45,6 +45,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var streamerAvatar: String?
     var streamerNickname: String?
     var streamerOnlineViewers: Int?
+    var streamerTitle: String?
+    var streamerTags: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,15 +104,6 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         checkFollow()
     }
     
-    public func configure(head_photo: String?, nickname: String?, online_num: Int?) {
-        if head_photo != nil, nickname != nil, online_num != nil {
-            self.streamerAvatar = head_photo
-            self.streamerNickname = nickname
-            self.streamerOnlineViewers = online_num
-        }
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         addKeyboardObserver()
         fetchStreamerAvatar()
@@ -156,6 +149,17 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         })
     }
     
+    public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: String?) {
+        if head_photo != nil, nickname != nil, online_num != nil, stream_title != nil, tags != nil {
+            self.streamerAvatar = head_photo
+            self.streamerNickname = nickname
+            self.streamerOnlineViewers = online_num
+            self.streamerTitle = stream_title
+            self.streamerTags = tags
+        }
+        
+    }
+    
     // MARK: - @IBAction
     @IBAction func sendGiftPress(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC")
@@ -164,9 +168,11 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     @IBAction func streamerInfoPress(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerInfoVC")
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerInfoVC") as? StreamerInfoVC {
+            vc.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: streamerTags)
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true)
+        }
     }
     
     @IBAction func sendChat(_ sender: UIButton) {

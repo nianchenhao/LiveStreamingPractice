@@ -34,6 +34,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         collectionView.frame = CGRect(x: 0, y: view.safeAreaInsets.top + 55, width: view.frame.size.width, height: view.frame.size.height - 55)
     }
     
+    // MARK: - Function
     func fetchPhotos() {
         guard let url = Bundle.main.url(forResource: "Streamers", withExtension: "json") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -190,12 +191,40 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         if let controller = storyboard?.instantiateViewController(withIdentifier: "StreamerVideoVC") as? StreamerVideoVC {
+            if streamersResult.count == 0 {
+                let streamerAvatar = streamers[indexPath.row].head_photo
+                let streamerNickname = streamers[indexPath.row].nickname
+                let streamerOnlineViewers = streamers[indexPath.row].online_num
+                let streamerTitle = streamers[indexPath.row].stream_title
+                let tags = streamers[indexPath.row].tags
+                
+                controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+            } else {
+                if indexPath.section == 0 {
+                    let streamerAvatar = streamersResult[indexPath.row].head_photo
+                    let streamerNickname = streamersResult[indexPath.row].nickname
+                    let streamerOnlineViewers = streamersResult[indexPath.row].online_num
+                    let streamerTitle = streamers[indexPath.row].stream_title
+                    let tags = streamersResult[indexPath.row].tags
+                    
+                    controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+                } else {
+                    let streamerAvatar = streamers[indexPath.row].head_photo
+                    let streamerNickname = streamers[indexPath.row].nickname
+                    let streamerOnlineViewers = streamers[indexPath.row].online_num
+                    let streamerTitle = streamers[indexPath.row].stream_title
+                    let tags = streamers[indexPath.row].tags
+                    
+                    controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+                }
+            }
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true, completion: nil)
         }
         print("Selected section \(indexPath.section) and row \(indexPath.row)")
     }
     
+    // MARK: - 設定Collection View Layout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let bounds = collectionView.bounds
         let heightVal = self.view.frame.height
@@ -216,6 +245,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         return UIEdgeInsets(top: 5 , left: 5, bottom: 5, right: 5)
     }
     
+    // MARK: - 設定Collection View Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
@@ -238,6 +268,7 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         return UICollectionReusableView()
     }
     
+    // MARK: - 滾動收鍵盤
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }

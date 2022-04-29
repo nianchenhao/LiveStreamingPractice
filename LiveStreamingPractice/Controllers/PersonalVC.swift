@@ -45,6 +45,7 @@ class PersonalVC: UIViewController {
         view.endEditing(true)
     }
     
+    // MARK: - @IBAction
     @IBAction func rememberTapped(_ sender: UIButton) {
         if agreeIconClick == false {
             if let image = UIImage(named: "check") {
@@ -90,6 +91,7 @@ class PersonalVC: UIViewController {
         }
     }
     
+    // MARK: - Function
     func checkAndAdd() {
         if UserDefaults.standard.string(forKey: "rememberMe") == "1" {
             if let image = UIImage(named: "check") {

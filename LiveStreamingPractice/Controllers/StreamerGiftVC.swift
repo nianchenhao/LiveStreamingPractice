@@ -16,10 +16,10 @@ class StreamerGiftVC: UIViewController {
 
     }
     
+    // MARK: - IBAction
     @IBAction func quitSendGiftView(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
     
     @IBAction func carGiftPress(_ sender: UIButton) {
         showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "carGift")
@@ -37,6 +37,7 @@ class StreamerGiftVC: UIViewController {
         showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "helicopterGift")
     }
     
+    // MARK: - Function
     func showAlert(title: String, message: String, name: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "買下去", style: .default, handler: { [self] alertAction in

@@ -53,6 +53,7 @@ class RegisterVC: UIViewController {
         view.endEditing(true)
     }
     
+    // MARK: - @IBAction
     @IBAction func signUp(_ sender: UIButton) {
         
         let email = emailTextField.text ?? ""
@@ -107,6 +108,7 @@ class RegisterVC: UIViewController {
         }
     }
     
+    // MARK: - Function
     func resetUIElement() {
         let backItem = UIBarButtonItem(
             image: UIImage(named: "titlebarBack")?.withRenderingMode(.alwaysOriginal),

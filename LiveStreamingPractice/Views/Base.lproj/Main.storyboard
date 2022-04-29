@@ -681,7 +681,11 @@
                     </view>
                     <connections>
                         <outlet property="followButton" destination="R2r-Bv-W5o" id="243-eI-tyB"/>
+                        <outlet property="streamerAvatarImage" destination="sH7-RK-w6d" id="qyP-9P-C3M"/>
                         <outlet property="streamerInfoView" destination="va3-6j-0Hi" id="UqJ-HH-IEL"/>
+                        <outlet property="streamerNicknameLabel" destination="v7k-IZ-nbq" id="LRR-sz-SU0"/>
+                        <outlet property="streamerTagsLabel" destination="R3S-4p-DAn" id="odk-zd-eSe"/>
+                        <outlet property="streamerTitleLabel" destination="Tyd-Jg-BxT" id="AZH-LT-Gsq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GLi-JV-6N8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
