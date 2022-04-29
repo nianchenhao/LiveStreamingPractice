@@ -51,6 +51,7 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         collectionView.reloadData()
     }
     
+    // MARK: - IBAction
     @IBAction func toggleDarkMode(_ sender: UISwitch) {
         if #available(iOS 13.0, *) {
             let appDelegate = UIApplication.shared.windows.first
@@ -67,6 +68,7 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         }
     }
     
+    // MARK: - Function
     func fetchPhotos() {
         guard let url = Bundle.main.url(forResource: "Streamers", withExtension: "json") else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -116,6 +118,12 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         if let controller = storyboard?.instantiateViewController(withIdentifier: "StreamerVideoVC") as? StreamerVideoVC {
+            let streamerAvatar = streamers[indexPath.row].head_photo
+            let streamerNickname = streamers[indexPath.row].nickname
+            let streamerOnlineViewers = streamers[indexPath.row].online_num
+            
+            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers)
+            
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true, completion: nil)
         }

@@ -26,6 +26,11 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var streamerView: UIView!
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var sendGiftButton: UIButton!
+    @IBOutlet weak var streamerAvatarButton: UIButton!
+    @IBOutlet weak var streamerNicknameLabel: UILabel!
+    @IBOutlet weak var streamerOnlineViewersLabel: UILabel!
+    
+    
     
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
@@ -37,7 +42,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var animationView: AnimationView?
     var follow = false
     let userDefaults = UserDefaults()
-    
+    var streamerAvatar: String?
+    var streamerNickname: String?
+    var streamerOnlineViewers: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +64,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         shareButton.layer.cornerRadius = shareButton.frame.width / 2
         streamerView.layer.cornerRadius = 20
         followButton.layer.cornerRadius = followButton.frame.width / 2
+        streamerAvatarButton.layer.cornerRadius = streamerAvatarButton.frame.width / 2
+        streamerAvatarButton.clipsToBounds = true
         
         let placeholder = chatTextField.placeholder ?? ""
         chatTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
@@ -93,9 +102,20 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         checkFollow()
     }
     
+    public func configure(head_photo: String?, nickname: String?, online_num: Int?) {
+        if head_photo != nil, nickname != nil, online_num != nil {
+            self.streamerAvatar = head_photo
+            self.streamerNickname = nickname
+            self.streamerOnlineViewers = online_num
+        }
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         addKeyboardObserver()
-        
+        fetchStreamerAvatar()
+        fetchStreamerNickname()
+        fetchStreamerOnlineViewers()
         handle = Auth.auth().addStateDidChangeListener({ auth, user in
             
             //檢查是否登入狀態
@@ -136,6 +156,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         })
     }
     
+    // MARK: - @IBAction
     @IBAction func sendGiftPress(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC")
         vc.modalPresentationStyle = .overFullScreen
@@ -212,6 +233,29 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         controller.addAction(cancelAction)
         controller.addAction(quitAction)
         present(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: - Function
+    func fetchStreamerAvatar() {
+        guard let streamerAvatar = streamerAvatar else { return }
+        guard let url = URL(string: streamerAvatar) else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            let image = UIImage(data: data)
+            streamerAvatarButton.setImage(image, for: .normal)
+        } catch {
+            print("image is error")
+        }
+    }
+    
+    func fetchStreamerNickname() {
+        guard let streamerNickname = streamerNickname else { return }
+        streamerNicknameLabel.text = streamerNickname
+    }
+    
+    func fetchStreamerOnlineViewers() {
+        guard let streamerOnlineViewers = streamerOnlineViewers else { return }
+        streamerOnlineViewersLabel.text = String(streamerOnlineViewers) + "人"
     }
     
     func checkFollow() {

@@ -464,12 +464,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3On-OW-3tl">
                                 <rect key="frame" x="126" y="64.333333333333329" width="138" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcA-I3-5hu">
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcA-I3-5hu">
                                         <rect key="frame" x="5" y="5" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="gcA-I3-5hu" secondAttribute="height" id="9nW-2D-Ysk"/>
+                                            <constraint firstAttribute="height" constant="30" id="147-wt-Fhs"/>
+                                            <constraint firstAttribute="width" constant="30" id="G0b-g8-Lju"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="topPic"/>
+                                        <state key="normal" image="topPic"/>
                                         <connections>
                                             <action selector="streamerInfoPress:" destination="Und-ND-dul" eventType="touchUpInside" id="sEh-Pm-DGw"/>
                                         </connections>
@@ -558,6 +559,9 @@
                         <outlet property="sendButton" destination="DCH-UF-Lm5" id="wl4-bU-Kkw"/>
                         <outlet property="sendGiftButton" destination="534-ZH-XRw" id="goX-e0-BbB"/>
                         <outlet property="shareButton" destination="XAb-ti-S3l" id="Lx9-8p-OSO"/>
+                        <outlet property="streamerAvatarButton" destination="gcA-I3-5hu" id="rpj-9t-riy"/>
+                        <outlet property="streamerNicknameLabel" destination="1d4-7R-01L" id="wLM-MV-i8r"/>
+                        <outlet property="streamerOnlineViewersLabel" destination="Edv-9L-XR2" id="e57-J3-uBv"/>
                         <outlet property="streamerView" destination="3On-OW-3tl" id="FAG-ck-EFD"/>
                         <outlet property="tableView" destination="0lj-G9-tPE" id="4LN-tv-xaz"/>
                     </connections>
