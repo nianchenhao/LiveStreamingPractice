@@ -679,6 +679,7 @@
                             <constraint firstItem="va3-6j-0Hi" firstAttribute="centerX" secondItem="FEr-cY-8u6" secondAttribute="centerX" id="si0-6r-66O"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hN2-xq-TgP"/>
                     <connections>
                         <outlet property="followButton" destination="R2r-Bv-W5o" id="243-eI-tyB"/>
                         <outlet property="streamerAvatarImage" destination="sH7-RK-w6d" id="qyP-9P-C3M"/>

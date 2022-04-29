@@ -8,6 +8,10 @@
 import UIKit
 import Firebase
 
+protocol StreamerInfoVCDelegate: AnyObject {
+    func followChat()
+}
+
 class StreamerInfoVC: UIViewController {
     
     @IBOutlet weak var streamerInfoView: UIView!
@@ -17,7 +21,7 @@ class StreamerInfoVC: UIViewController {
     @IBOutlet weak var streamerTitleLabel: UILabel!
     @IBOutlet weak var streamerTagsLabel: UILabel!
     
-    
+    weak var delegate: StreamerInfoVCDelegate!
     var follow = false
     let userDefaults = UserDefaults()
     var streamerAvatar: String?
@@ -27,6 +31,7 @@ class StreamerInfoVC: UIViewController {
     var streamerTags: String?
     var key = "訪客"
     var handle: AuthStateDidChangeListenerHandle?
+    var loginStatus = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +47,7 @@ class StreamerInfoVC: UIViewController {
         fetchStreamerTitle()
         fetchStreamerTags()
         
-        handle = Auth.auth().addStateDidChangeListener({ auth, user in
+        handle = Auth.auth().addStateDidChangeListener({ [self] auth, user in
             
             //檢查是否登入狀態
             guard
@@ -52,7 +57,7 @@ class StreamerInfoVC: UIViewController {
             else{
                 return
             }
-            
+            self.loginStatus = true
             let email = user.email
             let emailStr = String(email!)
             let reference = Firestore.firestore().collection("Users")
@@ -95,12 +100,13 @@ class StreamerInfoVC: UIViewController {
     
     
     @IBAction func followButtonPress(_ sender: UIButton) {
-        guard key != "訪客" else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
+        guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
         if follow == false {
             follow = true
             userDefaults.setValue(follow, forKey: "streamerFollow")
             followButton.setTitle("關注中", for: .normal)
             self.view.makeToast("關注成功", position: .center)
+            delegate?.followChat()
             follow = true
         } else {
             follow = false
@@ -165,3 +171,5 @@ class StreamerInfoVC: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+

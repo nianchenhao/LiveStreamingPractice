@@ -47,6 +47,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var streamerOnlineViewers: Int?
     var streamerTitle: String?
     var streamerTags: String?
+    var loginStatus = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,6 +125,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                 return
             }
             
+            self.loginStatus = true
+            
             let email = user.email
             let emailStr = String(email!)
             let reference = Firestore.firestore().collection("Users")
@@ -149,6 +152,14 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         })
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToStreamerInfoVC"{
+//            let vc = segue.destination as? StreamerInfoVC
+//            vc?.delegate = self
+//            vc?.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: streamerTags)
+//        }
+//    }
+    
     public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: String?) {
         if head_photo != nil, nickname != nil, online_num != nil, stream_title != nil, tags != nil {
             self.streamerAvatar = head_photo
@@ -170,6 +181,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBAction func streamerInfoPress(_ sender: UIButton) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerInfoVC") as? StreamerInfoVC {
             vc.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: streamerTags)
+            vc.delegate = self
             vc.modalPresentationStyle = .overFullScreen
             present(vc, animated: true)
         }
@@ -197,7 +209,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     @IBAction func followButtonPress(_ sender: UIButton) {
-        guard key != "訪客" else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
+        guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
             
         if follow == false {
             follow = true
@@ -462,6 +474,12 @@ extension StreamerVideoVC: UITableViewDelegate, UITableViewDataSource {
         self.view.endEditing(true)
     }
     
+}
+
+extension StreamerVideoVC: StreamerInfoVCDelegate {
+    func followChat() {
+        sendFollow()
+    }
 }
 
 // MARK: - 虛擬鍵盤事件處理
