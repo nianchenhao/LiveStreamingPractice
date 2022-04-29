@@ -121,7 +121,16 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             cell.imageView.downloaded(from: completeLink)
             cell.nickNameLabel.text = streamers[indexPath.row].nickname
             cell.streamTitleLabel.text = streamers[indexPath.row].stream_title
-            cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
+//            cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
+            let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
+            if tagArray.count > 1 {
+                cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
+            } else {
+                cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+            }
+            
+            cell.tagsLabel.layer.cornerRadius = 5
+            
             cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
             // Create Attachment
             let imageAttachment = NSTextAttachment()
@@ -144,7 +153,16 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 cell.imageView.downloaded(from: completeLinkResult)
                 cell.nickNameLabel.text = streamersResult[indexPath.row].nickname
                 cell.streamTitleLabel.text = streamersResult[indexPath.row].stream_title
-                cell.tagsLabel.text = "#" + streamersResult[indexPath.row].tags
+//                cell.tagsLabel.text = "#" + streamersResult[indexPath.row].tags
+                let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
+                if tagArray.count > 1 {
+                    cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
+                } else {
+                    cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                }
+                
+                cell.tagsLabel.layer.cornerRadius = 5
+                
                 cell.onlineNumLabel.text = String(streamersResult[indexPath.row].online_num)
                 // Create Attachment
                 let imageAttachment = NSTextAttachment()
@@ -166,7 +184,16 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 cell.imageView.downloaded(from: completeLink)
                 cell.nickNameLabel.text = streamers[indexPath.row].nickname
                 cell.streamTitleLabel.text = streamers[indexPath.row].stream_title
-                cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
+                //                cell.tagsLabel.text = "#" + streamersResult[indexPath.row].tags
+                let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
+                if tagArray.count > 1 {
+                    cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
+                } else {
+                    cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                }
+                
+                cell.tagsLabel.layer.cornerRadius = 5
+                
                 cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
                 // Create Attachment
                 let imageAttachment = NSTextAttachment()
@@ -196,26 +223,26 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 let streamerNickname = streamers[indexPath.row].nickname
                 let streamerOnlineViewers = streamers[indexPath.row].online_num
                 let streamerTitle = streamers[indexPath.row].stream_title
-                let tags = streamers[indexPath.row].tags
+                let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
                 
-                controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+                controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tagArray)
             } else {
                 if indexPath.section == 0 {
                     let streamerAvatar = streamersResult[indexPath.row].head_photo
                     let streamerNickname = streamersResult[indexPath.row].nickname
                     let streamerOnlineViewers = streamersResult[indexPath.row].online_num
                     let streamerTitle = streamers[indexPath.row].stream_title
-                    let tags = streamersResult[indexPath.row].tags
+                    let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
                     
-                    controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+                    controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tagArray)
                 } else {
                     let streamerAvatar = streamers[indexPath.row].head_photo
                     let streamerNickname = streamers[indexPath.row].nickname
                     let streamerOnlineViewers = streamers[indexPath.row].online_num
                     let streamerTitle = streamers[indexPath.row].stream_title
-                    let tags = streamers[indexPath.row].tags
+                    let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
                     
-                    controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+                    controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tagArray)
                 }
             }
             controller.modalPresentationStyle = .fullScreen

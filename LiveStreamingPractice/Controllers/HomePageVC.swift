@@ -100,7 +100,17 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
         cell.imageView.contentMode = .scaleAspectFill
         cell.nickNameLabel.text = streamers[indexPath.row].nickname
         cell.streamTitleLabel.text = streamers[indexPath.row].stream_title
-        cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
+        
+        let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
+        if tagArray.count > 1 {
+            cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
+        } else {
+            cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+        }
+//        cell.tagsLabel.text = "#" + streamers[indexPath.row].tags
+        
+        cell.tagsLabel.layer.cornerRadius = 5
+
         cell.onlineNumLabel.text = String(streamers[indexPath.row].online_num)
         
         let content = NSMutableAttributedString(string: "")
@@ -122,9 +132,16 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
             let streamerNickname = streamers[indexPath.row].nickname
             let streamerOnlineViewers = streamers[indexPath.row].online_num
             let streamerTitle = streamers[indexPath.row].stream_title
-            let tags = streamers[indexPath.row].tags
+//            let tags = streamers[indexPath.row].tags
+            
+            let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
+//            if tagArray.count > 1 {
+//                cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
+//            } else {
+//                cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+//            }
 
-            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tags)
+            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tagArray)
             
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true, completion: nil)

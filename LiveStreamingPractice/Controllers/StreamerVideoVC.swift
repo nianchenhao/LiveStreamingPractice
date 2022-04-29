@@ -46,7 +46,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var streamerNickname: String?
     var streamerOnlineViewers: Int?
     var streamerTitle: String?
-    var streamerTags: String?
+    var streamerTags: [String]?
     var loginStatus = false
     
     override func viewDidLoad() {
@@ -160,7 +160,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
 //        }
 //    }
     
-    public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: String?) {
+    public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: [String]?) {
         if head_photo != nil, nickname != nil, online_num != nil, stream_title != nil, tags != nil {
             self.streamerAvatar = head_photo
             self.streamerNickname = nickname

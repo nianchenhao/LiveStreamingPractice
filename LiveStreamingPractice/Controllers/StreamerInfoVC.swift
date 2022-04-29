@@ -28,7 +28,7 @@ class StreamerInfoVC: UIViewController {
     var streamerNickname: String?
     var streamerOnlineViewers: Int?
     var streamerTitle: String?
-    var streamerTags: String?
+    var streamerTags: [String]?
     var key = "訪客"
     var handle: AuthStateDidChangeListenerHandle?
     var loginStatus = false
@@ -82,7 +82,7 @@ class StreamerInfoVC: UIViewController {
         Auth.auth().removeStateDidChangeListener(handle!)
     }
     
-    public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: String?) {
+    public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: [String]?) {
         if head_photo != nil, nickname != nil, online_num != nil, stream_title != nil, tags != nil {
             self.streamerAvatar = head_photo
             self.streamerNickname = nickname
@@ -142,7 +142,14 @@ class StreamerInfoVC: UIViewController {
     
     func fetchStreamerTags() {
         guard let streamerTags = streamerTags else { return }
-        streamerTagsLabel.text = "#" + streamerTags
+//        streamerTagsLabel.text = "#" + streamerTags
+        if streamerTags.count > 1 {
+            streamerTagsLabel.text = "#\(streamerTags[0])  #\(streamerTags[1])"
+        } else if streamerTags.count == 1 {
+            streamerTagsLabel.text = "#\(streamerTags[0])"
+        } else {
+            streamerTagsLabel.text = ""
+        }
     }
     
     func checkFollow() {
