@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class StreamerInfoVC: UIViewController {
     
@@ -24,6 +25,8 @@ class StreamerInfoVC: UIViewController {
     var streamerOnlineViewers: Int?
     var streamerTitle: String?
     var streamerTags: String?
+    var key = "訪客"
+    var handle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +41,40 @@ class StreamerInfoVC: UIViewController {
         fetchStreamerNickname()
         fetchStreamerTitle()
         fetchStreamerTags()
+        
+        handle = Auth.auth().addStateDidChangeListener({ auth, user in
+            
+            //檢查是否登入狀態
+            guard
+                user != nil,
+                Auth.auth().currentUser != nil,
+                let user = Auth.auth().currentUser
+            else{
+                return
+            }
+            
+            let email = user.email
+            let emailStr = String(email!)
+            let reference = Firestore.firestore().collection("Users")
+            reference.document(emailStr).getDocument { snapshot, error in
+                
+                guard
+                    snapshot != nil,
+                    let snapshotData = snapshot!.data()!["nickName"],
+                    let nameStr = snapshotData as? String
+                else{
+                    return
+                }
+                
+                self.key = "\(nameStr)"
+                print("我的暱稱是\(self.key)")
+                
+            }
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: String?) {
@@ -58,6 +95,7 @@ class StreamerInfoVC: UIViewController {
     
     
     @IBAction func followButtonPress(_ sender: UIButton) {
+        guard key != "訪客" else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
         if follow == false {
             follow = true
             userDefaults.setValue(follow, forKey: "streamerFollow")
@@ -120,4 +158,10 @@ class StreamerInfoVC: UIViewController {
         followButton.setTitle("關注中", for: .normal)
     }
     
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    }
 }

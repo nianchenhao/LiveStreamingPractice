@@ -197,6 +197,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     @IBAction func followButtonPress(_ sender: UIButton) {
+        guard key != "訪客" else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
+            
         if follow == false {
             follow = true
             userDefaults.setValue(follow, forKey: "streamerFollow")
