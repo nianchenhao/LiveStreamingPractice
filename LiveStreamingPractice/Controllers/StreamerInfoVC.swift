@@ -142,13 +142,15 @@ class StreamerInfoVC: UIViewController {
     
     func fetchStreamerTags() {
         guard let streamerTags = streamerTags else { return }
-//        streamerTagsLabel.text = "#" + streamerTags
+        //        streamerTagsLabel.text = "#" + streamerTags
         if streamerTags.count > 1 {
             streamerTagsLabel.text = "#\(streamerTags[0])  #\(streamerTags[1])"
-        } else if streamerTags.count == 1 {
-            streamerTagsLabel.text = "#\(streamerTags[0])"
         } else {
-            streamerTagsLabel.text = ""
+            if streamerTags[0] != "" {
+                streamerTagsLabel.text = "#\(streamerTags)"
+            } else {
+                streamerTagsLabel.text = ""
+            }
         }
     }
     

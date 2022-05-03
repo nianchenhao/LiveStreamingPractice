@@ -173,6 +173,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     // MARK: - @IBAction
     @IBAction func sendGiftPress(_ sender: UIButton) {
+        guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能送主播禮物!") }
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC")
         vc.modalPresentationStyle = .overFullScreen
         present(vc, animated: true)
