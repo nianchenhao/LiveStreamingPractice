@@ -555,10 +555,12 @@
                                     <constraint firstItem="N3o-9i-mnA" firstAttribute="centerY" secondItem="3On-OW-3tl" secondAttribute="centerY" id="u52-n3-dAm"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="粉絲限定～解任務領禮物喔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxC-ey-ab2" customClass="MarqueeLabel" customModule="MarqueeLabel">
-                                <rect key="frame" x="10" y="92" width="83" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="粉絲限定～解任務領禮物喔" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxC-ey-ab2" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                <rect key="frame" x="10" y="92" width="100" height="14.333333333333329"/>
                                 <color key="backgroundColor" red="0.42006021739999999" green="0.41568142180000001" blue="0.41174560789999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="X62-ty-QNH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -567,6 +569,8 @@
                         <viewLayoutGuide key="safeArea" id="cXL-w4-JeY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="oxC-ey-ab2" firstAttribute="top" secondItem="3On-OW-3tl" secondAttribute="bottom" constant="8" id="7yb-CW-MHu"/>
+                            <constraint firstItem="oxC-ey-ab2" firstAttribute="leading" secondItem="cXL-w4-JeY" secondAttribute="leading" constant="10" id="DMH-Bx-rXV"/>
                             <constraint firstItem="534-ZH-XRw" firstAttribute="trailing" secondItem="21K-FQ-R16" secondAttribute="trailing" id="UPR-QG-Zxq"/>
                             <constraint firstItem="cXL-w4-JeY" firstAttribute="bottom" secondItem="Zhf-OR-EiK" secondAttribute="bottom" constant="15" id="Vod-C7-K6x"/>
                             <constraint firstItem="21K-FQ-R16" firstAttribute="top" secondItem="cXL-w4-JeY" secondAttribute="top" id="X9d-cQ-c8b"/>
@@ -1230,6 +1234,11 @@
             <point key="canvasLocation" x="1072" y="507"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="oxC-ey-ab2">
+            <size key="intrinsicContentSize" width="147.33333333333334" height="14.333333333333334"/>
+        </designable>
+    </designables>
     <resources>
         <image name="btnBEdit" width="41" height="41"/>
         <image name="car" width="1024" height="683"/>
