@@ -17,5 +17,6 @@ target 'LiveStreamingPractice' do
   end
 
   pod 'lottie-ios'
+  pod 'MarqueeLabel'
 
 end

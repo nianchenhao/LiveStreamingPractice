@@ -13,6 +13,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import Lottie
 import Toast
+import MarqueeLabel
 
 class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
@@ -32,6 +33,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var streamerNicknameLabel: UILabel!
     @IBOutlet weak var streamerOnlineViewersLabel: UILabel!
     @IBOutlet var chatButton: UIButton!
+    @IBOutlet var announcementLabel: MarqueeLabel!
     
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
@@ -56,6 +58,13 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        
+        announcementLabel.type = .continuous
+        announcementLabel.animationCurve = .easeInOut
+        announcementLabel.fadeLength = 10.0
+        announcementLabel.leadingBuffer = 10.0
+        announcementLabel.trailingBuffer = 20.0
+        announcementLabel.layer.cornerRadius = 10
         
         chatTextField.delegate = self
         chatTextField.isHidden = true
@@ -108,6 +117,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(streamerView)
         view.bringSubviewToFront(sendGiftButton)
         view.bringSubviewToFront(chatButton)
+        view.bringSubviewToFront(announcementLabel)
         
         generateTextMaskForChat()
         checkFollow()

@@ -1,16 +1,20 @@
 PODS:
   - lottie-ios (3.3.0)
+  - MarqueeLabel (4.3.0)
 
 DEPENDENCIES:
   - lottie-ios
+  - MarqueeLabel
 
 SPEC REPOS:
   trunk:
     - lottie-ios
+    - MarqueeLabel
 
 SPEC CHECKSUMS:
   lottie-ios: 6ac74dcc09904798f59b18cb3075c089d76be9ae
+  MarqueeLabel: 02f5ac8fd6877c94564556cb93fa86c70c08baeb
 
-PODFILE CHECKSUM: c2bc68a7a99df6b796a9b2001b5e198dcd4c7e5a
+PODFILE CHECKSUM: ec8567d2833a82e1c312efadeb4e578fd2357bda
 
 COCOAPODS: 1.11.3
