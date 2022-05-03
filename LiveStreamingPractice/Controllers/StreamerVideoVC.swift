@@ -32,6 +32,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var streamerNicknameLabel: UILabel!
     @IBOutlet weak var streamerOnlineViewersLabel: UILabel!
     
+    private var collectionView: UICollectionView?
+    private var data = [VideoModel]()
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
     var webSocket: URLSessionWebSocketTask?
@@ -51,6 +53,24 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for _ in 0..<10 {
+            let model = VideoModel(videoFileName: "hime3", videoFileFormat: "mp4")
+            data.append(model)
+        }
+        
+        
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.height)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView?.register(VideoCollectionViewCell.self, forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
+        collectionView?.isPagingEnabled = true
+        collectionView?.dataSource = self
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
@@ -73,7 +93,19 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         let placeholder = chatTextField.placeholder ?? ""
         chatTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         
-        repeatVideo()
+//        repeatVideo()
+//        let videoURL = Bundle.main.url(forResource: "hime3", withExtension: ".mp4")
+//        let player = AVQueuePlayer()
+//        videoPlayer = player
+//        let item = AVPlayerItem(url: videoURL!)
+//
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = view.bounds
+//        playerLayer.videoGravity = .resizeAspectFill
+//        view.layer.addSublayer(playerLayer)
+//
+//        looper = AVPlayerLooper(player: player, templateItem: item)
+//        self.videoPlayer?.play()
         
         animationView = .init(name: "loveStreamer")
         animationView?.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
@@ -100,7 +132,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(shareButton)
         view.bringSubviewToFront(streamerView)
         view.bringSubviewToFront(sendGiftButton)
-        
+        view.addSubview(collectionView!)
+//        collectionView?.layer.addSublayer(playerLayer)
         generateTextMaskForChat()
         checkFollow()
     }
@@ -150,6 +183,11 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                 }
             }
         })
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView?.frame = view.bounds
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -298,20 +336,20 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         followButton.setTitle("關注中", for: .normal)
     }
     
-    func repeatVideo() {
-        let videoURL = Bundle.main.url(forResource: "hime3", withExtension: ".mp4")
-        let player = AVQueuePlayer()
-        videoPlayer = player
-        let item = AVPlayerItem(url: videoURL!)
-        
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = view.bounds
-        playerLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(playerLayer)
-        
-        looper = AVPlayerLooper(player: player, templateItem: item)
-        self.videoPlayer?.play()
-    }
+//    func repeatVideo() {
+//        let videoURL = Bundle.main.url(forResource: "hime3", withExtension: ".mp4")
+//        let player = AVQueuePlayer()
+//        videoPlayer = player
+//        let item = AVPlayerItem(url: videoURL!)
+//
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = view.bounds
+//        playerLayer.videoGravity = .resizeAspectFill
+//        view.layer.addSublayer(playerLayer)
+//
+//        looper = AVPlayerLooper(player: player, templateItem: item)
+//        self.videoPlayer?.play()
+//    }
     
     func generateTextMaskForChat() {
         let gradientLayer = CAGradientLayer.init()
@@ -541,7 +579,9 @@ extension StreamerVideoVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let model = data[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier, for: indexPath) as! VideoCollectionViewCell
+        cell.configure(with: model)
         return cell
     }
 }

@@ -53,6 +53,8 @@
 		72322EA6281A6AF5007BB54A /* carGift.json in Resources */ = {isa = PBXBuildFile; fileRef = 72322EA2281A6AF5007BB54A /* carGift.json */; };
 		72322EA7281A6AF5007BB54A /* yachtGift.json in Resources */ = {isa = PBXBuildFile; fileRef = 72322EA3281A6AF5007BB54A /* yachtGift.json */; };
 		72FC074728166ABD00A2013B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72FC074928166ABD00A2013B /* Localizable.strings */; };
+		72FE14992820D6730099C245 /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE14982820D6730099C245 /* VideoCollectionViewCell.swift */; };
+		72FE149B2820D7630099C245 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72FE149A2820D7630099C245 /* Video.swift */; };
 		8CA6DF2B351CCABA87D7DFD5 /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1E889AC152B6DA6930872A /* Pods_LiveStreamingPractice_LiveStreamingPracticeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +127,8 @@
 		72FC07922816A4B000A2013B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
 		72FC07932816A4B000A2013B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		72FC07942816A4B100A2013B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		72FE14982820D6730099C245 /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
+		72FE149A2820D7630099C245 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		7A742008DC5B4AC47BA7C75C /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		89C007EA241449C7B9CF46E3 /* Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; path = "Target Support Files/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests/Pods-LiveStreamingPractice-LiveStreamingPracticeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		97BD363E8A1F5C2B7411FEBF /* Pods_LiveStreamingPractice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveStreamingPractice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +245,7 @@
 				4B4B3DF827F1B5A1008B1652 /* Info.plist */,
 				4BC6CE5827F2B0C000964EA2 /* GoogleService-Info.plist */,
 				4BC6CEFE27F5893500964EA2 /* Streamers.json */,
+				72FE14982820D6730099C245 /* VideoCollectionViewCell.swift */,
 			);
 			path = LiveStreamingPractice;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			children = (
 				4BC6CED727F5730000964EA2 /* Streamers.swift */,
 				4B2831372807EE9B00BEFA76 /* Chatroom.swift */,
+				72FE149A2820D7630099C245 /* Video.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -584,12 +590,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72FE14992820D6730099C245 /* VideoCollectionViewCell.swift in Sources */,
 				4BC6CED827F5730000964EA2 /* Streamers.swift in Sources */,
 				72322E9F281A610D007BB54A /* StreamerGiftVC.swift in Sources */,
 				4BC6CEAF27F4349100964EA2 /* MemberInfoVC.swift in Sources */,
 				4BC6CF0127F68BB400964EA2 /* SearchCollectionViewCell.swift in Sources */,
 				4B4B3DEF27F1B59D008B1652 /* StreamerVideoVC.swift in Sources */,
 				4B7B5C682803D3D9002CFC89 /* PasswordTextField.swift in Sources */,
+				72FE149B2820D7630099C245 /* Video.swift in Sources */,
 				4BC6CEAC27F409C700964EA2 /* CustomCollectionViewCell.swift in Sources */,
 				72322E9D281A293C007BB54A /* StreamerInfoVC.swift in Sources */,
 				4BC6CE5527F298D600964EA2 /* SearchVC.swift in Sources */,
