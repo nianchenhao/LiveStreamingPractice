@@ -16,7 +16,7 @@ import Toast
 
 class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
-//    static let shared = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerVideoVC") as! StreamerVideoVC
+    //    static let shared = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerVideoVC") as! StreamerVideoVC
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chatTextField: UITextField!
@@ -152,13 +152,13 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         })
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToStreamerInfoVC"{
-//            let vc = segue.destination as? StreamerInfoVC
-//            vc?.delegate = self
-//            vc?.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: streamerTags)
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "goToStreamerInfoVC"{
+    //            let vc = segue.destination as? StreamerInfoVC
+    //            vc?.delegate = self
+    //            vc?.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: streamerTags)
+    //        }
+    //    }
     
     public func configure(head_photo: String?, nickname: String?, online_num: Int?, stream_title: String?, tags: [String]?) {
         if head_photo != nil, nickname != nil, online_num != nil, stream_title != nil, tags != nil {
@@ -211,7 +211,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     @IBAction func followButtonPress(_ sender: UIButton) {
         guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
-            
+        
         if follow == false {
             follow = true
             userDefaults.setValue(follow, forKey: "streamerFollow")
@@ -532,17 +532,6 @@ extension StreamerVideoVC: UITextFieldDelegate {
             sendChat(sendButton)
         }
         return true
-    }
-}
-
-extension StreamerVideoVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        return cell
     }
 }
 
