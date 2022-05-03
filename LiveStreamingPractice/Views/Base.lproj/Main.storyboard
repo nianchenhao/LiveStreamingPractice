@@ -434,33 +434,69 @@
                                             <action selector="sendChat:" destination="Und-ND-dul" eventType="touchUpInside" id="0Zx-FS-sl9"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igf-qP-oht">
+                                        <rect key="frame" x="10" y="208" width="47" height="47"/>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="gCT-eS-pr1"/>
+                                            <constraint firstAttribute="width" constant="47" id="uq9-1l-4Df"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="message.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="btnShowKeyboardClicked:" destination="Und-ND-dul" eventType="touchUpInside" id="C89-gE-jWj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="534-ZH-XRw">
+                                        <rect key="frame" x="313" y="208" width="47" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="47" id="H2S-6W-0xV"/>
+                                            <constraint firstAttribute="height" constant="47" id="fSQ-0v-Zna"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="sendGift">
+                                            <backgroundConfiguration key="background"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="sendGiftPress:" destination="Und-ND-dul" eventType="touchUpInside" id="lDa-Nh-7D2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-ti-S3l">
+                                        <rect key="frame" x="256" y="208" width="47" height="47"/>
+                                        <color key="backgroundColor" red="0.17246696349999999" green="0.1687763333" blue="0.16078311200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="OTF-zB-OZ7"/>
+                                            <constraint firstAttribute="width" constant="47" id="sWH-iV-TpM"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
+                                        <connections>
+                                            <action selector="shareButtonPress:" destination="Und-ND-dul" eventType="touchUpInside" id="2b5-1f-Soz"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Igf-qP-oht" secondAttribute="bottom" constant="10" id="3zn-kd-3kP"/>
+                                    <constraint firstAttribute="bottom" secondItem="XAb-ti-S3l" secondAttribute="bottom" constant="10" id="4dj-bb-DiM"/>
                                     <constraint firstItem="0lj-G9-tPE" firstAttribute="top" secondItem="Zhf-OR-EiK" secondAttribute="top" id="4tr-Bk-3Fv"/>
                                     <constraint firstItem="2qP-9K-vDQ" firstAttribute="leading" secondItem="Zhf-OR-EiK" secondAttribute="leading" constant="10" id="5hO-36-W2S"/>
                                     <constraint firstAttribute="bottom" secondItem="DCH-UF-Lm5" secondAttribute="bottom" constant="10" id="LJR-vn-1H2"/>
+                                    <constraint firstItem="534-ZH-XRw" firstAttribute="top" secondItem="0lj-G9-tPE" secondAttribute="bottom" constant="10" id="LPL-ek-YiQ"/>
                                     <constraint firstAttribute="bottom" secondItem="2qP-9K-vDQ" secondAttribute="bottom" constant="10" id="MgY-6C-ZS6"/>
                                     <constraint firstItem="DCH-UF-Lm5" firstAttribute="leading" secondItem="2qP-9K-vDQ" secondAttribute="trailing" constant="10" id="bao-hF-qgD"/>
+                                    <constraint firstAttribute="bottom" secondItem="534-ZH-XRw" secondAttribute="bottom" constant="10" id="eET-3r-IGU"/>
                                     <constraint firstAttribute="trailing" secondItem="0lj-G9-tPE" secondAttribute="trailing" id="h7X-pD-hd7"/>
+                                    <constraint firstItem="534-ZH-XRw" firstAttribute="leading" secondItem="2qP-9K-vDQ" secondAttribute="trailing" constant="10" id="k4P-ex-HvD"/>
                                     <constraint firstItem="2qP-9K-vDQ" firstAttribute="height" secondItem="DCH-UF-Lm5" secondAttribute="height" id="neO-kW-Rg6"/>
                                     <constraint firstItem="DCH-UF-Lm5" firstAttribute="top" secondItem="0lj-G9-tPE" secondAttribute="bottom" constant="10" id="rjN-oz-yyk"/>
+                                    <constraint firstItem="534-ZH-XRw" firstAttribute="leading" secondItem="XAb-ti-S3l" secondAttribute="trailing" constant="10" id="wuK-qH-0Gf"/>
+                                    <constraint firstItem="Igf-qP-oht" firstAttribute="leading" secondItem="Zhf-OR-EiK" secondAttribute="leading" constant="10" id="wx6-km-Xia"/>
                                     <constraint firstItem="0lj-G9-tPE" firstAttribute="leading" secondItem="Zhf-OR-EiK" secondAttribute="leading" id="yC3-MZ-j6v"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XAb-ti-S3l">
-                                <rect key="frame" x="20.000000000000004" y="64" width="44.333333333333343" height="44.333333333333343"/>
-                                <color key="backgroundColor" red="0.17246696349999999" green="0.1687763333" blue="0.16078311200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="XAb-ti-S3l" secondAttribute="height" multiplier="1:1" id="o5T-3Q-clZ"/>
-                                </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="square.and.arrow.up" catalog="system"/>
-                                <connections>
-                                    <action selector="shareButtonPress:" destination="Und-ND-dul" eventType="touchUpInside" id="2b5-1f-Soz"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3On-OW-3tl">
                                 <rect key="frame" x="126" y="64.333333333333329" width="138" height="40"/>
                                 <subviews>
@@ -520,25 +556,12 @@
                                     <constraint firstItem="N3o-9i-mnA" firstAttribute="centerY" secondItem="3On-OW-3tl" secondAttribute="centerY" id="u52-n3-dAm"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="534-ZH-XRw">
-                                <rect key="frame" x="306" y="131" width="64" height="54"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="sendGift">
-                                    <backgroundConfiguration key="background"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="sendGiftPress:" destination="Und-ND-dul" eventType="touchUpInside" id="lDa-Nh-7D2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cXL-w4-JeY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cXL-w4-JeY" firstAttribute="trailing" secondItem="534-ZH-XRw" secondAttribute="trailing" constant="20" id="5Y6-9w-KJG"/>
-                            <constraint firstItem="XAb-ti-S3l" firstAttribute="leading" secondItem="cXL-w4-JeY" secondAttribute="leading" constant="20" id="DMw-YJ-uZj"/>
-                            <constraint firstItem="534-ZH-XRw" firstAttribute="trailing" secondItem="21K-FQ-R16" secondAttribute="trailing" id="Hzm-1h-HTg"/>
+                            <constraint firstItem="534-ZH-XRw" firstAttribute="trailing" secondItem="21K-FQ-R16" secondAttribute="trailing" id="UPR-QG-Zxq"/>
                             <constraint firstItem="cXL-w4-JeY" firstAttribute="bottom" secondItem="Zhf-OR-EiK" secondAttribute="bottom" constant="15" id="Vod-C7-K6x"/>
-                            <constraint firstItem="XAb-ti-S3l" firstAttribute="top" secondItem="cXL-w4-JeY" secondAttribute="top" constant="20" id="Wsy-4p-TC8"/>
                             <constraint firstItem="21K-FQ-R16" firstAttribute="top" secondItem="cXL-w4-JeY" secondAttribute="top" constant="20" id="X9d-cQ-c8b"/>
                             <constraint firstItem="Zhf-OR-EiK" firstAttribute="height" secondItem="cXL-w4-JeY" secondAttribute="height" multiplier="0.345953" id="YAp-kZ-Ika"/>
                             <constraint firstItem="Zhf-OR-EiK" firstAttribute="leading" secondItem="cXL-w4-JeY" secondAttribute="leading" constant="10" id="bXr-KK-XrS"/>
@@ -547,10 +570,10 @@
                             <constraint firstItem="cXL-w4-JeY" firstAttribute="trailing" secondItem="Zhf-OR-EiK" secondAttribute="trailing" constant="10" id="lYI-AC-SA0"/>
                             <constraint firstItem="3On-OW-3tl" firstAttribute="centerX" secondItem="ntb-bV-FCP" secondAttribute="centerX" id="qJs-IF-I0L"/>
                             <constraint firstItem="DCH-UF-Lm5" firstAttribute="trailing" secondItem="21K-FQ-R16" secondAttribute="trailing" id="x6a-of-XDf"/>
-                            <constraint firstItem="534-ZH-XRw" firstAttribute="top" secondItem="21K-FQ-R16" secondAttribute="bottom" constant="20" id="xsS-3X-DKj"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chatButton" destination="Igf-qP-oht" id="Tl1-zt-Z6v"/>
                         <outlet property="chatTextField" destination="2qP-9K-vDQ" id="8cp-L2-NZP"/>
                         <outlet property="chatView" destination="Zhf-OR-EiK" id="kWM-MS-rro"/>
                         <outlet property="chatViewLayoutConstraint" destination="Vod-C7-K6x" id="INP-6m-5hv"/>
@@ -568,7 +591,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SiN-1o-A38" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-635" y="1961"/>
+            <point key="canvasLocation" x="-635.38461538461536" y="1960.6635071090047"/>
         </scene>
         <!--Streamer InfoVC-->
         <scene sceneID="xd3-6S-lEf">
@@ -1204,6 +1227,7 @@
         <image name="clear" catalog="system" width="128" height="114"/>
         <image name="helicopter" width="800" height="600"/>
         <image name="logout" width="23" height="19"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="picPersonal" width="112" height="112"/>
         <image name="rocket" width="656" height="985"/>
         <image name="send" width="22" height="22"/>

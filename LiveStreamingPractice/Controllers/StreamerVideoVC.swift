@@ -31,6 +31,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var streamerAvatarButton: UIButton!
     @IBOutlet weak var streamerNicknameLabel: UILabel!
     @IBOutlet weak var streamerOnlineViewersLabel: UILabel!
+    @IBOutlet var chatButton: UIButton!
     
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
@@ -57,6 +58,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         tableView.showsVerticalScrollIndicator = false
         
         chatTextField.delegate = self
+        chatTextField.isHidden = true
+        sendButton.isHidden = true
+        
+        chatButton.layer.cornerRadius = chatButton.frame.width / 2
+//        let customInputAccessoryView = CustomView()
+//        chatTextField.inputAccessoryView = customInputAccessoryView
         
         quitButton.layer.cornerRadius = quitButton.frame.width / 2
         quitButton.layer.masksToBounds = true
@@ -100,6 +107,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(shareButton)
         view.bringSubviewToFront(streamerView)
         view.bringSubviewToFront(sendGiftButton)
+        view.bringSubviewToFront(chatButton)
         
         generateTextMaskForChat()
         checkFollow()
@@ -172,6 +180,16 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     // MARK: - @IBAction
+    
+    @IBAction func btnShowKeyboardClicked(_ sender: UIButton) {
+        chatTextField.isHidden = false
+        sendButton.isHidden = false
+        chatButton.isHidden = true
+        shareButton.isHidden = true
+        sendGiftButton.isHidden = true
+        chatTextField.becomeFirstResponder()
+    }
+    
     @IBAction func sendGiftPress(_ sender: UIButton) {
         guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能送主播禮物!") }
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC")
@@ -511,6 +529,11 @@ extension StreamerVideoVC {
     @objc func keyboardWillHide(notification: Notification) {
         // 讓view回復原位
         chatViewLayoutConstraint.constant = 15
+        chatButton.isHidden = false
+        sendButton.isHidden = true
+        chatTextField.isHidden = true
+        shareButton.isHidden = false
+        sendGiftButton.isHidden = false
     }
     
     // 當畫面消失時取消監控鍵盤開闔狀態
