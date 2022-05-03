@@ -10,6 +10,7 @@ import Firebase
 
 protocol StreamerInfoVCDelegate: AnyObject {
     func followChat()
+    func sendStatus(text: String)
 }
 
 class StreamerInfoVC: UIViewController {
@@ -107,12 +108,14 @@ class StreamerInfoVC: UIViewController {
             followButton.setTitle("關注中", for: .normal)
             self.view.makeToast("關注成功", position: .center)
             delegate?.followChat()
+            delegate?.sendStatus(text: "關注中")
             follow = true
         } else {
             follow = false
             userDefaults.setValue(follow, forKey: "streamerFollow")
             followButton.setTitle("關注", for: .normal)
             self.view.makeToast("取消關注", position: .center)
+            delegate?.sendStatus(text: "關注")
         }
     }
     
@@ -147,7 +150,7 @@ class StreamerInfoVC: UIViewController {
             streamerTagsLabel.text = "#\(streamerTags[0])  #\(streamerTags[1])"
         } else {
             if streamerTags[0] != "" {
-                streamerTagsLabel.text = "#\(streamerTags)"
+                streamerTagsLabel.text = "#\(streamerTags[0])"
             } else {
                 streamerTagsLabel.text = ""
             }

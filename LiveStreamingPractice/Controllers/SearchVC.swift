@@ -126,7 +126,11 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
             if tagArray.count > 1 {
                 cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
             } else {
-                cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                if tagArray[0] != "" {
+                    cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                } else {
+                    cell.tagsLabel.text = ""
+                }
             }
             
             cell.tagsLabel.layer.cornerRadius = 5
@@ -158,7 +162,11 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 if tagArray.count > 1 {
                     cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
                 } else {
-                    cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                    if tagArray[0] != "" {
+                        cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                    } else {
+                        cell.tagsLabel.text = ""
+                    }
                 }
                 
                 cell.tagsLabel.layer.cornerRadius = 5
@@ -189,7 +197,11 @@ class SearchVC: UIViewController, UICollectionViewDataSource, UICollectionViewDe
                 if tagArray.count > 1 {
                     cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
                 } else {
-                    cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                    if tagArray[0] != "" {
+                        cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
+                    } else {
+                        cell.tagsLabel.text = ""
+                    }
                 }
                 
                 cell.tagsLabel.layer.cornerRadius = 5

@@ -481,6 +481,10 @@ extension StreamerVideoVC: StreamerInfoVCDelegate {
     func followChat() {
         sendFollow()
     }
+    
+    func sendStatus(text: String) {
+        followButton.setTitle(text, for: .normal)
+    }
 }
 
 // MARK: - 虛擬鍵盤事件處理
@@ -528,6 +532,17 @@ extension StreamerVideoVC: UITextFieldDelegate {
             sendChat(sendButton)
         }
         return true
+    }
+}
+
+extension StreamerVideoVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        return cell
     }
 }
 
