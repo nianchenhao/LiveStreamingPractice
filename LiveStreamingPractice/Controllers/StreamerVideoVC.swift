@@ -406,7 +406,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     func sendFollow() {
-        let message = URLSessionWebSocketTask.Message.string("{\"action\": \"N\",\"content\":\"關注中\"}")
+        let following = NSLocalizedString("Following", comment: "關注中")
+        let message = URLSessionWebSocketTask.Message.string("{\"action\": \"N\",\"content\":\"\(following)\"}")
         webSocket?.send(message) { error in
             if let error = error {
                 print(error)

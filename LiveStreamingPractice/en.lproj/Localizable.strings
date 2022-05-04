@@ -34,6 +34,7 @@
 "EditNickname" = "Edit nickname";
 "EnterNewNickname" = "Please enter a new nickname";
 "NewNicknamePlaceholder" = "New nickname";
+"NewNicknameNotNil" = "Please enter new nickname";
 
 // StreamerVideoVC, StreamerInfoVC
 "PleaseEnterText" = "Please enter text";

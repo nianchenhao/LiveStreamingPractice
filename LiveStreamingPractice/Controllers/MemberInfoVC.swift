@@ -114,6 +114,9 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
         let newName = newNickname as UITextField
         let cancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "取消"), style: .cancel, handler: nil)
         let ok = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default) { alertAction in
+            guard newName.text != "" else {
+                return self.showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("NewNicknameNotNil", comment: "新暱稱不可空白"))
+            }
             guard let newName = newName.text else { return }
             let reference = Firestore.firestore()
             guard let user = Auth.auth().currentUser else { return }
@@ -163,6 +166,13 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
                 }
             }
         }
+    }
+    
+    func showAlert(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: NSLocalizedString("OkButton", comment: "確定"), style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - 設定ImagePickerController

@@ -34,6 +34,7 @@
 "EditNickname" = "修改昵称";
 "EnterNewNickname" = "请输入新昵称";
 "NewNicknamePlaceholder" = "新昵称";
+"NewNicknameNotNil" = "新昵称不可空白";
 
 // StreamerVideoVC, StreamerInfoVC
 "PleaseEnterText" = "请输入文字";
