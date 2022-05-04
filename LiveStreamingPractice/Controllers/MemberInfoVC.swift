@@ -121,7 +121,7 @@ class MemberInfoVC: UIViewController, UIImagePickerControllerDelegate & UINaviga
             let reference = Firestore.firestore()
             guard let user = Auth.auth().currentUser else { return }
             let userData = ["nickName": newName] as [String: Any]
-            reference.collection("Users").document(user.email ?? "").setData(userData) { error in
+            reference.collection("Users").document(user.email ?? "").setData(userData, merge: true) { error in
                 if error != nil {
                     print("error")
                 } else {

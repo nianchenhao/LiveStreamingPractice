@@ -51,6 +51,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     var streamerTitle: String?
     var streamerTags: [String]?
     var loginStatus = false
+    let user = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,10 +121,11 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         view.bringSubviewToFront(announcementLabel)
         
         generateTextMaskForChat()
-        checkFollow()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        checkFollow()
         addKeyboardObserver()
         fetchStreamerAvatar()
         fetchStreamerNickname()
@@ -192,12 +194,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     // MARK: - @IBAction
     
     @IBAction func btnShowKeyboardClicked(_ sender: UIButton) {
-        chatTextField.isHidden = false
-        sendButton.isHidden = false
-        chatButton.isHidden = true
-        shareButton.isHidden = true
-        sendGiftButton.isHidden = true
-        chatTextField.becomeFirstResponder()
+        chatButton.isHidden = true // 隱藏聊天按鈕
+        shareButton.isHidden = true // 隱藏分享按鈕
+        sendGiftButton.isHidden = true // 隱藏送禮物按鈕
+        chatTextField.isHidden = false // 取消隱藏聊天文字方塊
+        sendButton.isHidden = false // 取消隱藏傳送按鈕
+        chatTextField.becomeFirstResponder() // 使聊天文字方塊成為第一響應
     }
     
     @IBAction func sendGiftPress(_ sender: UIButton) {
@@ -244,7 +246,16 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         if follow == false {
             follow = true
-            userDefaults.setValue(follow, forKey: "streamerFollow")
+            //            userDefaults.setValue(follow, forKey: "streamerFollow")
+            let reference = Firestore.firestore().collection("Users")
+            let userData = ["isFollow\(streamerNicknameLabel.text ?? "")": follow] as [String: Bool]
+            reference.document((user?.email)!).setData(userData, merge: true) { error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    print("successfully write in!")
+                }
+            }
             followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
             self.view.makeToast(NSLocalizedString("FollowSuccess", comment: "關注成功"), position: .center)
             
@@ -253,7 +264,16 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
             follow = true
         } else {
             follow = false
-            userDefaults.setValue(follow, forKey: "streamerFollow")
+            //            userDefaults.setValue(follow, forKey: "streamerFollow")
+            let reference = Firestore.firestore().collection("Users")
+            let userData = ["isFollow\(streamerNicknameLabel.text ?? "")": follow] as [String: Bool]
+            reference.document((user?.email)!).setData(userData, merge: true) { error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    print("successfully write in!")
+                }
+            }
             followButton.setTitle(NSLocalizedString("Follow", comment: "關注"), for: .normal)
             self.view.makeToast(NSLocalizedString("FollowCancel", comment: "取消關注"), position: .center)
         }
@@ -310,22 +330,50 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     func checkFollow() {
-        //拿看看值，沒拿到的話直接return出去
-        guard
-            let defaultFollow = userDefaults.value(forKey: "streamerFollow") as? Bool
-        else {
-            print("沒存過值")
-            return
-        }
-        print("已存過值 為\(defaultFollow)")
-        //修改follow
-        follow = defaultFollow
         
-        //如果為true 修改按鈕的title
-        guard follow == true else{
+        // 判斷有沒有登入，有登入的話獲取使用者的email
+        guard
+            let user = Auth.auth().currentUser,
+            let email = user.email
+        else {
+            print("尚未登入，無法獲取使用者的email")
             return
         }
-        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
+
+        let reference = Firestore.firestore().collection("Users")
+        reference.document(email).getDocument { snapshot, error in
+           
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let snapshotData = snapshot!.data()?["isFollow\(self.streamerNicknameLabel.text ?? "")"] else {return}
+            
+            guard let defaultFollow = snapshotData as? Bool else{return}
+            self.follow = defaultFollow
+   
+            guard self.follow == true else { return }
+            
+            self.followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
+        }
+        
+//        //拿看看值，沒拿到的話直接return出去
+//        guard
+//            let defaultFollow = userDefaults.value(forKey: "streamerFollow") as? Bool
+//        else {
+//            print("沒存過值")
+//            return
+//        }
+//        print("已存過值 為\(defaultFollow)")
+//        //修改follow
+//        follow = defaultFollow
+//
+//        //如果為true 修改按鈕的title
+//        guard follow == true else{
+//            return
+//        }
+//        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
     }
     
     func repeatVideo() {
@@ -435,7 +483,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                     let data = text.data(using: .utf8)
                     do {
                         let test = try JSONDecoder().decode(WsRespone.self, from: data!)
-                        switch test.sender_role! {
+                        guard let sender_role = test.sender_role else { return }
+                        switch sender_role {
                         case -1:
                             self.chatArray.append(test.body!.text!)
                             self.userNameToChat.append((test.body!.nickname ?? "") + "：")
@@ -557,11 +606,11 @@ extension StreamerVideoVC {
     @objc func keyboardWillHide(notification: Notification) {
         // 讓view回復原位
         chatViewLayoutConstraint.constant = 15
-        chatButton.isHidden = false
-        sendButton.isHidden = true
-        chatTextField.isHidden = true
-        shareButton.isHidden = false
-        sendGiftButton.isHidden = false
+        chatButton.isHidden = false // 取消隱藏聊天按鈕
+        shareButton.isHidden = false // 取消隱藏分享按鈕
+        sendGiftButton.isHidden = false // 取消隱藏送禮物按鈕
+        chatTextField.isHidden = true // 隱藏聊天文字方塊
+        sendButton.isHidden = true // 隱藏傳送按鈕
     }
     
     // 當畫面消失時取消監控鍵盤開闔狀態

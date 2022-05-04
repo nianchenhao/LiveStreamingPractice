@@ -20,5 +20,6 @@ struct Streamer: Codable {
     let head_photo: String //頭貼
     let tags: String //標籤
     let online_num: Int //人數
+    let streamer_id: Int //直播主ID
 }
 

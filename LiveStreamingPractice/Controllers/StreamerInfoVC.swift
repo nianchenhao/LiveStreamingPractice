@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 protocol StreamerInfoVCDelegate: AnyObject {
     func followChat()
@@ -33,6 +35,7 @@ class StreamerInfoVC: UIViewController {
     var key = NSLocalizedString("VisitorNickname", comment: "訪客")
     var handle: AuthStateDidChangeListenerHandle?
     var loginStatus = false
+    let user = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,7 +106,16 @@ class StreamerInfoVC: UIViewController {
         guard loginStatus == true else { return showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("LoginStatusFollowMessage", comment: "請先註冊會員後才能關注主播!")) }
         if follow == false {
             follow = true
-            userDefaults.setValue(follow, forKey: "streamerFollow")
+//            userDefaults.setValue(follow, forKey: "streamerFollow")
+            let reference = Firestore.firestore().collection("Users")
+            let userData = ["isFollow\(streamerNicknameLabel.text ?? "")": follow] as [String: Bool]
+            reference.document((user?.email)!).setData(userData, merge: true) { error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    print("successfully write in!")
+                }
+            }
             followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
             self.view.makeToast(NSLocalizedString("FollowSuccess", comment: "關注成功"), position: .center)
             delegate?.followChat()
@@ -111,7 +123,16 @@ class StreamerInfoVC: UIViewController {
             follow = true
         } else {
             follow = false
-            userDefaults.setValue(follow, forKey: "streamerFollow")
+//            userDefaults.setValue(follow, forKey: "streamerFollow")
+            let reference = Firestore.firestore().collection("Users")
+            let userData = ["isFollow\(streamerNicknameLabel.text ?? "")": follow] as [String: Bool]
+            reference.document((user?.email)!).setData(userData, merge: true) { error in
+                if error != nil {
+                    print(error!.localizedDescription)
+                } else {
+                    print("successfully write in!")
+                }
+            }
             followButton.setTitle(NSLocalizedString("Follow", comment: "關注"), for: .normal)
             self.view.makeToast(NSLocalizedString("FollowCancel", comment: "取消關注"), position: .center)
             delegate?.sendStatus(text: NSLocalizedString("Follow", comment: "關注"))
