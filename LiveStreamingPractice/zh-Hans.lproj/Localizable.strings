@@ -35,8 +35,7 @@
 "EnterNewNickname" = "请输入新昵称";
 "NewNicknamePlaceholder" = "新昵称";
 
-// StreamerVideoVC
-"SystemMessage" = "系统讯息";
+// StreamerVideoVC, StreamerInfoVC
 "PleaseEnterText" = "请输入文字";
 "LeaveStudio" = "离开直播间";
 "NotQuit" = "先不要";
@@ -44,7 +43,23 @@
 "System" = "『系统』";
 "Enter" = "进入直播间";
 "Leave" = "离开直播间";
+"Following" = "关注中";
+"LoginStatusSendGiftMessage" = "请先注册会员后才能送主播礼物!";
+"LoginStatusFollowMessage" = "请先注册会员后才能关注主播!";
+"FollowSuccess" = "关注成功";
+"Follow" = "关注";
+"FollowCancel" = "取消关注";
+
+// StreamerGiftVC
+"PayDiamond" = "确定花费钻石购买";
+"CarGift" = "玛莎拉蒂";
+"RocketGift" = "战神火箭";
+"YachtGift" = "公主游艇";
+"HelicopterGift" = "海王直升机";
+"BuyIt" = "买下去";
+"NotBuyIt" = "先不要";
 
 // Alert
 "OkButton" = "确定";
 "Cancel" = "取消";
+"SystemMessage" = "系统讯息";

@@ -71,8 +71,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         sendButton.isHidden = true
         
         chatButton.layer.cornerRadius = chatButton.frame.width / 2
-//        let customInputAccessoryView = CustomView()
-//        chatTextField.inputAccessoryView = customInputAccessoryView
+        //        let customInputAccessoryView = CustomView()
+        //        chatTextField.inputAccessoryView = customInputAccessoryView
         
         quitButton.layer.cornerRadius = quitButton.frame.width / 2
         quitButton.layer.masksToBounds = true
@@ -201,7 +201,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     @IBAction func sendGiftPress(_ sender: UIButton) {
-        guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能送主播禮物!") }
+        guard loginStatus == true else { return showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("LoginStatusSendGiftMessage", comment: "請先註冊會員後才能送主播禮物!")) }
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC") as? StreamerGiftVC {
             vc.delegate = self
             vc.modalPresentationStyle = .overFullScreen
@@ -240,13 +240,13 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     @IBAction func followButtonPress(_ sender: UIButton) {
-        guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
+        guard loginStatus == true else { return showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("LoginStatusFollowMessage", comment: "請先註冊會員後才能關注主播!")) }
         
         if follow == false {
             follow = true
             userDefaults.setValue(follow, forKey: "streamerFollow")
-            followButton.setTitle("關注中", for: .normal)
-            self.view.makeToast("關注成功", position: .center)
+            followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
+            self.view.makeToast(NSLocalizedString("FollowSuccess", comment: "關注成功"), position: .center)
             
             sendFollow()
             
@@ -254,8 +254,8 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         } else {
             follow = false
             userDefaults.setValue(follow, forKey: "streamerFollow")
-            followButton.setTitle("關注", for: .normal)
-            self.view.makeToast("取消關注", position: .center)
+            followButton.setTitle(NSLocalizedString("Follow", comment: "關注"), for: .normal)
+            self.view.makeToast(NSLocalizedString("FollowCancel", comment: "取消關注"), position: .center)
         }
     }
     
@@ -325,7 +325,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         guard follow == true else{
             return
         }
-        followButton.setTitle("關注中", for: .normal)
+        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
     }
     
     func repeatVideo() {

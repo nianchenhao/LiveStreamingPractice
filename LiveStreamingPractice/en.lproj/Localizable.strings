@@ -7,44 +7,59 @@
 */
 
 // HomePageVC, StreamerVideoVC
-"VisitorNickname" = "訪客";
+"VisitorNickname" = "Visitor";
 
 // SearchVC
-"SearchPlaceholder" = "搜尋";
-"SearchResult" = "搜尋结果";
-"PopularStreamer" = "熱門推薦";
+"SearchPlaceholder" = "Search";
+"SearchResult" = "Search results";
+"PopularStreamer" = "Popular";
 
 // PersonalVC
-"LoginFailed" = "登入失敗";
+"LoginFailed" = "Login failed";
 
 // RegisterVC
-"CheckEmail" = "請輸入電子郵件";
-"CheckPassword" = "請輸入密碼";
-"CheckNickName" = "請輸入暱稱";
-"RegistrationFailed" = "註冊失敗";
-"RegistrationSuccess" = "註冊成功";
-"LoginAgain" = "請再次登入";
+"CheckEmail" = "Please enter email";
+"CheckPassword" = "Please enter password";
+"CheckNickName" = "Please enter nickname";
+"RegistrationFailed" = "Registration failed";
+"RegistrationSuccess" = "Registration success";
+"LoginAgain" = "Please login again";
 
 // MemberInfoVC
-"AccountEmail" = "帳號：";
-"AccountNickname" = "暱稱：";
-"EditAvatar" = "編輯頭像";
-"AlbumSelection" = "從相簿選取";
-"Photograph" = "拍照";
-"EditNickname" = "修改暱稱";
-"EnterNewNickname" = "請輸入新暱稱";
-"NewNicknamePlaceholder" = "新暱稱";
+"AccountEmail" = "Email：";
+"AccountNickname" = "Nickname：";
+"EditAvatar" = "Edit avatar";
+"AlbumSelection" = "Album";
+"Photograph" = "Photograph";
+"EditNickname" = "Edit nickname";
+"EnterNewNickname" = "Please enter a new nickname";
+"NewNicknamePlaceholder" = "New nickname";
 
-// StreamerVideoVC
-"SystemMessage" = "系統訊息";
-"PleaseEnterText" = "請輸入文字";
-"LeaveStudio" = "離開直播間";
-"NotQuit" = "先不要";
-"Quit" = "立馬走";
-"System" = "『系統』";
-"Enter" = "進入直播間";
-"Leave" = "離開直播間";
+// StreamerVideoVC, StreamerInfoVC
+"PleaseEnterText" = "Please enter text";
+"LeaveStudio" = "Leave the studio";
+"NotQuit" = "No";
+"Quit" = "Yes";
+"System" = "『System』";
+"Enter" = "Enter the studio";
+"Leave" = "Leave the studio";
+"Following" = "Following";
+"LoginStatusSendGiftMessage" = "Please register as a member first!";
+"LoginStatusFollowMessage" = "Please register as a member first!";
+"FollowSuccess" = "Follow success";
+"Follow" = "Follow";
+"FollowCancel" = "Follow cancel";
+
+// StreamerGiftVC
+"PayDiamond" = "Make sure to spend diamonds to buy";
+"CarGift" = "Car";
+"RocketGift" = "Rocket";
+"YachtGift" = "Yacht";
+"HelicopterGift" = "Helicopter";
+"BuyIt" = "Buy";
+"NotBuyIt" = "No";
 
 // Alert
-"OkButton" = "確定";
-"Cancel" = "取消";
+"OkButton" = "Ok";
+"Cancel" = "Cancel";
+"SystemMessage" = "System message";

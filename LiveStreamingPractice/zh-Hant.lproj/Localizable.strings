@@ -35,16 +35,32 @@
 "EnterNewNickname" = "請輸入新暱稱";
 "NewNicknamePlaceholder" = "新暱稱";
 
-// StreamerVideoVC
-"SystemMessage" = "系統訊息";
+// StreamerVideoVC, StreamerInfoVC
 "PleaseEnterText" = "請輸入文字";
 "LeaveStudio" = "離開直播間";
 "NotQuit" = "先不要";
 "Quit" = "立馬走";
-"System" = "『系統』";
+"System" = "『系统』";
 "Enter" = "進入直播間";
 "Leave" = "離開直播間";
+"Following" = "關注中";
+"LoginStatusSendGiftMessage" = "請先註冊會員後才能送主播禮物!";
+"LoginStatusFollowMessage" = "請先註冊會員後才能關注主播!";
+"FollowSuccess" = "關注成功";
+"Follow" = "關注";
+"FollowCancel" = "取消關注";
+
+// StreamerGiftVC
+"PayDiamond" = "確定花費鑽石購買";
+"CarGift" = "瑪莎拉蒂";
+"RocketGift" = "戰神火箭";
+"YachtGift" = "公主遊艇";
+"HelicopterGift" = "海王直升機";
+"BuyIt" = "買下去";
+"NotBuyIt" = "先不要";
 
 // Alert
 "OkButton" = "確定";
 "Cancel" = "取消";
+"SystemMessage" = "系統訊息";
+

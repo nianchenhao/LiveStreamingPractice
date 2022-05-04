@@ -30,7 +30,7 @@ class StreamerInfoVC: UIViewController {
     var streamerOnlineViewers: Int?
     var streamerTitle: String?
     var streamerTags: [String]?
-    var key = "訪客"
+    var key = NSLocalizedString("VisitorNickname", comment: "訪客")
     var handle: AuthStateDidChangeListenerHandle?
     var loginStatus = false
     
@@ -99,23 +99,22 @@ class StreamerInfoVC: UIViewController {
         dismiss(animated: true)
     }
     
-    
     @IBAction func followButtonPress(_ sender: UIButton) {
-        guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能關注主播喔!") }
+        guard loginStatus == true else { return showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("LoginStatusFollowMessage", comment: "請先註冊會員後才能關注主播!")) }
         if follow == false {
             follow = true
             userDefaults.setValue(follow, forKey: "streamerFollow")
-            followButton.setTitle("關注中", for: .normal)
-            self.view.makeToast("關注成功", position: .center)
+            followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
+            self.view.makeToast(NSLocalizedString("FollowSuccess", comment: "關注成功"), position: .center)
             delegate?.followChat()
-            delegate?.sendStatus(text: "關注中")
+            delegate?.sendStatus(text: NSLocalizedString("Following", comment: "關注中"))
             follow = true
         } else {
             follow = false
             userDefaults.setValue(follow, forKey: "streamerFollow")
-            followButton.setTitle("關注", for: .normal)
-            self.view.makeToast("取消關注", position: .center)
-            delegate?.sendStatus(text: "關注")
+            followButton.setTitle(NSLocalizedString("Follow", comment: "關注"), for: .normal)
+            self.view.makeToast(NSLocalizedString("FollowCancel", comment: "取消關注"), position: .center)
+            delegate?.sendStatus(text: NSLocalizedString("Follow", comment: "關注"))
         }
     }
     
@@ -173,7 +172,7 @@ class StreamerInfoVC: UIViewController {
         guard follow == true else{
             return
         }
-        followButton.setTitle("關注中", for: .normal)
+        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
     }
     
     func showAlert(title: String, message: String) {

@@ -27,29 +27,29 @@ class StreamerGiftVC: UIViewController {
     }
     
     @IBAction func carGiftPress(_ sender: UIButton) {
-        showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "carGift")
-        delegate?.sendGift(giftName: "瑪莎拉蒂")
+        showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("PayDiamond", comment: "確定花費鑽石購買"), name: "carGift")
+        delegate?.sendGift(giftName: NSLocalizedString("CarGift", comment: "瑪莎拉蒂"))
     }
     
     @IBAction func rocketGiftPress(_ sender: UIButton) {
-        showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "rocketGift")
-        delegate?.sendGift(giftName: "戰神火箭")
+        showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("PayDiamond", comment: "確定花費鑽石購買"), name: "rocketGift")
+        delegate?.sendGift(giftName: NSLocalizedString("RocketGift", comment: "戰神火箭"))
     }
     
     @IBAction func yachtGiftPress(_ sender: UIButton) {
-        showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "yachtGift")
-        delegate?.sendGift(giftName: "公主遊艇")
+        showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("PayDiamond", comment: "確定花費鑽石購買"), name: "yachtGift")
+        delegate?.sendGift(giftName: NSLocalizedString("YachtGift", comment: "公主遊艇"))
     }
     
     @IBAction func helicopterGiftPress(_ sender: UIButton) {
-        showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "helicopterGift")
-        delegate?.sendGift(giftName: "海王直升機")
+        showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("PayDiamond", comment: "確定花費鑽石購買"), name: "helicopterGift")
+        delegate?.sendGift(giftName: NSLocalizedString("HelicopterGift", comment: "海王直升機"))
     }
     
     // MARK: - Function
     func showAlert(title: String, message: String, name: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "買下去", style: .default, handler: { [self] alertAction in
+        let okAction = UIAlertAction(title: NSLocalizedString("BuyIt", comment: "買下去"), style: .default, handler: { [self] alertAction in
             animationView = .init(name: name)
             animationView?.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
             animationView?.center = self.view.center
@@ -67,7 +67,7 @@ class StreamerGiftVC: UIViewController {
                 self.dismiss(animated: true)
             }
         })
-        let cancelAction = UIAlertAction(title: "先鼻要", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: NSLocalizedString("NotBuyIt", comment: "先不要"), style: .cancel, handler: nil)
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
