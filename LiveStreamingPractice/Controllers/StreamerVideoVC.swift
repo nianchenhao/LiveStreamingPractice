@@ -202,9 +202,11 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     
     @IBAction func sendGiftPress(_ sender: UIButton) {
         guard loginStatus == true else { return showAlert(title: "系統訊息", message: "請先註冊會員後才能送主播禮物!") }
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC")
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: true)
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerGiftVC") as? StreamerGiftVC {
+            vc.delegate = self
+            vc.modalPresentationStyle = .overFullScreen
+            present(vc, animated: true)
+        }
     }
     
     @IBAction func streamerInfoPress(_ sender: UIButton) {
@@ -412,6 +414,15 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         }
     }
     
+    func sendGift(gift: String) {
+        let message = URLSessionWebSocketTask.Message.string("{\"action\": \"N\",\"content\":\"送了\(gift)\"}")
+        webSocket?.send(message) { error in
+            if let error = error {
+                print(error)
+            }
+        }
+    }
+    
     func receive() {
         webSocket?.receive { result in
             switch result {
@@ -426,7 +437,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                         switch test.sender_role! {
                         case -1:
                             self.chatArray.append(test.body!.text!)
-                            self.userNameToChat.append(test.body!.nickname ?? "")
+                            self.userNameToChat.append((test.body!.nickname ?? "") + "：")
                         case 5:
                             let preferredLang = Bundle.main.preferredLocalizations.first! as NSString
                             print("當前系統語言：\(preferredLang)")
@@ -490,7 +501,7 @@ extension StreamerVideoVC: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.transform = CGAffineTransform(scaleX: 1, y: -1) // 對cell進行翻轉
         cell.backgroundColor = .clear // cell背景透明
         let index = chatArray.count - 1 - indexPath.row // 對調index上下順序由下至上
-        cell.chatTextView.text = "\(userNameToChat[index]) : \(chatArray[index])"
+        cell.chatTextView.text = "\(userNameToChat[index]) \(chatArray[index])"
         cell.chatTextView.layer.cornerRadius = 15
         return cell
     }
@@ -512,6 +523,12 @@ extension StreamerVideoVC: StreamerInfoVCDelegate {
     
     func sendStatus(text: String) {
         followButton.setTitle(text, for: .normal)
+    }
+}
+
+extension StreamerVideoVC: StreamerGiftVCDelegate {
+    func sendGift(giftName: String) {
+        sendGift(gift: giftName)
     }
 }
 

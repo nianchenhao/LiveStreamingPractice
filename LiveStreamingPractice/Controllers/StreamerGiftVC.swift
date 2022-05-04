@@ -8,9 +8,14 @@
 import UIKit
 import Lottie
 
+protocol StreamerGiftVCDelegate: AnyObject {
+    func sendGift(giftName: String)
+}
+
 class StreamerGiftVC: UIViewController {
     var animationView: AnimationView?
-
+    weak var delegate: StreamerGiftVCDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,18 +28,22 @@ class StreamerGiftVC: UIViewController {
     
     @IBAction func carGiftPress(_ sender: UIButton) {
         showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "carGift")
+        delegate?.sendGift(giftName: "瑪莎拉蒂")
     }
     
     @IBAction func rocketGiftPress(_ sender: UIButton) {
         showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "rocketGift")
+        delegate?.sendGift(giftName: "戰神火箭")
     }
     
     @IBAction func yachtGiftPress(_ sender: UIButton) {
         showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "yachtGift")
+        delegate?.sendGift(giftName: "公主遊艇")
     }
     
     @IBAction func helicopterGiftPress(_ sender: UIButton) {
         showAlert(title: "系統訊息", message: "確定花費鑽石購買", name: "helicopterGift")
+        delegate?.sendGift(giftName: "海王直升機")
     }
     
     // MARK: - Function
