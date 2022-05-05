@@ -106,7 +106,7 @@ class StreamerInfoVC: UIViewController {
         guard loginStatus == true else { return showAlert(title: NSLocalizedString("SystemMessage", comment: "系統訊息"), message: NSLocalizedString("LoginStatusFollowMessage", comment: "請先註冊會員後才能關注主播!")) }
         if follow == false {
             follow = true
-//            userDefaults.setValue(follow, forKey: "streamerFollow")
+            //            userDefaults.setValue(follow, forKey: "streamerFollow")
             let reference = Firestore.firestore().collection("Users")
             let userData = ["isFollow\(streamerNicknameLabel.text ?? "")": follow] as [String: Bool]
             reference.document((user?.email)!).setData(userData, merge: true) { error in
@@ -123,7 +123,7 @@ class StreamerInfoVC: UIViewController {
             follow = true
         } else {
             follow = false
-//            userDefaults.setValue(follow, forKey: "streamerFollow")
+            //            userDefaults.setValue(follow, forKey: "streamerFollow")
             let reference = Firestore.firestore().collection("Users")
             let userData = ["isFollow\(streamerNicknameLabel.text ?? "")": follow] as [String: Bool]
             reference.document((user?.email)!).setData(userData, merge: true) { error in
@@ -178,22 +178,48 @@ class StreamerInfoVC: UIViewController {
     }
     
     func checkFollow() {
-        //拿看看值，沒拿到的話直接return出去
+        // 判斷有沒有登入，有登入的話獲取使用者的email
         guard
-            let defaultFollow = userDefaults.value(forKey: "streamerFollow") as? Bool
+            let user = Auth.auth().currentUser,
+            let email = user.email
         else {
-            print("沒存過值")
+            print("尚未登入，無法獲取使用者的email")
             return
         }
-        print("已存過值 為\(defaultFollow)")
-        //修改follow
-        follow = defaultFollow
         
-        //如果為true 修改按鈕的title
-        guard follow == true else{
-            return
+        let reference = Firestore.firestore().collection("Users")
+        reference.document(email).getDocument { snapshot, error in
+            
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            guard let snapshotData = snapshot!.data()?["isFollow\(self.streamerNicknameLabel.text ?? "")"] else {return}
+            
+            guard let defaultFollow = snapshotData as? Bool else{return}
+            self.follow = defaultFollow
+            
+            guard self.follow == true else { return }
+            
+            self.followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
         }
-        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
+        //拿看看值，沒拿到的話直接return出去
+        //        guard
+        //            let defaultFollow = userDefaults.value(forKey: "streamerFollow") as? Bool
+        //        else {
+        //            print("沒存過值")
+        //            return
+        //        }
+        //        print("已存過值 為\(defaultFollow)")
+        //        //修改follow
+        //        follow = defaultFollow
+        //
+        //        //如果為true 修改按鈕的title
+        //        guard follow == true else{
+        //            return
+        //        }
+        //        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
     }
     
     func showAlert(title: String, message: String) {
