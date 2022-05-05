@@ -122,6 +122,13 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         
         generateTextMaskForChat()
         
+        let swipeRight = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        let swipeLeft = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
+        swipeRight.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -307,6 +314,27 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     }
     
     // MARK: - Function
+    @objc func swipe(_ recognizer:UISwipeGestureRecognizer){
+        if recognizer.direction == .right {
+            print("向右滑动")
+            streamerView.isHidden = true
+            quitButton.isHidden = true
+            announcementLabel.isHidden = true
+            chatView.isHidden = true
+        } else if recognizer.direction == .left {
+            print("向左滑动")
+            streamerView.isHidden = false
+            quitButton.isHidden = false
+            announcementLabel.isHidden = false
+            chatView.isHidden = false
+        }
+
+        let point=recognizer.location(in: self.view)
+        //这个点是滑动的起点
+        print(point.x)
+        print(point.y)
+    }
+    
     func fetchStreamerAvatar() {
         guard let streamerAvatar = streamerAvatar else { return }
         guard let url = URL(string: streamerAvatar) else { return }
