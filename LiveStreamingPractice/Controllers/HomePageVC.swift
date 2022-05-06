@@ -131,21 +131,24 @@ class HomePageVC: UIViewController, URLSessionWebSocketDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        if let controller = storyboard?.instantiateViewController(withIdentifier: "StreamerVideoVC") as? StreamerVideoVC {
-            let streamerAvatar = streamers[indexPath.row].head_photo
-            let streamerNickname = streamers[indexPath.row].nickname
-            let streamerOnlineViewers = streamers[indexPath.row].online_num
-            let streamerTitle = streamers[indexPath.row].stream_title
+        if let controller = storyboard?.instantiateViewController(withIdentifier: "ScrollVideoVC") as? ScrollVideoVC {
+//            let streamerAvatar = streamers[indexPath.row].head_photo
+//            let streamerNickname = streamers[indexPath.row].nickname
+//            let streamerOnlineViewers = streamers[indexPath.row].online_num
+//            let streamerTitle = streamers[indexPath.row].stream_title
 //            let tags = streamers[indexPath.row].tags
             
-            let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
+//            let tagArray = streamers[indexPath.row].tags.components(separatedBy: ",")
 //            if tagArray.count > 1 {
 //                cell.tagsLabel.text = "#\(tagArray[0])  #\(tagArray[1])"
 //            } else {
 //                cell.tagsLabel.text = "#\(streamers[indexPath.row].tags)"
 //            }
-
-            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tagArray)
+//            controller.configure(head_photo: streamerAvatar, nickname: streamerNickname, online_num: streamerOnlineViewers, stream_title: streamerTitle, tags: tagArray)
+            let streamersArray = streamers
+            
+            controller.configure(streamers: streamersArray)
+            
             
             controller.modalPresentationStyle = .fullScreen
             present(controller, animated: true, completion: nil)

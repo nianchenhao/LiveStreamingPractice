@@ -15,7 +15,24 @@ import Lottie
 import Toast
 import MarqueeLabel
 
-class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
+protocol StreamerVideoVCDelegate: AnyObject {
+    func userDidTapLeave()
+}
+
+class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate, ScrollVideoCollectionViewCellDelegate {
+  
+    func userDidTapLeaveFromStreamerVideo() {
+        print("")
+    }
+    
+    func videoPlayFromStreamerVideo() {
+        videoPlayer?.play()
+    }
+    
+    func videoPauseFromStreamerVideo() {
+        videoPlayer?.pause()
+    }
+    
     
     //    static let shared = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StreamerVideoVC") as! StreamerVideoVC
     
@@ -24,7 +41,7 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var quitButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var chatView: UIView!
-    @IBOutlet weak var chatViewLayoutConstraint: NSLayoutConstraint!
+    @IBOutlet var chatViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var streamerView: UIView!
     @IBOutlet weak var followButton: UIButton!
@@ -34,7 +51,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
     @IBOutlet weak var streamerOnlineViewersLabel: UILabel!
     @IBOutlet var chatButton: UIButton!
     @IBOutlet var announcementLabel: MarqueeLabel!
+    @IBOutlet var videoView: UIView!
     
+    weak var delegate: StreamerVideoVCDelegate?
     var videoPlayer: AVPlayer?
     var looper: AVPlayerLooper?
     var webSocket: URLSessionWebSocketTask?
@@ -90,35 +109,68 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         let placeholder = chatTextField.placeholder ?? ""
         chatTextField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         
-        repeatVideo()
+//        repeatVideo()
         
-        animationView = .init(name: "loveStreamer")
-        animationView?.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
-        animationView?.center = self.view.center
-        animationView?.contentMode = .scaleAspectFill
-        animationView?.loopMode = .loop
-        guard let animationView = animationView else {
+//        animationView = .init(name: "loveStreamer")
+//        animationView?.frame = CGRect(x: 0, y: 0, width: 350, height: 350)
+//        animationView?.center = self.view.center
+//        animationView?.contentMode = .scaleAspectFill
+//        animationView?.loopMode = .loop
+//        guard let animationView = animationView else {
+//            return
+//        }
+//        view.addSubview(animationView)
+//        view.bringSubviewToFront(animationView)
+//        animationView.play()
+//
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//            self.animationView?.stop()
+//            self.animationView?.isHidden = true
+//        }
+        let modelVideo = VideoModel(videoFileName: "hime3", videoFileFormat: "mp4")
+//        guard let model = model else {
+//            return
+//        }
+        guard let videoURL = Bundle.main.url(forResource: modelVideo.videoFileName, withExtension: modelVideo.videoFileFormat) else {
             return
         }
-        view.addSubview(animationView)
-        view.bringSubviewToFront(animationView)
-        animationView.play()
+        let player = AVQueuePlayer()
+        videoPlayer = player
+        let item = AVPlayerItem(url: videoURL)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.animationView?.stop()
-            self.animationView?.isHidden = true
-        }
+        let playerView = AVPlayerLayer(player: player)
+        playerView.frame = view.bounds
+        playerView.videoGravity = .resizeAspectFill
+//        videoView = UIView(frame: view.bounds)
+        videoView.layer.addSublayer(playerView)
+//        self.view.addSubview(videoView)
         
-        view.bringSubviewToFront(tableView)
-        view.bringSubviewToFront(chatTextField)
-        view.bringSubviewToFront(quitButton)
-        view.bringSubviewToFront(sendButton)
-        view.bringSubviewToFront(chatView)
-        view.bringSubviewToFront(shareButton)
-        view.bringSubviewToFront(streamerView)
-        view.bringSubviewToFront(sendGiftButton)
-        view.bringSubviewToFront(chatButton)
-        view.bringSubviewToFront(announcementLabel)
+        
+        looper = AVPlayerLooper(player: player, templateItem: item)
+        videoPlayer?.volume = 0
+
+//        videoPlayer?.play()
+    
+        chatView.frame = CGRect(x: 10, y: 530, width: 390, height: 265)
+        
+//        videoView?.addSubview(tableView)
+//        videoView?.addSubview(chatTextField)
+        videoView?.addSubview(quitButton)
+//        videoView?.addSubview(sendButton)
+        videoView?.addSubview(chatView)
+        
+        chatView.addSubview(tableView)
+        chatView.addSubview(chatTextField)
+        chatView.addSubview(sendButton)
+        chatView.addSubview(shareButton)
+        chatView.addSubview(sendGiftButton)
+        chatView.addSubview(chatButton)
+        
+//        videoView?.addSubview(shareButton)
+        videoView?.addSubview(streamerView)
+//        videoView?.addSubview(sendGiftButton)
+//        videoView?.addSubview(chatButton)
+        videoView?.addSubview(announcementLabel)
         
         generateTextMaskForChat()
         
@@ -128,6 +180,9 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         let swipeLeft = UISwipeGestureRecognizer(target:self, action:#selector(swipe(_:)))
         swipeRight.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
+        print("This is didLoad area")
+        print("chatView.x: \(chatView.frame.origin.x), chatView.y: \(chatView.frame.origin.y)")
+        print("chatButton.x: \(chatButton.frame.origin.x), chatButton.y: \(chatButton.frame.origin.y)")
         
     }
     
@@ -177,6 +232,10 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
                 }
             }
         })
+        
+        print("This is willappear area")
+        print("chatView.x: \(chatView.frame.origin.x), chatView.y: \(chatView.frame.origin.y)")
+        print("chatButton.x: \(chatButton.frame.origin.x), chatButton.y: \(chatButton.frame.origin.y)")
     }
     
     //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -307,10 +366,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
             self.disconnection()
             self.dismiss(animated: true)
             self.videoPlayer?.pause()
+            self.delegate?.userDidTapLeave()
         })
         controller.addAction(cancelAction)
         controller.addAction(quitAction)
         present(controller, animated: true, completion: nil)
+        
     }
     
     // MARK: - Function
@@ -333,6 +394,12 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
         //这个点是滑动的起点
         print(point.x)
         print(point.y)
+    }
+    
+    func prepareForReuse() {
+        fetchStreamerAvatar()
+        fetchStreamerNickname()
+        fetchStreamerOnlineViewers()
     }
     
     func fetchStreamerAvatar() {
@@ -404,20 +471,20 @@ class StreamerVideoVC: UIViewController, URLSessionWebSocketDelegate {
 //        followButton.setTitle(NSLocalizedString("Following", comment: "關注中"), for: .normal)
     }
     
-    func repeatVideo() {
-        let videoURL = Bundle.main.url(forResource: "hime3", withExtension: ".mp4")
-        let player = AVQueuePlayer()
-        videoPlayer = player
-        let item = AVPlayerItem(url: videoURL!)
-        
-        let playerLayer = AVPlayerLayer(player: player)
-        playerLayer.frame = view.bounds
-        playerLayer.videoGravity = .resizeAspectFill
-        view.layer.addSublayer(playerLayer)
-        
-        looper = AVPlayerLooper(player: player, templateItem: item)
-        self.videoPlayer?.play()
-    }
+//    func repeatVideo() {
+//        let videoURL = Bundle.main.url(forResource: "hime3", withExtension: ".mp4")
+//        let player = AVQueuePlayer()
+//        videoPlayer = player
+//        let item = AVPlayerItem(url: videoURL!)
+//
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = view.bounds
+//        playerLayer.videoGravity = .resizeAspectFill
+//        view.layer.addSublayer(playerLayer)
+//
+//        looper = AVPlayerLooper(player: player, templateItem: item)
+//        self.videoPlayer?.play()
+//    }
     
     func generateTextMaskForChat() {
         let gradientLayer = CAGradientLayer.init()
@@ -623,8 +690,8 @@ extension StreamerVideoVC {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            chatViewLayoutConstraint.constant = keyboardHeight - 10
-            
+//            chatViewLayoutConstraint.constant = keyboardHeight + 10
+            chatViewBottomConstraint.constant = keyboardHeight - 10
         }
         //        else {
         //            view.frame.origin.y = -view.frame.height / 3
@@ -633,7 +700,8 @@ extension StreamerVideoVC {
     
     @objc func keyboardWillHide(notification: Notification) {
         // 讓view回復原位
-        chatViewLayoutConstraint.constant = 15
+//        chatViewLayoutConstraint.constant = -15
+        chatViewBottomConstraint.constant = 50
         chatButton.isHidden = false // 取消隱藏聊天按鈕
         shareButton.isHidden = false // 取消隱藏分享按鈕
         sendGiftButton.isHidden = false // 取消隱藏送禮物按鈕
